@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*,*:before,*:after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+p, h1, h2{
+  margin: 0;
+}  
