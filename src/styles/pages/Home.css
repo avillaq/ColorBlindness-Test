@@ -68,7 +68,7 @@
     flex-direction: row;
     align-items: center;
     gap: 24px;
-    padding: 128px 32px;
+    padding: 96px 32px;
   }
 
   .hero-content h1 {
@@ -79,6 +79,6 @@
 
 @media (min-width: 1280px) {
   .hero-section {
-    padding: 128px 84px;
+    padding: 112px 84px;
   }
 }
