@@ -23,7 +23,7 @@ export const Home = () => {
           <Image
             alt="Colorblindness Test Hero Image"
             src={heroImage}
-            width={500}
+            width={650}
           />
         </div>
       </section>
