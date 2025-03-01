@@ -1,0 +1,16 @@
+.home-container .hero-section{
+  padding: 48px 0;
+  background-color: #f5f7fa;
+}
+
+@media (min-width: 768px) {
+  .home-container .hero-section {
+    padding: 64px 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .home-container .hero-section {
+    padding: 128px 0;
+  }
+}

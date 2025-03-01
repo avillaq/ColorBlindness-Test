@@ -1,25 +1,22 @@
 .header-container {
   background-color: #fff;
   padding: 0 16px;
-  margin: 0 auto;
   width: 100%;
 }
 .main-container {
   width: 100%;
   min-height: 100vh;
-  background-color: #fff;
-  padding: 48px 0;
   box-shadow: inset 0px 20px 15px -25px rgba(0,0,0,0.46);
 }
 
 @media (min-width: 768px) {
   .header-container {
-    padding: 0 48px;
+    padding: 0 24px;
   }
 }
 
 @media (min-width: 1280px) {
-  .main-container {
-    padding: 0 60px;
+  .header-container {
+    padding: 0 32px;
   }
 }

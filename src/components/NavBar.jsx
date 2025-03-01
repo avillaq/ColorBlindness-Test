@@ -18,7 +18,7 @@ export const AcmeLogo = () => {
 
 export const NavBar = () => {
   return (
-    <section className="navbar-container">
+    <div className="navbar-container">
       <Navbar>
         <NavbarBrand>
           <AcmeLogo />
@@ -49,7 +49,7 @@ export const NavBar = () => {
           </NavbarItem>
         </NavbarContent>
       </Navbar>
-    </section>
+    </div>
 
   );
 }
