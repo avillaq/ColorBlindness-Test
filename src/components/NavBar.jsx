@@ -4,7 +4,7 @@ import { Button } from "@heroui/button";
 import 'boxicons';
 import "../styles/components/NavBar.css";
 
-export const AcmeLogo = () => {
+export const ColorBlindnessLogo = () => {
   return (
     <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="12" cy="12" r="10" fill="#E0E0E0" />
@@ -30,7 +30,7 @@ export const NavBar = () => {
     <div className="navbar-container">
       <Navbar>
         <NavbarBrand>
-          <AcmeLogo />
+          <ColorBlindnessLogo />
           <p className="text-logo font-bold text-inherit">ColorVision</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
