@@ -1,6 +1,6 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
 import { Link } from "@heroui/link";
-import { Button } from "@heroui/button"; 
+import { Button } from "@heroui/button";
 
 export const AcmeLogo = () => {
   return (
@@ -17,35 +17,38 @@ export const AcmeLogo = () => {
 
 export const NavBar = () => {
   return (
-    <Navbar>
-      <NavbarBrand>
-        <AcmeLogo />
-        <p className="font-bold text-inherit">ColorVision</p>
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Home
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Take Test
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Education
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Persona
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-    </Navbar>
+    <section className="navbar-container">
+      <Navbar>
+        <NavbarBrand>
+          <AcmeLogo />
+          <p className="font-bold text-inherit">ColorVision</p>
+        </NavbarBrand>
+        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          <NavbarItem>
+            <Link color="foreground" href="#">
+              Home
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="#">
+              Take Test
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="#">
+              Education
+            </Link>
+          </NavbarItem>
+        </NavbarContent>
+        <NavbarContent justify="end">
+          <NavbarItem>
+            <Button as={Link} color="primary" href="#" variant="flat">
+              Persona
+            </Button>
+          </NavbarItem>
+        </NavbarContent>
+      </Navbar>
+    </section>
+
   );
 }
