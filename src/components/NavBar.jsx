@@ -1,6 +1,7 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
 import { Link } from "@heroui/link";
 import { Button } from "@heroui/button";
+import "../styles/components/NavBar.css";
 
 export const AcmeLogo = () => {
   return (
@@ -21,7 +22,7 @@ export const NavBar = () => {
       <Navbar>
         <NavbarBrand>
           <AcmeLogo />
-          <p className="font-bold text-inherit">ColorVision</p>
+          <p className="text-logo font-bold text-inherit">ColorVision</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
