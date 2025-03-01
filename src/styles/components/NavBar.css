@@ -1,6 +1,24 @@
+.navbar-container {
+  padding: 0 16px;
+}
+
 .navbar-container .text-logo {
   font-family: var(--font-roboto);
+  font-size: 20px;
 }
-.navbar-container header{
+
+.navbar-container header {
   padding: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar-container {
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .navbar-container {
+    padding: 0 32px;
+  }
 }
