@@ -2,6 +2,7 @@
 .hero-section {
   display: flex;
   flex-direction: column;
+  gap: 12px;
   padding: 48px 16px;
   background-color: #f5f7fa;
 }
@@ -32,6 +33,11 @@
   gap: 8px;
 }
 
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+
 /**/
 
 @media (min-width: 400px) {
@@ -46,18 +52,33 @@
   .hero-section {
     padding: 64px 24px;
   }
+
   .hero-content h1 {
     font-size: 48px;
     line-height: 48px;
   }
-  
+
   .hero-content p {
     font-size: 20px;
   }
 }
 
+@media (min-width: 1024px) {
+  .hero-section {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    padding: 128px 32px;
+  }
+
+  .hero-content h1 {
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+
 @media (min-width: 1280px) {
   .hero-section {
-    padding: 128px 32px;
+    padding: 128px 84px;
   }
 }

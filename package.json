@@ -15,6 +15,7 @@
     "@heroui/link": "^2.2.12",
     "@heroui/navbar": "^2.2.13",
     "@heroui/react": "^2.7.4",
+    "@heroui/skeleton": "^2.2.10",
     "boxicons": "^2.1.4",
     "framer-motion": "^12.4.7",
     "react": "^19.0.0",

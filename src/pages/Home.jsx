@@ -1,5 +1,7 @@
 import { Button } from "@heroui/button";
+import { Image } from "@heroui/image";
 import "../styles/pages/Home.css";
+import heroImage from "../assets/hero-image.webp"
 
 export const Home = () => {
   return (
@@ -18,7 +20,11 @@ export const Home = () => {
           </div>
         </div>
         <div className="hero-image">
-
+          <Image
+            alt="Colorblindness Test Hero Image"
+            src={heroImage}
+            width={500}
+          />
         </div>
       </section>
       <section className="content-section">
