@@ -1,10 +1,20 @@
 .navbar-container {
+  font-size: 14px;
+  font-weight: 500;
   padding: 0 16px;
 }
 
 .navbar-container .text-logo {
   font-family: var(--font-roboto);
   font-size: 20px;
+}
+
+.navbar-container a {
+  transition: color 0.3s;
+}
+
+.navbar-container a:hover {
+  color: #0066cc;
 }
 
 .navbar-container header {

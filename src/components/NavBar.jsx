@@ -18,7 +18,7 @@ export const AcmeLogo = () => {
       <circle cx="12" cy="19" r="2" fill="#900C3F" />
       <circle cx="17" cy="17" r="2" fill="#C70039" />
 
-      <ellipse cx="12" cy="12" rx="4.5" ry="2.5" fill="white" stroke="black" stroke-width="0.6" />
+      <ellipse cx="12" cy="12" rx="4.5" ry="2.5" fill="white" stroke="black" strokeWidth="0.6" />
       <circle cx="12" cy="12" r="1.5" fill="black" />
       <circle cx="12" cy="11.5" r="0.5" fill="white" />
     </svg>
@@ -35,24 +35,24 @@ export const NavBar = () => {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link size="sm" color="foreground" href="/">
               Home
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link size="sm" color="foreground" href="#">
               Take Test
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link size="sm" color="foreground" href="#">
               Education
             </Link>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
+            <Button as={Link} size="sm" isIconOnly color="primary" href="#" variant="flat">
               <box-icon name='accessibility'></box-icon>
             </Button>
           </NavbarItem>
