@@ -48,7 +48,7 @@ export const Home = () => {
             </CardHeader>
             <Divider />
             <CardBody>
-              <p>The standard test for red-green color deficiencies using specially designed plates.</p>
+              <p>The gold standard for color blindness screening. Uses pseudoisochromatic plates to detect red-green color vision deficiencies with high accuracy.</p>
             </CardBody>
           </Card>
           <Card className="test-card">
@@ -64,13 +64,14 @@ export const Home = () => {
             </CardHeader>
             <Divider />
             <CardBody>
-              <p>Evaluates your ability to arrange colors in the correct hue order.</p>
+              <p>Professional color arrangement test that helps identify the type and severity of color vision deficiency through systematic color ordering.</p>
             </CardBody>
           </Card>
+
           <Card className="test-card">
             <CardHeader className="flex gap-3">
               <Image
-                alt="Cambridge Colour Test logo"
+                alt="Cambridge Test logo"
                 height={30}
                 radius="full"
                 src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
@@ -80,7 +81,58 @@ export const Home = () => {
             </CardHeader>
             <Divider />
             <CardBody>
-              <p>Advanced computerized test for precise diagnosis of color vision anomalies.</p>
+            <p>Advanced test using C-shaped figures with varying color contrasts. Participants identify the gap direction in the C-shape to measure color discrimination thresholds.</p>
+            </CardBody>
+          </Card>
+
+          <Card className="test-card">
+            <CardHeader className="flex gap-3">
+              <Image
+                alt="Anomaloscope Test logo"
+                height={30}
+                radius="full"
+                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+                width={30}
+              />
+              <h3>Anomaloscope Test</h3>
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <p>High-precision diagnostic tool that quantifies the exact nature and degree of color vision deficiency through color matching exercises.</p>
+            </CardBody>
+          </Card>
+
+          <Card className="test-card">
+            <CardHeader className="flex gap-3">
+              <Image
+                alt="Farnsworth Lantern logo"
+                height={30}
+                radius="full"
+                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+                width={30}
+              />
+              <h3>Farnsworth Lantern Test</h3>
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <p>Specialized test simulating real-world conditions, particularly useful for evaluating color vision requirements in maritime and aviation industries.</p>
+            </CardBody>
+          </Card>
+
+          <Card className="test-card">
+            <CardHeader className="flex gap-3">
+              <Image
+                alt="Kids Test logo"
+                height={30}
+                radius="full"
+                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
+                width={30}
+              />
+              <h3>Kids ColorBlindness Test</h3>
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <p>Child-friendly version with engaging graphics and simple instructions, designed specifically for early detection in young children.</p>
             </CardBody>
           </Card>
         </div>
@@ -89,7 +141,7 @@ export const Home = () => {
 
       </section>
 
-      . Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae.. Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae.. Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae.. Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus
+      . Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae.. Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae.. Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae.. Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae
     </div>
   )
 }
