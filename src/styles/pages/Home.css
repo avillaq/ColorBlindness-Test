@@ -1,4 +1,4 @@
-/* Hero */
+/* Hero Section */
 .hero-section {
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@
   justify-content: center;
 }
 
-/* Content */
+/* Content Section */
 .content-section {
   display: flex;
   flex-direction: column;
@@ -91,7 +91,65 @@
 .content-tests .test-card {
   max-width: 400px;
 }
- 
+
+/* How It Works Section */
+.how-it-works-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 16px;
+  background-color: rgba(245, 247, 250, 0.8);
+}
+
+.how-it-works-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  max-width: 900px;
+}
+
+.how-it-works-text h2 {
+  font-family: var(--font-roboto);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 36px;
+}
+.how-it-works-text p {
+  font-size: 16px;
+  color: #64748b;
+  max-width: 85%;
+}
+
+.how-it-works-steps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1024px;
+}
+
+.how-it-works-steps h3 {
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.how-it-works-steps p {
+  font-size: 16px;
+  color: #64748b;
+}
+
+.how-it-works-steps .step-card {
+  max-width: 350px;
+}
+
+
+/* Media Queries */
+
 @media (min-width: 400px) {
   .hero-content .hero-cta {
     flex-direction: row;
@@ -105,20 +163,12 @@
     padding: 64px 24px;
   }
 
-  .hero-content h1 {
+  .hero-content h1, .content-text h2, .how-it-works-text h2 {
     font-size: 48px;
     line-height: 48px;
   }
 
-  .hero-content p {
-    font-size: 20px;
-  }
-
-  .content-text h2 {
-    font-size: 48px;
-    line-height: 48px;
-  }
-  .content-text p {
+  .hero-content p, .content-text p, .how-it-works-text p {
     font-size: 20px;
   }
 
@@ -132,11 +182,6 @@
     flex-direction: row;
     align-items: center;
     gap: 24px;
-    padding: 96px 32px;
-  }
-
-  .content-section {
-    padding: 96px 32px
   }
 
   .hero-content h1 {
@@ -144,7 +189,11 @@
     line-height: 60px;
   }
 
-  .content-tests {
+  .hero-section, .content-section, .how-it-works-section {
+    padding: 96px 32px
+  }
+
+  .content-tests, .how-it-works-steps {
     gap: 32px;
   }
 }
@@ -153,7 +202,7 @@
   .hero-section {
     padding: 112px 84px;
   }
-  .content-section {
+  .content-section, .how-it-works-section {
     padding: 112px 32px
   }
 }
