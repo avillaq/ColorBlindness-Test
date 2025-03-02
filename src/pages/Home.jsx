@@ -2,6 +2,7 @@ import { Button } from "@heroui/button";
 import { Image } from "@heroui/image";
 import { Card, CardHeader, CardBody } from "@heroui/card";
 import { Divider } from "@heroui/divider";
+import { Chip } from "@heroui/chip";
 import "../styles/pages/Home.css";
 import heroImage from "../assets/hero-image.webp"
 import anomaloscopeImage from "../assets/anomaloscope-test.webp"
@@ -41,7 +42,7 @@ export const Home = () => {
           <p>Our tests are designed by medical professionals to provide accurate assessments of various types of color vision deficiencies.</p>
         </div>
         <div className="content-tests">
-          <Card className="test-card">
+          <Card className="test-card" classNames={{header:"p-3.5", body:"p-3.5"}} >
             <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Ishihara Test logo"
@@ -57,7 +58,7 @@ export const Home = () => {
               <p>The most widely used screening test. Identifies red-green color vision deficiencies using numbered plates with colored dots.</p>
             </CardBody>
           </Card>
-          <Card className="test-card">
+          <Card className="test-card" classNames={{header:"p-3.5", body:"p-3.5"}} >
             <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Farnsworth d-15 logo"
@@ -74,7 +75,7 @@ export const Home = () => {
             </CardBody>
           </Card>
 
-          <Card className="test-card">
+          <Card className="test-card" classNames={{header:"p-3.5", body:"p-3.5"}} >
             <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Cambridge Test logo"
@@ -91,7 +92,7 @@ export const Home = () => {
             </CardBody>
           </Card>
 
-          <Card className="test-card">
+          <Card className="test-card" classNames={{header:"p-3.5", body:"p-3.5"}} >
             <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Anomaloscope Test logo"
@@ -108,7 +109,7 @@ export const Home = () => {
             </CardBody>
           </Card>
 
-          <Card className="test-card">
+          <Card className="test-card" classNames={{header:"p-3.5", body:"p-3.5"}} >
             <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Farnsworth Lantern logo"
@@ -125,7 +126,7 @@ export const Home = () => {
             </CardBody>
           </Card>
 
-          <Card className="test-card">
+          <Card className="test-card" classNames={{header:"p-3.5", body:"p-3.5"}} >
             <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Kids Test logo"
@@ -144,7 +145,42 @@ export const Home = () => {
         </div>
       </section>
       <section className="how-it-works-section">
-
+        <div className="how-it-works-text">
+          <h2>How It Works</h2>
+          <p>Our testing process is simple, accurate, and designed with accessibility in mind.</p>
+        </div>
+        <div className="how-it-works-steps">
+          <Card className="step-card" classNames={{header:"p-3.5", body:"p-3.5"}} >
+            <CardHeader className="flex gap-3">
+            <Chip radius="full" color="primary" classNames={{base:"min-w-12 min-h-12 text-xl"}}>1</Chip>
+              <h3>Take the Test</h3>
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <p>Complete our interactive color vision tests with clear instructions at each step.</p>
+            </CardBody>
+          </Card>
+          <Card className="step-card" classNames={{header:"p-3.5", body:"p-3.5"}} >
+            <CardHeader className="flex gap-3">
+            <Chip radius="full" color="primary" classNames={{base:"min-w-12 min-h-12 text-xl"}}>2</Chip>
+              <h3>Get Results</h3>
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <p>Receive immediate results with a detailed analysis of your color vision capabilities.</p>
+            </CardBody>
+          </Card>
+          <Card className="step-card" classNames={{header:"p-3.5", body:"p-3.5"}} >
+            <CardHeader className="flex gap-3">
+            <Chip radius="full" color="primary" classNames={{base:"min-w-12 min-h-12 text-xl"}}>3</Chip>
+              <h3>Learn & Share</h3>
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <p>Access educational resources and share your results with healthcare professionals.</p>
+            </CardBody>
+          </Card>
+        </div>
       </section>
 
       . Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae.. Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae.. Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae.. Quasi at atque facere tempora rerum officia corrupti expedita. Quaerat porro veritatis odit, recusandae atque repellat obcaecati accusamus unde labore amet cupiditate ratione explicabo quae a voluptates dignissimos excepturi repudiandae placeat quod, facilis veniam? Accusantium, aperiam molestiae
