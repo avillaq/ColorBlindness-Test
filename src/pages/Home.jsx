@@ -4,6 +4,12 @@ import { Card, CardHeader, CardBody } from "@heroui/card";
 import { Divider } from "@heroui/divider";
 import "../styles/pages/Home.css";
 import heroImage from "../assets/hero-image.webp"
+import anomaloscopeImage from "../assets/anomaloscope-test.webp"
+import cambridgeImage from "../assets/cambridge-test.webp"
+import farnsworthD15Image from "../assets/farnsworth-d15-test.webp"
+import farnsworthLanternImage from "../assets/farnsworth-lantern-test.webp"
+import ishiharaImage from "../assets/ishihara-test.webp"
+import kidsImage from "../assets/kids-test.webp"
 
 export const Home = () => {
   return (
@@ -36,103 +42,103 @@ export const Home = () => {
         </div>
         <div className="content-tests">
           <Card className="test-card">
-            <CardHeader className="flex gap-3">
+            <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Ishihara Test logo"
-                height={30}
+                height={80}
                 radius="full"
-                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                width={30}
+                src={ishiharaImage}
+                width={80}
               />
               <h3>Ishihara Test</h3>
             </CardHeader>
             <Divider />
             <CardBody>
-              <p>The gold standard for color blindness screening. Uses pseudoisochromatic plates to detect red-green color vision deficiencies with high accuracy.</p>
+              <p>The most widely used screening test. Identifies red-green color vision deficiencies using numbered plates with colored dots.</p>
             </CardBody>
           </Card>
           <Card className="test-card">
-            <CardHeader className="flex gap-3">
+            <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Farnsworth d-15 logo"
-                height={30}
+                height={80}
                 radius="full"
-                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                width={30}
+                src={farnsworthD15Image}
+                width={80}
               />
               <h3>Farnsworth D-15</h3>
             </CardHeader>
             <Divider />
             <CardBody>
-              <p>Professional color arrangement test that helps identify the type and severity of color vision deficiency through systematic color ordering.</p>
+              <p>Diagnostic test where patients arrange 15 colored caps in order, revealing specific types of color vision deficiencies.</p>
             </CardBody>
           </Card>
 
           <Card className="test-card">
-            <CardHeader className="flex gap-3">
+            <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Cambridge Test logo"
-                height={30}
+                height={80}
                 radius="full"
-                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                width={30}
+                src={cambridgeImage}
+                width={80}
               />
               <h3>Cambridge Colour Test</h3>
             </CardHeader>
             <Divider />
             <CardBody>
-            <p>Advanced test using C-shaped figures with varying color contrasts. Participants identify the gap direction in the C-shape to measure color discrimination thresholds.</p>
+              <p>Digital test using C-shaped patterns. Patient identifies the gap location to assess color discrimination ability.</p>
             </CardBody>
           </Card>
 
           <Card className="test-card">
-            <CardHeader className="flex gap-3">
+            <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Anomaloscope Test logo"
-                height={30}
+                height={80}
                 radius="full"
-                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                width={30}
+                src={anomaloscopeImage}
+                width={80}
               />
               <h3>Anomaloscope Test</h3>
             </CardHeader>
             <Divider />
             <CardBody>
-              <p>High-precision diagnostic tool that quantifies the exact nature and degree of color vision deficiency through color matching exercises.</p>
+              <p>Precise diagnostic device measuring exact color vision deficiency type through red-green color matching.</p>
             </CardBody>
           </Card>
 
           <Card className="test-card">
-            <CardHeader className="flex gap-3">
+            <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Farnsworth Lantern logo"
-                height={30}
+                height={80}
                 radius="full"
-                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                width={30}
+                src={farnsworthLanternImage}
+                width={80}
               />
               <h3>Farnsworth Lantern Test</h3>
             </CardHeader>
             <Divider />
             <CardBody>
-              <p>Specialized test simulating real-world conditions, particularly useful for evaluating color vision requirements in maritime and aviation industries.</p>
+              <p>Practical test using colored lights, crucial for aviation and maritime certification.</p>
             </CardBody>
           </Card>
 
           <Card className="test-card">
-            <CardHeader className="flex gap-3">
+            <CardHeader className="flex flex-col gap-3">
               <Image
                 alt="Kids Test logo"
-                height={30}
+                height={80}
                 radius="full"
-                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                width={30}
+                src={kidsImage}
+                width={80}
               />
               <h3>Kids ColorBlindness Test</h3>
             </CardHeader>
             <Divider />
             <CardBody>
-              <p>Child-friendly version with engaging graphics and simple instructions, designed specifically for early detection in young children.</p>
+              <p>Interactive and friendly version designed for early detection in children using simple shapes and colors.</p>
             </CardBody>
           </Card>
         </div>
