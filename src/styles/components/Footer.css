@@ -1,120 +1,71 @@
 .footer-container {
-  background-color: #fff;
-  padding: 48px 16px 24px;
-  font-size: 14px;
+  padding: 32px 16px;
 }
-
 .footer-content {
   display: flex;
-  flex-direction: column;
-  gap: 48px;
-  max-width: 1280px;
-  margin: 0 auto;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
 }
 
-.footer-brand {
+.footer-logo {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 8px;
-  text-align: center;
 }
 
-.footer-brand .text-logo {
+.footer-logo-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-logo-content h2 {
   font-family: var(--font-roboto);
   font-size: 20px;
   font-weight: 700;
 }
 
-.footer-brand .brand-description {
+.footer-logo p {
+  font-size: 14px;
   color: #64748b;
-  max-width: 300px;
 }
 
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.link-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.link-group h4 {
+.footer-links h3{
   font-family: var(--font-roboto);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  margin: 0;
+  margin-bottom: 16px;
 }
 
-.link-group a {
-  color: #64748b;
-  transition: color 0.3s;
-}
-
-.link-group a:hover {
-  color: #0066cc;
-}
-
-.footer-divider {
-  margin: 24px 0;
-}
-
-.footer-bottom {
+.footer-links div {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  text-align: center;
-  color: #64748b;
+  gap: 8px;
 }
 
-.social-links {
-  display: flex;
-  gap: 16px;
+.footer-links a {
+  font-size: 14px;
 }
 
-.social-links a {
-  color: #64748b;
-  transition: color 0.3s;
-}
-
-.social-links a:hover {
+.footer-links a:hover {
   color: #0066cc;
 }
 
-@media (min-width: 768px) {
-  .footer-container {
-    padding: 64px 24px 32px;
-  }
-
-  .footer-links {
-    flex-direction: row;
-    justify-content: center;
-    gap: 64px;
-  }
-
-  .footer-bottom {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+.footer-credits {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  gap: 16px;
 }
 
-@media (min-width: 1024px) {
-  .footer-content {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+.footer-credits p, .footer-credits a {
+  font-size: 14px;
+  color: #64748b;
+}
 
-  .footer-brand {
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .footer-links {
-    gap: 96px;
-  }
+.footer-credits a:hover {
+  color: #0066cc;
 }
