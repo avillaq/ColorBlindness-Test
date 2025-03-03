@@ -1,5 +1,7 @@
 .footer-container {
   padding: 32px 16px;
+  margin: 0 auto;
+  width: 100%;
 }
 .footer-content {
   display: flex;
@@ -12,6 +14,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-width: 300px;
 }
 
 .footer-logo-content {
@@ -68,4 +71,19 @@
 
 .footer-credits a:hover {
   color: #0066cc;
+}
+
+@media (min-width: 768px){
+  .footer-container {
+    padding: 48px 32px;
+  }
+  .footer-credits {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1400px){
+  .footer-container {
+    max-width: 1400px;
+  }
 }
