@@ -3,10 +3,11 @@
   margin: 0 auto;
   width: 100%;
 }
+
 .footer-content {
   display: flex;
   gap: 32px;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin-bottom: 32px;
 }
 
@@ -15,6 +16,7 @@
   flex-direction: column;
   gap: 8px;
   max-width: 300px;
+  margin-right: auto;
 }
 
 .footer-logo-content {
@@ -34,7 +36,7 @@
   color: #64748b;
 }
 
-.footer-links h3{
+.footer-links h3 {
   font-family: var(--font-roboto);
   font-size: 18px;
   font-weight: 700;
@@ -73,16 +75,21 @@
   color: #0066cc;
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .footer-container {
     padding: 48px 32px;
   }
+  
+  .footer-content {
+    flex-direction: row;
+  }
+
   .footer-credits {
     flex-direction: row;
   }
 }
 
-@media (min-width: 1400px){
+@media (min-width: 1400px) {
   .footer-container {
     max-width: 1400px;
   }
