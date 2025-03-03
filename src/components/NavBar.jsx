@@ -40,19 +40,19 @@ export const NavBar = () => {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link size="sm" color="foreground" href="#">
+            <Link size="sm" color="foreground" href="/tests">
               Take Test
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link size="sm" color="foreground" href="#">
+            <Link size="sm" color="foreground" href="/education">
               Education
             </Link>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem>
-            <Button as={Link} size="sm" isIconOnly color="primary" href="#" variant="flat">
+            <Button size="sm" isIconOnly color="primary" href="#" variant="flat">
               <box-icon name='accessibility'></box-icon>
             </Button>
           </NavbarItem>
