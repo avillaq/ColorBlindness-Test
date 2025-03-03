@@ -1,6 +1,6 @@
 import { Card, CardHeader } from "@heroui/card";
 import { Image } from "@heroui/image";
-
+import "../styles/pages/Tests.css"
 import anomaloscopeImage from "../assets/anomaloscope-test.webp"
 import cambridgeImage from "../assets/cambridge-test.webp"
 import farnsworthD15Image from "../assets/farnsworth-d15-test.webp"
