@@ -1,5 +1,6 @@
 import { Card, CardHeader } from "@heroui/card";
 import { Image } from "@heroui/image";
+import { useNavigate } from 'react-router-dom';
 import "../styles/pages/Tests.css"
 import anomaloscopeImage from "../assets/anomaloscope-test.webp"
 import cambridgeImage from "../assets/cambridge-test.webp"
@@ -9,13 +10,18 @@ import ishiharaImage from "../assets/ishihara-test.webp"
 import kidsImage from "../assets/kids-test.webp"
 
 export const Tests = () => {
+  const navigate = useNavigate();
   return (
     <div className="tests-container">
       <div className="content-text">
         <p>We use below tests to check color vision deficiency.</p>
       </div>
       <div className="content-tests">
-        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
+        <Card
+          isPressable
+          className="test-card"
+          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          onPress={() => navigate("/ishihara-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Ishihara Test logo"
@@ -27,7 +33,11 @@ export const Tests = () => {
             <h3>Ishihara Test</h3>
           </CardHeader>
         </Card>
-        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
+        <Card
+          isPressable
+          className="test-card"
+          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          onPress={() => navigate("/farnsworth-d-15")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Farnsworth d-15 logo"
@@ -40,7 +50,11 @@ export const Tests = () => {
           </CardHeader>
         </Card>
 
-        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
+        <Card
+          isPressable
+          className="test-card"
+          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          onPress={() => navigate("/cambridge-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Cambridge Test logo"
@@ -53,7 +67,11 @@ export const Tests = () => {
           </CardHeader>
         </Card>
 
-        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
+        <Card
+          isPressable
+          className="test-card"
+          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          onPress={() => navigate("/anomaloscope-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Anomaloscope Test logo"
@@ -66,7 +84,11 @@ export const Tests = () => {
           </CardHeader>
         </Card>
 
-        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
+        <Card
+          isPressable
+          className="test-card"
+          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          onPress={() => navigate("/farnsworth-lantern-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Farnsworth Lantern logo"
@@ -79,7 +101,11 @@ export const Tests = () => {
           </CardHeader>
         </Card>
 
-        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
+        <Card
+          isPressable
+          className="test-card"
+          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          onPress={() => navigate("/kids-colorblindness-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Kids Test logo"
