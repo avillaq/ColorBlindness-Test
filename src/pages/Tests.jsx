@@ -13,10 +13,9 @@ export const Tests = () => {
     <div className="tests-container">
       <div className="content-text">
         <p>We use below tests to check color vision deficiency.</p>
-
       </div>
       <div className="content-tests">
-        <Card className="test-card" classNames={{ header: "p-3.5", body: "p-3.5" }} >
+        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Ishihara Test logo"
@@ -28,7 +27,7 @@ export const Tests = () => {
             <h3>Ishihara Test</h3>
           </CardHeader>
         </Card>
-        <Card className="test-card" classNames={{ header: "p-3.5", body: "p-3.5" }} >
+        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Farnsworth d-15 logo"
@@ -41,7 +40,7 @@ export const Tests = () => {
           </CardHeader>
         </Card>
 
-        <Card className="test-card" classNames={{ header: "p-3.5", body: "p-3.5" }} >
+        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Cambridge Test logo"
@@ -54,7 +53,7 @@ export const Tests = () => {
           </CardHeader>
         </Card>
 
-        <Card className="test-card" classNames={{ header: "p-3.5", body: "p-3.5" }} >
+        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Anomaloscope Test logo"
@@ -67,7 +66,7 @@ export const Tests = () => {
           </CardHeader>
         </Card>
 
-        <Card className="test-card" classNames={{ header: "p-3.5", body: "p-3.5" }} >
+        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Farnsworth Lantern logo"
@@ -80,7 +79,7 @@ export const Tests = () => {
           </CardHeader>
         </Card>
 
-        <Card className="test-card" classNames={{ header: "p-3.5", body: "p-3.5" }} >
+        <Card isPressable className="test-card" classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Kids Test logo"
