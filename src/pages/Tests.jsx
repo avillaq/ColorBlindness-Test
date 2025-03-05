@@ -10,7 +10,7 @@ import kidsImage from "../assets/kids-test.webp"
 
 export const Tests = () => {
   return (
-    <div className="tests-container content-section">
+    <div className="tests-container">
       <div className="content-text">
         <p>We use below tests to check color vision deficiency.</p>
 
