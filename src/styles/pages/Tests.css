@@ -1,0 +1,22 @@
+.tests-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 16px;
+} 
+
+.tests-container p {
+  max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .tests-container {
+    padding: 96px 32px
+  }
+}
+@media (min-width: 1280px) {
+  .tests-container {
+    padding: 112px 32px
+  }
+}
