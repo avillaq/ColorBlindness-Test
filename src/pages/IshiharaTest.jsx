@@ -18,8 +18,8 @@ export const IshiharaTest = () => {
         {!showTest && <Button color="primary" onPress={() => setShowTest(true)}>Start Test</Button>}
         {showTest &&
           <>
-            <Button size="sm" isIconOnly color="primary" variant="shadow" onPress={() => setShowTest(false)} >
-              <box-icon name='x'></box-icon>
+            <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => setShowTest(false)} >
+              <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
             </Button>
             <Card className="h-[610px] md:h-[428px]">
               <CardBody className="cardbody-test">
