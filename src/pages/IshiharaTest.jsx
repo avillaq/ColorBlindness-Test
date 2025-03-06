@@ -9,7 +9,7 @@ export const IshiharaTest = () => {
   const [showTest, setShowTest] = useState(false);
 
   return (
-    <div className={`ishihara-test-container ${showTest ? "gap-4" : "gap-12"}`}>
+    <div className={`ishihara-test-container ${showTest ? "gap-3" : "gap-12"}`}>
       <div className="content-text">
         <h2>Ishihara Test</h2>
         {!showTest && <p>Use the Ishihara Test to detect red-green color deficiencies. Quick and reliable assessment for your color vision health.</p>}
