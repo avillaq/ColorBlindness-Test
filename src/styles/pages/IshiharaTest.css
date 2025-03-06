@@ -18,13 +18,43 @@
 }
 
 .content-ishihara-test {
-  width: 75%;
+  width: 100%;
+  height: 610px;
 }
 
-.ishihara-test-plates {
-  flex-grow: 1;
+.cardbody-test {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  height: 100%;
 }
 
-.ishihara-test-controls {
+.ishihara-test-plates, .ishihara-test-controls {
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 400px) {
+
+}
+
+@media (min-width: 768px) {
+  
+}
+
+@media (min-width: 1024px) {
+  .ishihara-test-container {
+    padding: 96px 32px
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .ishihara-test-container {
+    padding: 112px 32px
+  }
 }

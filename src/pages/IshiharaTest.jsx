@@ -10,7 +10,7 @@ export const IshiharaTest = () => {
       </div>
       <div className="content-ishihara-test">
         <Card>
-          <CardBody className="flex flex-row">
+          <CardBody className="cardbody-test">
             <div className="ishihara-test-plates">
               image goes here
             </div>
