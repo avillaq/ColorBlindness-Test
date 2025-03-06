@@ -9,7 +9,7 @@ export const IshiharaTest = () => {
         <p>Use the Ishihara Test to detect red-green color deficiencies. Quick and reliable assessment for your color vision health.</p>
       </div>
       <div className="content-ishihara-test">
-        <Card>
+        <Card className="h-[610px] md:h-[428px]">
           <CardBody className="cardbody-test">
             <div className="ishihara-test-plates">
               image goes here
