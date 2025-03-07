@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
+import { InputOtp } from "@heroui/input-otp";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
 import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test";
@@ -13,6 +14,7 @@ export const IshiharaTest = () => {
   const [currentPlate, setCurrentPlate] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [results, setResults] = useState(null);
+  const [valueInput, setValueInput] = useState("");
 
   const handleAnswer = (answer) => {
     const newAnswer = {
@@ -81,35 +83,22 @@ export const IshiharaTest = () => {
                     <Image
                       alt={`Ishihara Test Plate ${currentPlate + 1}`}
                       src={ishiharaPlates[currentPlate].imageUrl}
-                      width={400}
+                      width={350}
                     />
                   </div>
                   <div className="ishihara-test-controls">
-                    <div className="number-input">
-                      <input
-                        type="number"
-                        value={answers[currentPlate] || ''}
-                        onChange={(e) => setAnswers({
-                          ...answers,
-                          [currentPlate]: e.target.value
-                        })}
-                        placeholder="Enter the number you see"
-                      />
-                    </div>
-                    <div className="navigation-buttons">
-                      <Button
-                        disabled={currentPlate === 0}
-                        onPress={() => setCurrentPlate(prev => prev - 1)}
-                      >
-                        Previous
-                      </Button>
-                      <Button
-                        disabled={currentPlate === ishiharaPlates.length - 1}
-                        onPress={() => setCurrentPlate(prev => prev + 1)}
-                      >
-                        Next
-                      </Button>
-                    </div>
+                      <Card>
+                        <CardBody>
+                          <InputOtp length={2} isReadOnly value={valueInput}/>
+                          <div className="grid grid-cols-3 gap-2 mt-4">
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
+                              <Button key={num} onPress={() => setValueInput(`${valueInput}`+`${num}`)}>{num}</Button>
+                            ))}
+                            <Button color="danger" onPress={() => setValueInput("")}>Limpiar</Button>
+                            <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Siguiente</Button>
+                          </div>
+                        </CardBody>
+                      </Card>
                   </div>
                 </CardBody>
               </Card>
