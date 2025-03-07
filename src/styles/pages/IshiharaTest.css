@@ -18,7 +18,7 @@
 
 .content-ishihara-test {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1024px;
 }
 
 .content-ishihara-test .cardbody-test {
@@ -29,15 +29,29 @@
 }
 
 .ishihara-test-plates, .ishihara-test-controls {
-  flex-grow: 1;
+  flex: 1 1 50%; 
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.ishihara-test-plates img {
+  max-width: 250px;
+}
+
+@media (min-width: 400px) {
+  .ishihara-test-plates img {
+    max-width: 300px;
+  }
 }
 
 @media (min-width: 768px) {
   .content-ishihara-test .cardbody-test {
     flex-direction: row;
     justify-content: center;
+  }
+
+  .ishihara-test-plates img {
+    max-width: 400px;
   }
 } 
