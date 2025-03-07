@@ -87,18 +87,26 @@ export const IshiharaTest = () => {
                     />
                   </div>
                   <div className="ishihara-test-controls">
-                      <Card>
-                        <CardBody>
-                          <InputOtp length={2} isReadOnly value={valueInput}/>
-                          <div className="grid grid-cols-3 gap-2 mt-4">
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
-                              <Button key={num} onPress={() => setValueInput(`${valueInput}`+`${num}`)}>{num}</Button>
-                            ))}
-                            <Button color="danger" onPress={() => setValueInput("")}>Limpiar</Button>
-                            <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Siguiente</Button>
+                    <Card>
+                      <CardBody>
+                        <div className="flex justify-between gap-5 items-center">
+                          <div className="flex gap-2 items-center">
+                            <p>Select number:</p>
+                            <InputOtp length={2} isReadOnly value={valueInput} />
                           </div>
-                        </CardBody>
-                      </Card>
+                          <Button isIconOnly color="danger" onPress={() => setValueInput("")}>
+                            <box-icon name="x" color="white"></box-icon>
+                          </Button>
+                        </div>
+                        <div className="grid grid-cols-3 gap-2 mt-4">
+                          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
+                            <Button key={num} onPress={() => setValueInput(`${valueInput}` + `${num}`)}>{num}</Button>
+                          ))}
+                          <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Unsure</Button>
+                          <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Next</Button>
+                        </div>
+                      </CardBody>
+                    </Card>
                   </div>
                 </CardBody>
               </Card>
