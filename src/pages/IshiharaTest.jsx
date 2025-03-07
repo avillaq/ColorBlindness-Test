@@ -83,7 +83,7 @@ export const IshiharaTest = () => {
                     <Image
                       alt={`Ishihara Test Plate ${currentPlate + 1}`}
                       src={ishiharaPlates[currentPlate].imageUrl}
-                      width={350}
+                      radius="full"
                     />
                   </div>
                   <div className="ishihara-test-controls">
@@ -102,7 +102,7 @@ export const IshiharaTest = () => {
                           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
                             <Button key={num} onPress={() => setValueInput(`${valueInput}` + `${num}`)}>{num}</Button>
                           ))}
-                          <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Unsure</Button>
+                          <Button color="warning" onPress={() => setCurrentPlate(prev => prev + 1)}>Unsure</Button>
                           <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Next</Button>
                         </div>
                       </CardBody>
