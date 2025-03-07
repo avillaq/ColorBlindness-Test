@@ -3,12 +3,15 @@ import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
+import { ishiharaPlates } from "../utils/ishihara-test";
 import "../styles/pages/IshiharaTest.css";
-import ishiharaImage from "../assets/ishihara-test.webp"
 
 export const IshiharaTest = () => {
   const [showTest, setShowTest] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const [currentPlateIndex, setCurrentPlateIndex] = useState(0);
+  const [answers, setAnswers] = useState({});
 
   return (
     <div className={`ishihara-test-container ${showTest ? "gap-3" : "gap-12"}`}>
@@ -59,13 +62,37 @@ export const IshiharaTest = () => {
               <CardBody className="cardbody-test">
                 <div className="ishihara-test-plates">
                   <Image
-                    alt="Ishihara Test Plates"
-                    src={ishiharaImage}
+                    alt={`Ishihara Test Plate ${currentPlateIndex + 1}`}
+                    src={ishiharaPlates[currentPlateIndex].imageUrl}
                     width={400}
                   />
                 </div>
                 <div className="ishihara-test-controls">
-                  controls go here
+                  <div className="number-input">
+                    <input
+                      type="number"
+                      value={answers[currentPlateIndex] || ''}
+                      onChange={(e) => setAnswers({
+                        ...answers,
+                        [currentPlateIndex]: e.target.value
+                      })}
+                      placeholder="Enter the number you see"
+                    />
+                  </div>
+                  <div className="navigation-buttons">
+                    <Button
+                      disabled={currentPlateIndex === 0}
+                      onPress={() => setCurrentPlateIndex(prev => prev - 1)}
+                    >
+                      Previous
+                    </Button>
+                    <Button
+                      disabled={currentPlateIndex === ishiharaPlates.length - 1}
+                      onPress={() => setCurrentPlateIndex(prev => prev + 1)}
+                    >
+                      Next
+                    </Button>
+                  </div>
                 </div>
               </CardBody>
             </Card>
