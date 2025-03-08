@@ -134,7 +134,7 @@ export const IshiharaTest = () => {
                                   <Button key={num} onPress={() => setValueInput(`${valueInput}${num}`)}>{num}</Button>
                                 ))}
                                 <Button color="warning" onPress={handleUnsure}>Unsure</Button>
-                                <Button color="primary" onPress={handleNext}>Next</Button>
+                                <Button color="primary" onPress={handleNext} isDisabled={!valueInput}>Next</Button>
                               </div>
                             </>
                             :
