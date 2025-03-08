@@ -38,6 +38,8 @@ export const IshiharaTest = () => {
       alert("Please select an option before proceeding");
       return;
     }
+    console.log(valueInput);
+    
     handleAnswer(valueInput);
   };
 
@@ -131,7 +133,7 @@ export const IshiharaTest = () => {
 
                               <div className="grid grid-cols-3 gap-2 mt-4">
                                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
-                                  <Button key={num} onPress={() => setValueInput(`${valueInput}${num}`)}>{num}</Button>
+                                  <Button key={num} onPress={() => {if(valueInput.length < 2) setValueInput(`${valueInput}${num}`);}}>{num}</Button>
                                 ))}
                                 <Button color="warning" onPress={handleUnsure}>Unsure</Button>
                                 <Button color="primary" onPress={handleNext} isDisabled={!valueInput}>Next</Button>
