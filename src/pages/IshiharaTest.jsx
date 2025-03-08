@@ -115,7 +115,7 @@ export const IshiharaTest = () => {
                             </>
                             :
                             <>
-                              <p>What did you see?</p>
+                              <p className="text-center">What did you see?</p>
                               <div className="grid grid-cols-1 gap-2 mt-4 w-[250px]">
                                 {
                                   (ishiharaPlates[currentPlate].id === 11)
