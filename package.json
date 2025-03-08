@@ -22,6 +22,7 @@
     "@heroui/progress": "^2.2.11",
     "@heroui/react": "^2.7.4",
     "@heroui/skeleton": "^2.2.10",
+    "@react-pdf/renderer": "^4.3.0",
     "boxicons": "^2.1.4",
     "framer-motion": "^12.4.7",
     "react": "^19.0.0",
