@@ -23,6 +23,7 @@ export const IshiharaTest = () => {
     };
 
     setAnswers([...answers, newAnswer]);
+    setValueInput("");
 
     if (currentPlate < ishiharaPlates.length - 1) {
       setCurrentPlate(currentPlate + 1);
@@ -31,6 +32,29 @@ export const IshiharaTest = () => {
       setResults(evaluation);
     }
   };
+
+  const handleNext = () => {
+    if (ishiharaPlates[currentPlate].id === 11 || ishiharaPlates[currentPlate].id === 14) {
+      alert("Please select an option before proceeding");
+      return;
+    }
+    handleAnswer(valueInput);
+  };
+
+  const handleUnsure = () => {
+    handleAnswer("unsure"); 
+  };
+
+  if (results) {
+    return (
+      <div className="ishihara-test-container">
+        <Results results={results} />
+        <Button color="primary" onPress={() => window.location.reload()}>
+          Restart Test
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className={`ishihara-test-container ${showTest ? "gap-3" : "gap-12"}`}>
@@ -97,7 +121,7 @@ export const IshiharaTest = () => {
                                 <div className="flex gap-2 items-center">
 
                                   <p>Enter number:</p>
-                                  <InputOtp length={2} isReadOnly value={valueInput} />
+                                  <InputOtp length={2} isReadOnly value={valueInput}/>
                                 </div>
 
                                 <Button isIconOnly color="danger" onPress={() => setValueInput("")}>
@@ -107,10 +131,10 @@ export const IshiharaTest = () => {
 
                               <div className="grid grid-cols-3 gap-2 mt-4">
                                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
-                                  <Button key={num} onPress={() => setValueInput(`${valueInput}` + `${num}`)}>{num}</Button>
+                                  <Button key={num} onPress={() => setValueInput(`${valueInput}${num}`)}>{num}</Button>
                                 ))}
-                                <Button color="warning" onPress={() => setCurrentPlate(prev => prev + 1)}>Unsure</Button>
-                                <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Next</Button>
+                                <Button color="warning" onPress={handleUnsure}>Unsure</Button>
+                                <Button color="primary" onPress={handleNext}>Next</Button>
                               </div>
                             </>
                             :
@@ -121,27 +145,24 @@ export const IshiharaTest = () => {
                                   (ishiharaPlates[currentPlate].id === 11)
                                     ?
                                     <>
-                                      <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Green Line</Button>
-                                      <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Gray Line</Button>
-                                      <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Blue & Green Line</Button>
-                                      <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Blue Line</Button>
-                                      <Button color="warning" onPress={() => setCurrentPlate(prev => prev + 1)}>Unsure</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("traceable")}>Green Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("gray line")}>Gray Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("blue & green line")}>Blue & Green Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("blue line")}>Blue Line</Button>
+                                      <Button color="warning" onPress={handleUnsure}>Unsure</Button>
                                     </>
                                     :
                                     <>
-                                      <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Red Line</Button>
-                                      <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Purple Line</Button>
-                                      <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Red & Gray Line</Button>
-                                      <Button color="primary" onPress={() => setCurrentPlate(prev => prev + 1)}>Purple & Red Line</Button>
-                                      <Button color="warning" onPress={() => setCurrentPlate(prev => prev + 1)}>Unsure</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("red line")}>Red Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("purple line")}>Purple Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("red & gray line")}>Red & Gray Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("purple & red line")}>Purple & Red Line</Button>
+                                      <Button color="warning" onPress={handleUnsure}>Unsure</Button>
                                     </>
                                 }
                               </div>
-
                             </>
                         }
-
-
                       </CardBody>
                     </Card>
                   </div>
@@ -154,3 +175,20 @@ export const IshiharaTest = () => {
     </div>
   )
 }
+
+
+const Results = ({ results }) => (
+  <div className="results-container">
+    <h2>Test Results</h2>
+    <p><strong>Accuracy:</strong> {results.accuracy}</p>
+    <p><strong>Correct Answers:</strong> {results.correct}/14</p>
+    <p><strong>Incorrect Answers:</strong> {results.incorrect}/14</p>
+    <p><strong>Diagnosis:</strong> {results.diagnosis}</p>
+    <details>
+      <summary>Technical Details</summary>
+      <p>Basic plates correct (1-11): {results.details.basicCorrect}</p>
+      <p>Protan matches: {results.details.protanMatches}</p>
+      <p>Deutan matches: {results.details.deutanMatches}</p>
+    </details>
+  </div>
+);
