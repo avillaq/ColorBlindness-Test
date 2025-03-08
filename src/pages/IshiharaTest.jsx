@@ -148,10 +148,10 @@ export const IshiharaTest = () => {
                                     </>
                                     :
                                     <>
+                                      <Button color="primary" onPress={() => handleAnswer("purple & red")}>Purple & Red Line</Button>
                                       <Button color="primary" onPress={() => handleAnswer("red")}>Red Line</Button>
                                       <Button color="primary" onPress={() => handleAnswer("purple")}>Purple Line</Button>
                                       <Button color="primary" onPress={() => handleAnswer("red & gray")}>Red & Gray Line</Button>
-                                      <Button color="primary" onPress={() => handleAnswer("purple & red")}>Purple & Red Line</Button>
                                       <Button color="warning" onPress={() => handleAnswer("unsure")}>Unsure</Button>
                                     </>
                                 }
