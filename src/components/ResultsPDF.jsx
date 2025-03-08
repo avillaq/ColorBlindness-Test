@@ -1,45 +1,44 @@
-import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Font } from "@react-pdf/renderer";
 
-// Register fonts if needed
 Font.register({
-  family: 'Roboto',
-  src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-regular-webfont.ttf'
+  family: "Roboto",
+  src: "https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-regular-webfont.ttf"
 });
 
 const styles = StyleSheet.create({
   page: {
     padding: 40,
-    backgroundColor: '#f8fafc'
+    backgroundColor: "#f8fafc"
   },
   header: {
     marginBottom: 30,
-    textAlign: 'center'
+    textAlign: "center"
   },
   headerTitle: {
     fontSize: 24,
-    fontFamily: 'Roboto',
-    color: '#0f172a'
+    fontFamily: "Roboto",
+    color: "#0f172a"
   },
   headerSubtitle: {
     fontSize: 14,
-    color: '#64748b',
+    color: "#64748b",
     marginTop: 8
   },
   resultCard: {
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     borderRadius: 8,
     padding: 24,
     marginVertical: 20,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4
   },
   resultsSummary: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 24,
     borderBottomWidth: 1,
-    borderBottomColor: '#e2e8f0',
+    borderBottomColor: "#e2e8f0",
     paddingBottom: 24
   },
   scoreCircle: {
@@ -47,90 +46,90 @@ const styles = StyleSheet.create({
     height: 90,
     borderRadius: 45,
     borderWidth: 3,
-    borderColor: '#0066cc',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderColor: "#0066cc",
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 24
   },
   scoreText: {
     fontSize: 18,
-    color: '#0066cc',
-    fontWeight: 'bold'
+    color: "#0066cc",
+    fontWeight: "bold"
   },
   scoreLabel: {
     fontSize: 12,
-    color: '#64748b'
+    color: "#64748b"
   },
   diagnosis: {
     flex: 1
   },
   diagnosisTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 8,
-    color: '#0f172a'
+    color: "#0f172a"
   },
   diagnosisText: {
     fontSize: 14,
-    color: '#64748b'
+    color: "#64748b"
   },
   detailsGrid: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 24,
     gap: 16
   },
   detailCard: {
     flex: 1,
-    backgroundColor: '#f8fafc',
+    backgroundColor: "#f8fafc",
     padding: 16,
     borderRadius: 4
   },
   detailTitle: {
     fontSize: 12,
-    color: '#475569',
+    color: "#475569",
     marginBottom: 4
   },
   successText: {
     fontSize: 16,
-    color: '#22c55e',
-    fontWeight: 'bold'
+    color: "#22c55e",
+    fontWeight: "bold"
   },
   dangerText: {
     fontSize: 16,
-    color: '#ef4444',
-    fontWeight: 'bold'
+    color: "#ef4444",
+    fontWeight: "bold"
   },
   technicalDetails: {
-    backgroundColor: '#f8fafc',
+    backgroundColor: "#f8fafc",
     padding: 16,
     borderRadius: 4
   },
   technicalRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 8
   },
   technicalLabel: {
     fontSize: 12,
-    color: '#475569'
+    color: "#475569"
   },
   technicalValue: {
     fontSize: 12,
-    color: '#0f172a',
-    fontWeight: 'bold'
+    color: "#0f172a",
+    fontWeight: "bold"
   },
   disclaimer: {
     marginTop: 24,
     padding: 16,
-    backgroundColor: '#f8fafc',
+    backgroundColor: "#f8fafc",
     borderRadius: 4,
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 8
   },
   disclaimerText: {
     fontSize: 10,
-    color: '#64748b',
-    fontStyle: 'italic'
+    color: "#64748b",
+    fontStyle: "italic"
   }
 });
 
