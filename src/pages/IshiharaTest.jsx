@@ -63,7 +63,7 @@ export const IshiharaTest = () => {
                   <p>{results.diagnosis}</p>
                 </div>
               </div>
-              
+
               <div className="results-details">
                 <div className="grid grid-cols-2 gap-4">
                   <Card>
@@ -72,7 +72,7 @@ export const IshiharaTest = () => {
                       <p className="text-success">{results.correct}/{ishiharaPlates.length}</p>
                     </CardBody>
                   </Card>
-                  
+
                   <Card>
                     <CardBody>
                       <h4>Incorrect Answers</h4>
@@ -80,7 +80,7 @@ export const IshiharaTest = () => {
                     </CardBody>
                   </Card>
                 </div>
-                
+
                 <Card className="mt-4">
                   <CardBody>
                     <h4>Technical Details</h4>
@@ -100,6 +100,13 @@ export const IshiharaTest = () => {
                     </div>
                   </CardBody>
                 </Card>
+              </div>
+              <div className="disclaimer-container">
+                <box-icon name="info-circle" color="#64748b"></box-icon>
+                <p className="disclaimer">
+                  NOTE: This test is not a substitute for professional medical evaluation. 
+                  Consult an eye specialist for confirmation.
+                </p>
               </div>
             </CardBody>
           </Card>
