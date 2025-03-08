@@ -1,4 +1,5 @@
-import { Document, Page, Text, View, StyleSheet, Font } from "@react-pdf/renderer";
+import { Document, Page, Text, View, StyleSheet, Font, Svg, Circle, Ellipse } from "@react-pdf/renderer";
+
 
 Font.register({
   family: "Roboto",
@@ -130,12 +131,50 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#64748b",
     fontStyle: "italic"
+  },
+  brand: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    marginBottom: 40,
+    borderBottom: 1,
+    borderBottomColor: "#e2e8f0",
+    paddingBottom: 20
+  },
+  logo: {
+    width: 40,
+    height: 40
+  },
+  brandName: {
+    fontSize: 24,
+    fontFamily: "Roboto",
+    color: "#0066cc",
+    fontWeight: "bold"
   }
 });
 
 export const ResultsPDF = ({ results }) => (
   <Document>
     <Page size="A4" style={styles.page}>
+      <View style={styles.brand}>
+        <Svg width="42" height="42" viewBox="0 0 24 24">
+          <Circle cx="12" cy="12" r="10" fill="#E0E0E0" />
+          <Circle cx="7" cy="7" r="2" fill="#FF5733" />
+          <Circle cx="12" cy="5" r="2" fill="#33FF57" />
+          <Circle cx="17" cy="7" r="2" fill="#3357FF" />
+          <Circle cx="5" cy="12" r="2" fill="#FF33A8" />
+          <Circle cx="19" cy="12" r="2" fill="#FFC300" />
+          <Circle cx="7" cy="17" r="2" fill="#DAF7A6" />
+          <Circle cx="12" cy="19" r="2" fill="#900C3F" />
+          <Circle cx="17" cy="17" r="2" fill="#C70039" />
+          <Ellipse cx="12" cy="12" rx="4.5" ry="2.5" fill="white" stroke="black" strokeWidth="0.6" />
+          <Circle cx="12" cy="12" r="1.5" fill="black" />
+          <Circle cx="12" cy="11.5" r="0.5" fill="white" />
+        </Svg>
+        <Text style={styles.brandName}>ColorVision</Text>
+      </View>
+
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Test Results</Text>
         <Text style={styles.headerSubtitle}>Your color vision assessment results are ready.</Text>
@@ -181,7 +220,7 @@ export const ResultsPDF = ({ results }) => (
 
         <View style={styles.disclaimer}>
           <Text style={styles.disclaimerText}>
-            NOTE: This test is not a substitute for professional medical evaluation. 
+            NOTE: This test is not a substitute for professional medical evaluation.
             Consult an eye specialist for confirmation.
           </Text>
         </View>
