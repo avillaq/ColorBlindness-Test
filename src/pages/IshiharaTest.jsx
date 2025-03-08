@@ -47,6 +47,12 @@ export const IshiharaTest = () => {
     handleAnswer("unsure"); 
   };
 
+  const resetTest = () => {
+    setCurrentPlate(0);
+    setAnswers([]);
+    setResults(null);
+  };
+
   if (results) {
     return (
       <div className="ishihara-test-container">
@@ -100,7 +106,7 @@ export const IshiharaTest = () => {
             </>
             :
             <>
-              <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => setShowTest(false)} >
+              <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => {setShowTest(false); resetTest();}} >
                 <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
               </Button>
               <Card className="h-[610px] md:h-[428px]">
