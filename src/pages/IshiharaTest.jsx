@@ -22,13 +22,14 @@ export const IshiharaTest = () => {
       response: answer.trim().toLowerCase()
     };
 
-    setAnswers([...answers, newAnswer]);
+    const updatedAnswers = [...answers, newAnswer];
+    setAnswers(updatedAnswers);
     setValueInput("");
 
     if (currentPlate < ishiharaPlates.length - 1) {
       setCurrentPlate(currentPlate + 1);
     } else {
-      const evaluation = evaluateIshiharaResults(answers, ishiharaPlates);
+      const evaluation = evaluateIshiharaResults(updatedAnswers, ishiharaPlates);
       setResults(evaluation);
     }
   };
@@ -154,17 +155,17 @@ export const IshiharaTest = () => {
                                     ?
                                     <>
                                       <Button color="primary" onPress={() => handleAnswer("traceable")}>Green Line</Button>
-                                      <Button color="primary" onPress={() => handleAnswer("gray line")}>Gray Line</Button>
-                                      <Button color="primary" onPress={() => handleAnswer("blue & green line")}>Blue & Green Line</Button>
-                                      <Button color="primary" onPress={() => handleAnswer("blue line")}>Blue Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("gray")}>Gray Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("blue & green")}>Blue & Green Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("blue")}>Blue Line</Button>
                                       <Button color="warning" onPress={handleUnsure}>Unsure</Button>
                                     </>
                                     :
                                     <>
-                                      <Button color="primary" onPress={() => handleAnswer("red line")}>Red Line</Button>
-                                      <Button color="primary" onPress={() => handleAnswer("purple line")}>Purple Line</Button>
-                                      <Button color="primary" onPress={() => handleAnswer("red & gray line")}>Red & Gray Line</Button>
-                                      <Button color="primary" onPress={() => handleAnswer("purple & red line")}>Purple & Red Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("red")}>Red Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("purple")}>Purple Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("red & gray")}>Red & Gray Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("purple & red")}>Purple & Red Line</Button>
                                       <Button color="warning" onPress={handleUnsure}>Unsure</Button>
                                     </>
                                 }
