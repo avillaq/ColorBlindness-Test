@@ -45,19 +45,74 @@ export const IshiharaTest = () => {
     return (
       <div className="ishihara-test-container">
         <div className="content-text">
-          <h2>Results</h2>
+          <h2>Test Results</h2>
+          <p>Your color vision assessment results are ready.</p>
         </div>
-        <div>
-          <Card className="h-[610px] md:h-[428px]">
-            <CardBody>
-
+        <div className="mt-4 w-full max-w-[550px]">
+          <Card>
+            <CardBody className="cardbody-results">
+              <div className="results-summary">
+                <div className="results-score">
+                  <div className="score-circle">
+                    <h3>{results.accuracy}</h3>
+                    <p>Accuracy</p>
+                  </div>
+                </div>
+                <div className="results-diagnosis">
+                  <h3>Diagnosis</h3>
+                  <p>{results.diagnosis}</p>
+                </div>
+              </div>
+              
+              <div className="results-details">
+                <div className="grid grid-cols-2 gap-4">
+                  <Card>
+                    <CardBody>
+                      <h4>Correct Answers</h4>
+                      <p className="text-success">{results.correct}/{ishiharaPlates.length}</p>
+                    </CardBody>
+                  </Card>
+                  
+                  <Card>
+                    <CardBody>
+                      <h4>Incorrect Answers</h4>
+                      <p className="text-danger">{results.incorrect}/{ishiharaPlates.length}</p>
+                    </CardBody>
+                  </Card>
+                </div>
+                
+                <Card className="mt-4">
+                  <CardBody>
+                    <h4>Technical Details</h4>
+                    <div className="technical-details">
+                      <div>
+                        <p>Basic Plates Correct (1-11):</p>
+                        <p>{results.details.basicCorrect}/11</p>
+                      </div>
+                      <div>
+                        <p>Protan Indicators:</p>
+                        <p>{results.details.protanMatches}/3</p>
+                      </div>
+                      <div>
+                        <p>Deutan Indicators:</p>
+                        <p>{results.details.deutanMatches}/3</p>
+                      </div>
+                    </div>
+                  </CardBody>
+                </Card>
+              </div>
             </CardBody>
           </Card>
         </div>
 
-        <Button color="primary" onPress={() => window.location.reload()}>
-          Restart Test
-        </Button>
+        <div className="results-actions">
+          <Button color="primary" onPress={() => window.location.reload()}>
+            Take Test Again
+          </Button>
+          <Button color="secondary" variant="ghost">
+            Download Report
+          </Button>
+        </div>
       </div>
     );
   }
@@ -182,20 +237,3 @@ export const IshiharaTest = () => {
     </div>
   )
 }
-
-
-const Results = ({ results }) => (
-  <div className="results-container">
-    <h2>Test Results</h2>
-    <p><strong>Accuracy:</strong> {results.accuracy}</p>
-    <p><strong>Correct Answers:</strong> {results.correct}/14</p>
-    <p><strong>Incorrect Answers:</strong> {results.incorrect}/14</p>
-    <p><strong>Diagnosis:</strong> {results.diagnosis}</p>
-    <details>
-      <summary>Technical Details</summary>
-      <p>Basic plates correct (1-11): {results.details.basicCorrect}</p>
-      <p>Protan matches: {results.details.protanMatches}</p>
-      <p>Deutan matches: {results.details.deutanMatches}</p>
-    </details>
-  </div>
-);
