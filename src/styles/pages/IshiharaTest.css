@@ -129,6 +129,25 @@
   align-items: center;
 }
 
+/* Disclaimer */
+
+.disclaimer-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.disclaimer-container .disclaimer {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
 /* Results Actions */
 .results-actions {
   display: flex;
