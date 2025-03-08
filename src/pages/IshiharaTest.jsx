@@ -6,6 +6,8 @@ import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
 import { Progress } from "@heroui/progress";
 import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test";
+import { pdf } from '@react-pdf/renderer';
+import { ResultsPDF } from '../components/ResultsPDF';
 import "../styles/pages/IshiharaTest.css";
 
 export const IshiharaTest = () => {
@@ -39,6 +41,18 @@ export const IshiharaTest = () => {
     setCurrentPlate(0);
     setAnswers([]);
     setResults(null);
+  };
+
+  const handleDownloadPDF = async () => {
+    const blob = await pdf(<ResultsPDF results={results} />).toBlob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `ishihara-test-results-${new Date().toISOString().split('T')[0]}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   if (results) {
@@ -116,7 +130,7 @@ export const IshiharaTest = () => {
           <Button color="primary" onPress={() => window.location.reload()}>
             Take Test Again
           </Button>
-          <Button color="secondary" variant="ghost">
+          <Button color="secondary" variant="ghost" onPress={handleDownloadPDF}>
             Download Report
           </Button>
         </div>
