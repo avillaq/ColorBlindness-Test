@@ -44,7 +44,17 @@ export const IshiharaTest = () => {
   if (results) {
     return (
       <div className="ishihara-test-container">
-        <Results results={results} />
+        <div className="content-text">
+          <h2>Results</h2>
+        </div>
+        <div>
+          <Card className="h-[610px] md:h-[428px]">
+            <CardBody>
+
+            </CardBody>
+          </Card>
+        </div>
+
         <Button color="primary" onPress={() => window.location.reload()}>
           Restart Test
         </Button>
@@ -97,7 +107,7 @@ export const IshiharaTest = () => {
               <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                 <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
               </Button>
-              <Progress aria-label="Loading..." size="sm" className="mb-4" value={((currentPlate+1) / ishiharaPlates.length) * 100} />
+              <Progress aria-label="Loading..." size="sm" className="mb-4" value={((currentPlate + 1) / ishiharaPlates.length) * 100} />
               <Card className="h-[610px] md:h-[428px]">
                 <CardBody className="cardbody-test">
                   <div className="ishihara-test-plates">
