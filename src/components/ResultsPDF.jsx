@@ -11,6 +11,26 @@ const styles = StyleSheet.create({
     padding: 40,
     backgroundColor: "#f8fafc"
   },
+  brand: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    marginBottom: 30,
+    borderBottom: 1,
+    borderBottomColor: "#e2e8f0",
+    paddingBottom: 15
+  },
+  logo: {
+    width: 40,
+    height: 40
+  },
+  brandName: {
+    fontSize: 24,
+    fontFamily: "Roboto",
+    color: "#0066cc",
+    fontWeight: "bold"
+  },
   header: {
     marginBottom: 30,
     textAlign: "center"
@@ -131,26 +151,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#64748b",
     fontStyle: "italic"
-  },
-  brand: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 8,
-    marginBottom: 40,
-    borderBottom: 1,
-    borderBottomColor: "#e2e8f0",
-    paddingBottom: 20
-  },
-  logo: {
-    width: 40,
-    height: 40
-  },
-  brandName: {
-    fontSize: 24,
-    fontFamily: "Roboto",
-    color: "#0066cc",
-    fontWeight: "bold"
   }
 });
 
