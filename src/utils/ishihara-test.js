@@ -15,7 +15,7 @@ export const ishiharaPlates = [
 
   { id: 12, imageUrl: "/src/assets/ishihara-plates/plate12.webp", normalAnswer: "26", protanAnswer: "6", deutanAnswer: "2", type: "diagnostic" },
   { id: 13, imageUrl: "/src/assets/ishihara-plates/plate13.webp", normalAnswer: "42", protanAnswer: "2", deutanAnswer: "4", type: "diagnostic" },
-  { id: 14, imageUrl: "/src/assets/ishihara-plates/plate14.webp", normalAnswer: "purple,red", protanAnswer: "purple", deutanAnswer: "red", type: "diagnostic" },
+  { id: 14, imageUrl: "/src/assets/ishihara-plates/plate14.webp", normalAnswer: "purple & red", protanAnswer: "purple", deutanAnswer: "red", type: "diagnostic" },
 ];
 
 export const evaluateIshiharaResults = (answers, plates) => {
