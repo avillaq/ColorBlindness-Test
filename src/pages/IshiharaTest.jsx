@@ -34,20 +34,6 @@ export const IshiharaTest = () => {
     }
   };
 
-  const handleNext = () => {
-    if (ishiharaPlates[currentPlate].id === 11 || ishiharaPlates[currentPlate].id === 14) {
-      alert("Please select an option before proceeding");
-      return;
-    }
-    console.log(valueInput);
-    
-    handleAnswer(valueInput);
-  };
-
-  const handleUnsure = () => {
-    handleAnswer("unsure"); 
-  };
-
   const resetTest = () => {
     setCurrentPlate(0);
     setAnswers([]);
@@ -142,8 +128,8 @@ export const IshiharaTest = () => {
                                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
                                   <Button key={num} onPress={() => {if(valueInput.length < 2) setValueInput(`${valueInput}${num}`);}}>{num}</Button>
                                 ))}
-                                <Button color="warning" onPress={handleUnsure}>Unsure</Button>
-                                <Button color="primary" onPress={handleNext} isDisabled={!valueInput}>Next</Button>
+                                <Button color="warning" onPress={() => handleAnswer("unsure")}>Unsure</Button>
+                                <Button color="primary" isDisabled={!valueInput} onPress={() => handleAnswer(valueInput)}>Next</Button>
                               </div>
                             </>
                             :
@@ -154,11 +140,11 @@ export const IshiharaTest = () => {
                                   (ishiharaPlates[currentPlate].id === 11)
                                     ?
                                     <>
-                                      <Button color="primary" onPress={() => handleAnswer("traceable")}>Green Line</Button>
+                                      <Button color="primary" onPress={() => handleAnswer("green")}>Green Line</Button>
                                       <Button color="primary" onPress={() => handleAnswer("gray")}>Gray Line</Button>
                                       <Button color="primary" onPress={() => handleAnswer("blue & green")}>Blue & Green Line</Button>
                                       <Button color="primary" onPress={() => handleAnswer("blue")}>Blue Line</Button>
-                                      <Button color="warning" onPress={handleUnsure}>Unsure</Button>
+                                      <Button color="warning" onPress={() => handleAnswer("unsure")}>Unsure</Button>
                                     </>
                                     :
                                     <>
@@ -166,7 +152,7 @@ export const IshiharaTest = () => {
                                       <Button color="primary" onPress={() => handleAnswer("purple")}>Purple Line</Button>
                                       <Button color="primary" onPress={() => handleAnswer("red & gray")}>Red & Gray Line</Button>
                                       <Button color="primary" onPress={() => handleAnswer("purple & red")}>Purple & Red Line</Button>
-                                      <Button color="warning" onPress={handleUnsure}>Unsure</Button>
+                                      <Button color="warning" onPress={() => handleAnswer("unsure")}>Unsure</Button>
                                     </>
                                 }
                               </div>
