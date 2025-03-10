@@ -257,6 +257,24 @@ export const IshiharaTest = () => {
 
         </div>
       </div>
+      {
+        !showTest &&
+        <div className="description-ishihara-test">
+          <div>
+            <h2>What is ISHIHARA TEST?</h2>
+            <p></p>
+          </div>
+          <div>
+            <h2>Types of Deficiencies Detected</h2>
+          </div>
+          <div>
+            <h2>How the Ishihara Test Works?</h2>
+          </div>
+          <div>
+            <h2>Limitations of the Ishihara Test</h2>
+          </div>
+        </div>
+      }
     </div>
   )
 }
