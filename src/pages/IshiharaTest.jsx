@@ -277,8 +277,6 @@ export const IshiharaTest = () => {
                 className="flex-1"
               />
             </div>
-
-
           </div>
           <div>
             <h2>Types of Deficiencies Detected</h2>
