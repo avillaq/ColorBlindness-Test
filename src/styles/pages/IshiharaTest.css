@@ -162,9 +162,8 @@
   align-items: center;
   gap: 48px;
 }
-.description-ishihara-test div {
-  padding: 30px 16px;
-
+.description-ishihara-section {
+  padding: 32px 16px;
 }
 
 .description-ishihara-test h2 {
@@ -172,15 +171,28 @@
   font-size: 28px;
   font-weight: 600;
   line-height: 28px;
+  margin-bottom: 24px;
 }
 .description-ishihara-test p {
   font-size: 16px;
   color: #64748b;
-  max-width: 85%;
+  text-align: justify;
+}
+
+@media (min-width: 400px) {
+  .description-ishihara-section {
+    padding: 48px 64px
+  }
 }
 
 @media (min-width: 1024px) {
-  .description-ishihara-test div {
-    padding: 45px 32px
+  .description-ishihara-section {
+    padding: 48px 92px
+  }
+}
+
+@media (min-width: 1280px) {
+  .description-ishihara-section {
+    padding: 48px 240px
   }
 }
