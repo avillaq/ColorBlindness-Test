@@ -4,6 +4,7 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
 import { InputOtp } from "@heroui/input-otp";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
+import { CarouselTest } from "../components/CarouselTest";
 import { Progress } from "@heroui/progress";
 import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test";
 import { pdf } from '@react-pdf/renderer';
@@ -280,6 +281,7 @@ export const IshiharaTest = () => {
           </div>
           <div className="description-ishihara-section">
             <h2>Types of Deficiencies Detected</h2>
+            <CarouselTest />
           </div>
           <div className="description-ishihara-section">
             <h2>How the Ishihara Test Works?</h2>
