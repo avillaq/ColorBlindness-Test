@@ -9,6 +9,7 @@ import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test"
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import "../styles/pages/IshiharaTest.css";
+import ishiharaTestOriginalPlate from "../assets/ishihara-test-original.webp";
 
 export const IshiharaTest = () => {
   const [showTest, setShowTest] = useState(false);
@@ -260,9 +261,24 @@ export const IshiharaTest = () => {
       {
         !showTest &&
         <div className="description-ishihara-test">
-          <div>
+          <div className="description-ishihara-section">
             <h2>What is ISHIHARA TEST?</h2>
-            <p></p>
+            <div className="flex flex-col items-center lg:flex-row gap-8">
+              <div className="flex-1">
+                <p>The Ishihara Test is one of the most well-known and widely used methods for detecting color blindness, particularly red-green color vision deficiencies. It was developed in 1917 by Dr. Shinobu Ishihara, a Japanese ophthalmologist, and has since been used globally for over a century.</p>
+                <p>The test consists of a series of circular plates, known as Ishihara plates, each containing a pattern of colored dots. Within these patterns, numbers or shapes are embedded using colors that appear distinct to individuals with normal vision but may be difficult or impossible to distinguish for those with color blindness. The test is simple, non-invasive, and can be administered in just a few minutes.</p>
+                <p>By analyzing a person’s ability to recognize the numbers or shapes in the plates, the Ishihara Test can help determine whether they have a color vision deficiency and, in some cases, the severity of the condition. However, it does not provide a full diagnosis of all types of color blindness.</p>
+              </div>
+              <Image
+                src={ishiharaTestOriginalPlate}
+                alt="Ishihara test original plate"
+                width={430}
+                height={280}
+                className="flex-1"
+              />
+            </div>
+
+
           </div>
           <div>
             <h2>Types of Deficiencies Detected</h2>
