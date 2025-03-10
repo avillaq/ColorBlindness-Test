@@ -278,13 +278,13 @@ export const IshiharaTest = () => {
               />
             </div>
           </div>
-          <div>
+          <div className="description-ishihara-section">
             <h2>Types of Deficiencies Detected</h2>
           </div>
-          <div>
+          <div className="description-ishihara-section">
             <h2>How the Ishihara Test Works?</h2>
           </div>
-          <div>
+          <div className="description-ishihara-section">
             <h2>Limitations of the Ishihara Test</h2>
           </div>
         </div>
