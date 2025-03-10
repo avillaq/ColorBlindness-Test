@@ -1,4 +1,4 @@
-.ishihara-test-container {
+.ishihara-test-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,12 +6,12 @@
   background-color: rgba(245, 247, 250, 0.8);
 }
 
-.ishihara-test-container h2 {
+.ishihara-test-hero h2 {
   font-size: 30px;
   font-weight: 700;
   line-height: 36px;
 }
-.ishihara-test-container p {
+.ishihara-test-hero p {
   font-size: 16px;
   max-width: 100%;
 }
