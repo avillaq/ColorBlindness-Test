@@ -26,7 +26,7 @@ const carouselItems = [
 export const CarouselTest = () => {
 
   return (
-    <div className="h-56 sm:h-64 xl:h-80 2xl:h-[440px]">
+    <div className="h-60 sm:h-64 xl:h-80 2xl:h-[440px]">
       <Carousel
         leftControl={<box-icon name="left-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>}
         rightControl={<box-icon name="right-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>}
@@ -34,7 +34,7 @@ export const CarouselTest = () => {
       >
         {carouselItems.map((item, index) => (
           <div key={index} className="flex items-center justify-center h-full">
-            <Card className="mx-12 w-full h-full">
+            <Card className="mx-10 w-full">
               <CardBody>
                 <h4>Technical Details</h4>
                 <div className="technical-details">
