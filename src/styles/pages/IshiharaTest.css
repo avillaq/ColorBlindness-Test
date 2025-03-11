@@ -163,6 +163,10 @@
 }
 
 /* Sections */
+.description-ishihara-section:nth-child(2n) {
+  background-color: rgba(245, 247, 250, 0.8);
+
+}
 .description-ishihara-section {
   padding: 32px 16px;
   width: 100%;
