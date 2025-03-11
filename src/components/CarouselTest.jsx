@@ -34,11 +34,14 @@ export const CarouselTest = () => {
       >
         {carouselItems.map((item, index) => (
           <div key={index} className="flex items-center justify-center h-full">
-            <Card className="mx-10 w-full">
+            <Card className="mx-8 w-full">
               <CardBody>
                 <h4>Technical Details</h4>
-                <div className="technical-details">
+                <div>
                   <div>
+                    <p>Basic Plates Correct (1-11):</p>
+                    <p>Basic Plates Correct (1-11):</p><p>Basic Plates Correct (1-11):</p>
+                    <p>Basic Plates Correct (1-11):</p>
                     <p>Basic Plates Correct (1-11):</p>
                   </div>
                   <div>
