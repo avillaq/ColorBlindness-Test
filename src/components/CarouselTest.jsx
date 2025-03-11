@@ -23,24 +23,6 @@ const carouselItems = [
 export const CarouselTest = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const buttonStyles = {
-    alignSelf: "center",
-    background: "#0066cc",
-    border: "none",
-    borderRadius: "50%",
-    color: "white",
-    cursor: "pointer",
-    fontSize: "20px",
-    height: 40,
-    width: 40,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    transition: "background-color 0.2s",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-    margin: "0 8px"
-  };
-
   return (
     <div className="carousel-container">
       <Carousel
@@ -48,8 +30,7 @@ export const CarouselTest = () => {
           style: {
             width: "100%",
             justifyContent: "space-between",
-            userSelect: "none",
-            padding: "20px 0"
+            userSelect: "none"
           },
         }}
         preventScrollOnSwipe
@@ -60,24 +41,26 @@ export const CarouselTest = () => {
           show: true,
           itemBtnProps: {
             style: {
-              height: 8,
-              width: 8,
+              height: 10,
+              width: 10,
               borderRadius: "50%",
               border: 0,
               marginLeft: 4,
               marginRight: 4,
+              marginTop: 8,
               backgroundColor: "#E2E8F0"
             },
           },
           activeItemBtnProps: {
             style: {
-              height: 8,
-              width: 8,
+              height: 10,
+              width: 10,
               borderRadius: "50%",
               border: 0,
               background: "#0066cc",
               marginLeft: 4,
               marginRight: 4,
+              marginTop: 8,
             },
           },
         }}
@@ -85,12 +68,10 @@ export const CarouselTest = () => {
         speed={400}
         centerMode
         forwardBtnProps={{
-          style: buttonStyles,
-          children: <span>›</span>,
+          children: <box-icon name="right-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>,
         }}
         backwardBtnProps={{
-          style: buttonStyles,
-          children: <span>‹</span>,
+          children: <box-icon name="left-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>,
         }}
       >
         {carouselItems.map((item, index) => (
@@ -98,7 +79,6 @@ export const CarouselTest = () => {
             key={index}
             style={{
               background: item.color,
-              width: 300,
               height: 300,
               border: "1px solid #E2E8F0",
               borderRadius: "12px",
@@ -110,6 +90,8 @@ export const CarouselTest = () => {
               justifyContent: "center",
               alignItems: "center",
               textAlign: "center",
+              flexGrow: 1,
+              width: "100%"
             }}
           >
             <h3 style={{
