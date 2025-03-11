@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Carousel from "react-simply-carousel";
+import { Carousel } from "flowbite-react";
+import { Card, CardBody } from "@heroui/card";
 import "../styles/components/CarouselTest.css";
 
 const carouselItems = [
@@ -24,76 +24,32 @@ const carouselItems = [
 ];
 
 export const CarouselTest = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
 
   return (
-    <div className="carousel-container">
+    <div className="h-56 sm:h-64 xl:h-80 2xl:h-[440px]">
       <Carousel
-        containerProps={{
-          style: {
-            width: "100%",
-            userSelect: "none",
-          },
-        }}
-        itemsListProps={{
-          style: {
-            padding: "0",
-          },
-        }}
-        preventScrollOnSwipe
-        swipeTreshold={60}
-        activeSlideIndex={activeSlide}
-        onRequestChange={setActiveSlide}
-        dotsNav={{
-          show: true,
-          itemBtnProps: {
-            style: {
-              height: 10,
-              width: 10,
-              borderRadius: "50%",
-              border: 0,
-              marginLeft: 4,
-              marginRight: 4,
-              marginTop: 8,
-              backgroundColor: "#E2E8F0"
-            },
-          },
-          activeItemBtnProps: {
-            style: {
-              height: 10,
-              width: 10,
-              borderRadius: "50%",
-              border: 0,
-              background: "#0066cc",
-              marginLeft: 4,
-              marginRight: 4,
-              marginTop: 8,
-            },
-          },
-        }}
-        itemsToShow={1}
-        speed={400}
-        centerMode
-        forwardBtnProps={{
-          children: <box-icon name="right-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>,
-        }}
-        backwardBtnProps={{
-          children: <box-icon name="left-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>,
-        }}
+        leftControl={<box-icon name="left-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>}
+        rightControl={<box-icon name="right-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>}
+        indicators={false}
       >
         {carouselItems.map((item, index) => (
-          <div
-            key={index}
-            className="carousel-slide"
-            style={{ backgroundColor: item.color}}
-          >
-            <div className="carousel-visual">
-              <img src={item.visual} alt={item.title} />
-            </div>
-            <div className="carousel-content">
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </div>
+          <div key={index} className="flex items-center justify-center h-full">
+            <Card className="mx-12 w-full h-full">
+              <CardBody>
+                <h4>Technical Details</h4>
+                <div className="technical-details">
+                  <div>
+                    <p>Basic Plates Correct (1-11):</p>
+                  </div>
+                  <div>
+                    <p>Protan Indicators:</p>
+                  </div>
+                  <div>
+                    <p>Deutan Indicators:</p>
+                  </div>
+                </div>
+              </CardBody>
+            </Card>
           </div>
         ))}
       </Carousel>
