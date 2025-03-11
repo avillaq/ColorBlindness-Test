@@ -5,7 +5,7 @@ import "../styles/components/CarouselTest.css";
 export const CarouselTest = ({ carouselItems }) => {
 
   return (
-    <div className="h-[660px] md:h-[550px] lg:h[440] xl:h-[400px]">
+    <div className="h-[660px] md:h-[550px] lg:h[440px] xl:h-[490px]">
       <Carousel
         leftControl={<box-icon name="left-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>}
         rightControl={<box-icon name="right-arrow-circle" type="solid" color="#0066cc" size="md"></box-icon>}
