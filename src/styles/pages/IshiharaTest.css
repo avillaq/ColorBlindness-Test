@@ -186,6 +186,10 @@
   margin-bottom: 8px;
 }
 
+.description-ishihara-section small {
+  color: #64748b;
+}
+
 @media (min-width: 400px) {
   .description-ishihara-section {
     padding: 48px 64px
