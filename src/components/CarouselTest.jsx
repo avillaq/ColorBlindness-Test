@@ -18,7 +18,7 @@ export const CarouselTest = ({ carouselItems }) => {
             <Card className="mx-9 w-full h-modal">
               <CardBody>
                 <div className="flex flex-col items-center gap-5 lg:flex-row lg:items-start lg:p-3">
-                  <div className="flex flex-col gap-2 lg:w-5/12">
+                  <div className="flex flex-col w-full max-w-80 gap-2 lg:w-5/12 lg:max-w-full">
                     {item.visual}
                     <small className="italic text-center">(Simulation - Results may vary)</small>
                   </div>
