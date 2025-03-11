@@ -24,12 +24,12 @@
     "@heroui/skeleton": "^2.2.10",
     "@react-pdf/renderer": "^4.3.0",
     "boxicons": "^2.1.4",
+    "flowbite-react": "^0.10.2",
     "framer-motion": "^12.4.7",
     "react": "^19.0.0",
     "react-compare-image": "^3.5.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^6.30.0",
-    "react-simply-carousel": "^9.1.8"
+    "react-router-dom": "^6.30.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
