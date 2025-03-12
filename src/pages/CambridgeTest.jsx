@@ -13,7 +13,7 @@ import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
 import "../styles/pages/IshiharaTest.css";
-import ishiharaTestOriginalPlate from "../assets/ishihara/ishihara-test-original.webp";
+import CambridgeTestOriginal from "../assets/cambridge/cambridge-original.webp";
 import ishiharaRedGreen from "../assets/ishihara/ishihara-red-green-blindness.webp";
 import ishiharaNormalVisionProta from "../assets/ishihara/ishihara-normal-prota.webp";
 import ishiharaNormalVisionDeutera from "../assets/ishihara/ishihara-normal-deutera.webp";
@@ -281,10 +281,9 @@ export const CambridgeTest = () => {
                 <p>In terms of scientific validity, the Cambridge Color Test has been widely adopted in both clinical and research settings. It is recognized for its accuracy in providing quantitative data on color vision deficiencies and has contributed to a large body of research, offering normative data for various age groups. The test is also used in studies exploring how different medical conditions or environmental factors affect color vision. Because of its reliability, it remains a trusted tool for professionals studying and diagnosing color vision issues.</p>
               </div>
               <Image
-                src={ishiharaTestOriginalPlate}
+                src={CambridgeTestOriginal}
                 alt="Ishihara test original plate"
                 width={430}
-                height={280}
                 className="flex-1"
               />
             </div>
