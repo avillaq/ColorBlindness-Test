@@ -2,7 +2,9 @@ import { Card, CardBody } from "@heroui/card";
 
 export const StepperTest = ({ steps }) => {
   return (
-    <Card>
+    <Card classNames={{
+      "body": "px-5 py-6"
+    }}>
       <CardBody>
         <ol className="relative border-s border-blue-300">
           {
