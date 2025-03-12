@@ -123,7 +123,9 @@ export const IshiharaTest = () => {
                 </Card>
               </div>
               <div className="disclaimer-container">
-                <box-icon name="info-circle" color="#64748b"></box-icon>
+                <div className="min-w-6">
+                  <box-icon name="info-circle" color="#64748b"></box-icon>
+                </div>
                 <p className="disclaimer">
                   NOTE: This test is not a substitute for professional medical evaluation.
                   Consult an eye specialist for confirmation.
@@ -330,7 +332,7 @@ export const IshiharaTest = () => {
           <div className="description-ishihara-section">
             <h2>Limitations of the Ishihara Test</h2>
             <div>
-              <DescriptionGridTest 
+              <DescriptionGridTest
                 gridItems={[
                   { title: "Detection Range", description: "The Ishihara Test detects only red-green color blindness and cannot identify types like blue-yellow (Tritanopia) or complete color blindness (Achromatopsia). Additional tests are needed for a full diagnosis." },
                   { title: "Accuracy in Mild Cases", description: "Mild forms of color blindness, such as Protanomaly or Deuteranomaly, may not be accurately detected by the Ishihara Test. This can lead to misdiagnosis or an incomplete understanding of a person's color vision capabilities." },
@@ -338,6 +340,16 @@ export const IshiharaTest = () => {
                   { title: "Environmental Factors", description: "Test results can be affected by lighting conditions, print quality, or screen settings in digital versions. Variability in testing environments can lead to incorrect diagnoses, highlighting the need for standardized conditions." }
                 ]}
               />
+            </div>
+          </div>
+          <div className="description-ishihara-section">
+            <div className="disclaimer-container">
+              <div className="min-w-6">
+                <box-icon name="info-circle" color="#64748b"></box-icon>
+              </div>
+              <p className="disclaimer">
+                NOTE: The Ishihara Test is a screening tool, not a definitive diagnosis. If you suspect you have a color vision deficiency, it is recommended to consult an eye care professional for further evaluation and additional tests, such as the Anomaloscope or Farnsworth D-15 Test, which provide a more comprehensive analysis of color vision.
+              </p>
             </div>
           </div>
         </div>
