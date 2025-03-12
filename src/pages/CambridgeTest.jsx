@@ -15,9 +15,9 @@ import ReactCompareImage from 'react-compare-image';
 import "../styles/pages/IshiharaTest.css";
 import cambridgeTestOriginal from "../assets/cambridge/cambridge-original.webp";
 import cambridgeRedGreen from "../assets/cambridge/cambridge-red-green-blindness.webp";
-import ishiharaNormalVisionProta from "../assets/ishihara/ishihara-normal-prota.webp";
-import ishiharaNormalVisionTrita from "../assets/cambridge/cambridge-normal-trita.webp";
-import ishiharaProtanopia from "../assets/ishihara/ishihara-protanopia.webp";
+import cambridgeNormalVisionDeutera from "../assets/cambridge/cambridge-normal-deutera.webp";
+import cambridgeNormalVisionTrita from "../assets/cambridge/cambridge-normal-trita.webp";
+import cambridgeDeuteranomaly from "../assets/cambridge/cambridge-deuteranomaly.webp";
 import cambridgeTritanopia from "../assets/cambridge/cambridge-tritanopia.webp";
 
 export const CambridgeTest = () => {
@@ -300,12 +300,12 @@ export const CambridgeTest = () => {
                 {
                   title: "Blue-Yellow Deficiencies (Tritan)",
                   description: <><p><strong>Tritanopia</strong> - Known as blue-yellow blindness, tritanopia is a rare form of color blindness where individuals experience difficulty distinguishing between blue and yellow hues. This type of color vision deficiency is assessed by measuring sensitivity along the tritan confusion line, which evaluates the person’s ability to differentiate between these two shades.</p> <p>People with tritanopia often confuse blue with green or yellow with violet, which can complicate everyday tasks, like identifying the blue sky versus green foliage or distinguishing ripe yellow bananas from unripe green ones. The Cambridge Color Test helps determine the extent to which individuals with tritanopia face challenges in recognizing blue-yellow color differences.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVisionTrita} rightImage={cambridgeTritanopia} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={cambridgeNormalVisionTrita} rightImage={cambridgeTritanopia} /></div>
                 },
                 {
                   title: "Severity Detection",
                   description: <><p>The test checks how well a person can see small differences in colors, known as chromatic sensitivity. Based on this, it creates discrimination ellipses, which are visual shapes that show a person’s color vision abilities and how much their color vision differs from normal.</p> <p>Larger ellipses mean more severe color vision issues, showing that the person has trouble telling apart a wider range of colors. This can make daily tasks involving color, like sorting or recognizing items, more challenging. Smaller ellipses suggest a milder issue, where the person may only have difficulty with certain colors in specific settings, like matching similar shades, but can generally see most colors well.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVisionProta} rightImage={ishiharaProtanopia} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={cambridgeNormalVisionDeutera} rightImage={cambridgeDeuteranomaly} /></div>
                 }
               ]}
             />
