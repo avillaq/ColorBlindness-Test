@@ -1,0 +1,221 @@
+.ishihara-test-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 16px;
+  background-color: rgba(245, 247, 250, 0.8);
+}
+
+.ishihara-test-hero h2 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+.ishihara-test-hero p {
+  font-size: 16px;
+  max-width: 100%;
+}
+
+.content-ishihara-test {
+  width: 100%;
+  max-width: 1024px;
+}
+
+.content-ishihara-test .cardbody-test {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+}
+
+.ishihara-test-plates,
+.ishihara-test-controls {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ishihara-test-plates img {
+  max-width: 250px;
+}
+
+@media (min-width: 400px) {
+  .ishihara-test-plates img {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-ishihara-test .cardbody-test {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .ishihara-test-plates img {
+    max-width: 400px;
+  }
+}
+
+
+/* Results */
+.cardbody-results {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.results-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.score-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #0066cc;
+  padding: 16px;
+}
+
+.score-circle h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0066cc;
+}
+
+.results-diagnosis {
+  text-align: center;
+}
+
+.results-diagnosis h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Results Details */
+.results-details h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.text-success {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.text-danger {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* Technical Details */
+.technical-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.technical-details div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Disclaimer */
+
+.disclaimer-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.disclaimer-container .disclaimer {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Results Actions */
+.results-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Test Description */
+.description-ishihara-test {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Sections */
+.description-ishihara-section:nth-child(2n) {
+  background-color: rgba(245, 247, 250, 0.8);
+
+}
+
+.description-ishihara-section {
+  padding: 32px 16px;
+  width: 100%;
+}
+
+.description-ishihara-section h2 {
+  font-family: var(--font-roboto);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-bottom: 24px;
+}
+
+.description-ishihara-section h3 {
+  font-family: var(--font-roboto);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 22px;
+  margin-bottom: 8px;
+}
+
+.description-ishihara-section p {
+  font-size: 16px;
+  color: #64748b;
+  text-align: justify;
+  margin-bottom: 8px;
+}
+
+.description-ishihara-section small {
+  color: #64748b;
+}
+
+@media (min-width: 400px) {
+  .description-ishihara-section {
+    padding: 48px 64px
+  }
+}
+
+@media (min-width: 1024px) {
+  .description-ishihara-section {
+    padding: 48px 92px
+  }
+}
+
+@media (min-width: 1280px) {
+  .description-ishihara-section {
+    padding: 48px 240px
+  }
+}
