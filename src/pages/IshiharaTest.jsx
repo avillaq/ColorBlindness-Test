@@ -4,8 +4,8 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
 import { InputOtp } from "@heroui/input-otp";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
-import { CarouselTest } from "../components/CarouselTest";
-import { StepperTest } from "../components/StepperTest";
+import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
+import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { Progress } from "@heroui/progress";
 import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test";
 import { pdf } from '@react-pdf/renderer';
@@ -285,7 +285,7 @@ export const IshiharaTest = () => {
           </div>
           <div className="description-ishihara-section">
             <h2>Types of Deficiencies Detected</h2>
-            <CarouselTest
+            <DescriptionCarouselTest
               carouselItems={[
                 {
                   title: "Red-Green Color Blindness",
@@ -315,7 +315,7 @@ export const IshiharaTest = () => {
                 <p>This simple process allows the test to distinguish between normal vision and red-green color blindness with a high degree of accuracy.</p>
               </div>
               <div className="w-full lg:w-5/12">
-                <StepperTest 
+                <DescriptionStepperTest 
                   steps={[
                     { title: "Detection", description: "The Ishihara Test uses colored dot patterns to detect red-green color blindness based on the user's ability to recognize numbers or shapes." },
                     { title: "Convenience", description: "This fast, non-invasive test can be completed in minutes, ensuring convenient testing in well-lit environments." },

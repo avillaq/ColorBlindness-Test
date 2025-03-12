@@ -1,6 +1,6 @@
 import { Card, CardBody } from "@heroui/card";
 
-export const StepperTest = ({ steps }) => {
+export const DescriptionStepperTest = ({ steps }) => {
   return (
     <Card classNames={{
       "body": "px-5 py-6"

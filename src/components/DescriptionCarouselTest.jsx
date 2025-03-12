@@ -1,7 +1,7 @@
 import { Carousel } from "flowbite-react";
 import { Card, CardBody } from "@heroui/card";
 
-export const CarouselTest = ({ carouselItems }) => {
+export const DescriptionCarouselTest = ({ carouselItems }) => {
   return (
     <div className="h-[660px] md:h-[550px] lg:h[440px] xl:h-[490px]">
       <Carousel
