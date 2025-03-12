@@ -290,7 +290,7 @@ export const IshiharaTest = () => {
             </div>
           </div>
           <div className="description-ishihara-section">
-            <h2>Types of Deficiencies Detected</h2>
+            <h2 className="text-center">Types of Deficiencies Detected</h2>
             <DescriptionCarouselTest
               carouselItems={[
                 {
