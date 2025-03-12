@@ -13,9 +13,11 @@ import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
 import "../styles/pages/IshiharaTest.css";
-import ishiharaTestOriginalPlate from "../assets/ishihara-test-original.webp";
-import ishiharaNormalVision from "../assets/ishihara-normal.webp";
-import ishiharaProtanopia from "../assets/ishihara-protanopia.webp";
+import ishiharaTestOriginalPlate from "../assets/ishihara/ishihara-test-original.webp";
+import ishiharaNormalVisionProta from "../assets/ishihara/ishihara-normal-prota.webp";
+import ishiharaNormalVisionDeutera from "../assets/ishihara/ishihara-normal-deutera.webp";
+import ishiharaProtanopia from "../assets/ishihara/ishihara-protanopia.webp";
+import ishiharaDeuteranopia from "../assets/ishihara/ishihara-deuteranopia.webp";
 
 export const IshiharaTest = () => {
   const [showTest, setShowTest] = useState(false);
@@ -298,12 +300,12 @@ export const IshiharaTest = () => {
                 {
                   title: "Deuteranopia",
                   description: <><p>Deuteranopia occurs when the green-sensitive cones (M-cones) in the eye are absent or don't function correctly, altering how people perceive green light and shades around it.</p> <p>Those with deuteranopia often confuse colors like green, red, brown, and orange, particularly in dim lighting. This makes daily tasks more challenging, such as understanding color-coded signs, choosing matching clothes, or identifying objects by color.</p> <p>Deuteranomaly, a milder form, involves green cones functioning abnormally, causing less severe confusion but still affecting tasks where accurate color recognition is essential for daily life.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVision} rightImage={ishiharaProtanopia} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVisionDeutera} rightImage={ishiharaDeuteranopia} /></div>
                 },
                 {
                   title: "Protanopia",
                   description: <><p>Protanopia arises from the absence of red-sensitive cones (L-cones), leading to difficulty distinguishing reds from greens and other related shades. This condition affects color perception significantly.</p> <p>Individuals with Protanopia often perceive reds as much darker than those with normal color vision, which can cause confusion between red, black, and brown hues, especially in low light.</p><p>Protanomaly, a milder variant, leads to reduced red sensitivity, where reds may appear less vibrant, especially in dim lighting. This can impact tasks like reading road signs, choosing clothing, or interpreting charts.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVision} rightImage={ishiharaProtanopia} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVisionProta} rightImage={ishiharaProtanopia} /></div>
                 }
               ]}
             />
