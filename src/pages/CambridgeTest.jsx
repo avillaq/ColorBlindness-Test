@@ -16,9 +16,9 @@ import "../styles/pages/IshiharaTest.css";
 import CambridgeTestOriginal from "../assets/cambridge/cambridge-original.webp";
 import ishiharaRedGreen from "../assets/ishihara/ishihara-red-green-blindness.webp";
 import ishiharaNormalVisionProta from "../assets/ishihara/ishihara-normal-prota.webp";
-import ishiharaNormalVisionDeutera from "../assets/ishihara/ishihara-normal-deutera.webp";
+import ishiharaNormalVisionTrita from "../assets/cambridge/cambridge-normal-trita.webp";
 import ishiharaProtanopia from "../assets/ishihara/ishihara-protanopia.webp";
-import ishiharaDeuteranopia from "../assets/ishihara/ishihara-deuteranopia.webp";
+import cambridgeTritanopia from "../assets/cambridge/cambridge-tritanopia.webp";
 
 export const CambridgeTest = () => {
   const [showTest, setShowTest] = useState(false);
@@ -300,7 +300,7 @@ export const CambridgeTest = () => {
                 {
                   title: "Blue-Yellow Deficiencies (Tritan)",
                   description: <><p><strong>Tritanopia</strong> - Known as blue-yellow blindness, tritanopia is a rare form of color blindness where individuals experience difficulty distinguishing between blue and yellow hues. This type of color vision deficiency is assessed by measuring sensitivity along the tritan confusion line, which evaluates the person’s ability to differentiate between these two shades.</p> <p>People with tritanopia often confuse blue with green or yellow with violet, which can complicate everyday tasks, like identifying the blue sky versus green foliage or distinguishing ripe yellow bananas from unripe green ones. The Cambridge Color Test helps determine the extent to which individuals with tritanopia face challenges in recognizing blue-yellow color differences.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVisionDeutera} rightImage={ishiharaDeuteranopia} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVisionTrita} rightImage={cambridgeTritanopia} /></div>
                 },
                 {
                   title: "Severity Detection",
