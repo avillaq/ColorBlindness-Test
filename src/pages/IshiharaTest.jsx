@@ -6,6 +6,7 @@ import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
 import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
+import { DescriptionGridTest } from "../components/DescriptionGridTest";
 import { Progress } from "@heroui/progress";
 import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test";
 import { pdf } from '@react-pdf/renderer';
@@ -315,7 +316,7 @@ export const IshiharaTest = () => {
                 <p>This simple process allows the test to distinguish between normal vision and red-green color blindness with a high degree of accuracy.</p>
               </div>
               <div className="w-full lg:w-5/12">
-                <DescriptionStepperTest 
+                <DescriptionStepperTest
                   steps={[
                     { title: "Detection", description: "The Ishihara Test uses colored dot patterns to detect red-green color blindness based on the user's ability to recognize numbers or shapes." },
                     { title: "Convenience", description: "This fast, non-invasive test can be completed in minutes, ensuring convenient testing in well-lit environments." },
@@ -328,6 +329,16 @@ export const IshiharaTest = () => {
           </div>
           <div className="description-ishihara-section">
             <h2>Limitations of the Ishihara Test</h2>
+            <div>
+              <DescriptionGridTest 
+                gridItems={[
+                  { title: "Detection Range", description: "The Ishihara Test detects only red-green color blindness and cannot identify types like blue-yellow (Tritanopia) or complete color blindness (Achromatopsia). Additional tests are needed for a full diagnosis." },
+                  { title: "Accuracy in Mild Cases", description: "Mild forms of color blindness, such as Protanomaly or Deuteranomaly, may not be accurately detected by the Ishihara Test. This can lead to misdiagnosis or an incomplete understanding of a person's color vision capabilities." },
+                  { title: "User Limitations", description: "The test requires recognizing numbers or patterns, which can be difficult for young children or individuals with learning challenges. Misunderstanding the instructions can result in inaccurate test outcomes." },
+                  { title: "Environmental Factors", description: "Test results can be affected by lighting conditions, print quality, or screen settings in digital versions. Variability in testing environments can lead to incorrect diagnoses, highlighting the need for standardized conditions." }
+                ]}
+              />
+            </div>
           </div>
         </div>
       }
