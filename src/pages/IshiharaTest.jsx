@@ -14,6 +14,7 @@ import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
 import "../styles/pages/IshiharaTest.css";
 import ishiharaTestOriginalPlate from "../assets/ishihara/ishihara-test-original.webp";
+import ishiharaRedGreen from "../assets/ishihara/ishihara-red-green-blindness.webp";
 import ishiharaNormalVisionProta from "../assets/ishihara/ishihara-normal-prota.webp";
 import ishiharaNormalVisionDeutera from "../assets/ishihara/ishihara-normal-deutera.webp";
 import ishiharaProtanopia from "../assets/ishihara/ishihara-protanopia.webp";
@@ -295,7 +296,7 @@ export const IshiharaTest = () => {
                 {
                   title: "Red-Green Color Blindness",
                   description: <><p>Red-green color blindness is the primary type detected by the Ishihara Test, consisting of two main variations: Deuteranopia/Deuteranomaly and Protanopia/Protanomaly. These deficiencies affect how individuals perceive red and green hues, causing confusion between them in everyday scenarios.</p> <p>People with red-green blindness struggle with tasks needing color differentiation, such as reading traffic signals or choosing matching clothing.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVision} rightImage={ishiharaProtanopia} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><Image src={ishiharaRedGreen} /></div>
                 },
                 {
                   title: "Deuteranopia",
