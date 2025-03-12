@@ -13,8 +13,8 @@ import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
 import "../styles/pages/IshiharaTest.css";
-import CambridgeTestOriginal from "../assets/cambridge/cambridge-original.webp";
-import ishiharaRedGreen from "../assets/ishihara/ishihara-red-green-blindness.webp";
+import cambridgeTestOriginal from "../assets/cambridge/cambridge-original.webp";
+import cambridgeRedGreen from "../assets/cambridge/cambridge-red-green-blindness.webp";
 import ishiharaNormalVisionProta from "../assets/ishihara/ishihara-normal-prota.webp";
 import ishiharaNormalVisionTrita from "../assets/cambridge/cambridge-normal-trita.webp";
 import ishiharaProtanopia from "../assets/ishihara/ishihara-protanopia.webp";
@@ -281,7 +281,7 @@ export const CambridgeTest = () => {
                 <p>In terms of scientific validity, the Cambridge Color Test has been widely adopted in both clinical and research settings. It is recognized for its accuracy in providing quantitative data on color vision deficiencies and has contributed to a large body of research, offering normative data for various age groups. The test is also used in studies exploring how different medical conditions or environmental factors affect color vision. Because of its reliability, it remains a trusted tool for professionals studying and diagnosing color vision issues.</p>
               </div>
               <Image
-                src={CambridgeTestOriginal}
+                src={cambridgeTestOriginal}
                 alt="Ishihara test original plate"
                 width={430}
                 className="flex-1"
@@ -295,7 +295,7 @@ export const CambridgeTest = () => {
                 {
                   title: "Red-Green Deficiencies (Protan, Deutan)",
                   description: <><p><strong>Protanopia</strong> - Known as red-blindness, individuals with protanopia have difficulty distinguishing red hues from other colors. The test evaluates how subjects perceive colors along the protan confusion line, measuring how their ability to distinguish between red and green is affected. Protanopes may confuse red with black or dark gray and struggle with shades involving red tones.</p> <p><strong>Deuteranopia</strong> - Individuals with deuteranopia have difficulty perceiving green tones. The test measures how well they can distinguish green from red. This deficiency makes everyday tasks such as recognizing traffic signals or choosing matching clothing colors more challenging.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><Image src={ishiharaRedGreen} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><Image src={cambridgeRedGreen} /></div>
                 },
                 {
                   title: "Blue-Yellow Deficiencies (Tritan)",
