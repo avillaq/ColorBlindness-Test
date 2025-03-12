@@ -307,14 +307,14 @@ export const IshiharaTest = () => {
           </div>
           <div className="description-ishihara-section">
             <h2>How the Ishihara Test Works?</h2>
-            <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-start">
-              <div className="w-ful lg:w-4/6">
+            <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start">
+              <div className="w-ful lg:w-7/12">
                 <p>The Ishihara Test is designed to detect red-green color blindness by showing a series of plates filled with colored dots. Each plate forms numbers or shapes using dots in contrasting colors, which are easily identifiable by those with normal vision but difficult for individuals with red-green color deficiencies.</p>
                 <p>For the most accurate results, the test should be taken in a well-lit setting with neutral lighting to prevent any color distortion. Adjusting digital screens to ensure proper color rendering is also crucial. The test is quick, non-invasive, and typically takes only a few minutes to complete, making it both convenient and accessible.</p>
                 <p>Users view each plate and attempt to identify the numbers or shapes hidden within the dots. Those with normal color vision will easily recognize the figures, while individuals with color blindness may either misidentify the figures or fail to see them altogether.</p>
                 <p>This simple process allows the test to distinguish between normal vision and red-green color blindness with a high degree of accuracy.</p>
               </div>
-              <div className="w-full lg:w-2/6">
+              <div className="w-full lg:w-5/12">
                 <StepperTest 
                   steps={[
                     { title: "Detection", description: "The Ishihara Test uses colored dot patterns to detect red-green color blindness based on the user's ability to recognize numbers or shapes." },
