@@ -154,8 +154,8 @@ export const CambridgeTest = () => {
     <div className="ishihara-test-container">
       <div className={`ishihara-test-hero ${showTest ? "gap-3" : "gap-12"}`}>
         <div className="content-text">
-          <h2>Ishihara Test</h2>
-          {!showTest && <p>Use the Ishihara Test to detect red-green color deficiencies. Quick and reliable assessment for your color vision health.</p>}
+          <h2>Cambridge Color Test</h2>
+          {!showTest && <p>Take the Cambridge Color Test online to assess your color vision precision. Understand how accurately you perceive subtle color differences.</p>}
         </div>
         <div className={`content-ishihara-test ${showTest ? "text-right" : "text-center"}`}>
           {
@@ -273,12 +273,12 @@ export const CambridgeTest = () => {
         !showTest &&
         <div className="description-ishihara-test">
           <div className="description-ishihara-section">
-            <h2>What is ISHIHARA TEST?</h2>
+            <h2>What is the Cambridge Color Test?</h2>
             <div className="flex flex-col items-center lg:flex-row gap-8">
               <div className="flex-1">
-                <p>The Ishihara Test is one of the most well-known and widely used methods for detecting color blindness, particularly red-green color vision deficiencies. It was developed in 1917 by Dr. Shinobu Ishihara, a Japanese ophthalmologist, and has since been used globally for over a century.</p>
-                <p>The test consists of a series of circular plates, known as Ishihara plates, each containing a pattern of colored dots. Within these patterns, numbers or shapes are embedded using colors that appear distinct to individuals with normal vision but may be difficult or impossible to distinguish for those with color blindness. The test is simple, non-invasive, and can be administered in just a few minutes.</p>
-                <p>By analyzing a person’s ability to recognize the numbers or shapes in the plates, the Ishihara Test can help determine whether they have a color vision deficiency and, in some cases, the severity of the condition. However, it does not provide a full diagnosis of all types of color blindness.</p>
+                <p>The Cambridge Color Test was developed at the University of Cambridge, led by researchers J.D. Mollon, J.P. Reffin, and B.C. Regan. Created to advance color vision testing, it has since become an essential tool in both clinical and research fields for diagnosing color blindness and investigating color discrimination abilities.</p>
+                <p>The test's main purpose is to screen for color vision deficiencies, both inherited (congenital) and acquired. It evaluates how well individuals can distinguish between different colors and monitors changes in their color discrimination abilities. This makes it useful not only for diagnosing color blindness but also for tracking changes over time, such as those caused by medications or health conditions.</p>
+                <p>In terms of scientific validity, the Cambridge Color Test has been widely adopted in both clinical and research settings. It is recognized for its accuracy in providing quantitative data on color vision deficiencies and has contributed to a large body of research, offering normative data for various age groups. The test is also used in studies exploring how different medical conditions or environmental factors affect color vision. Because of its reliability, it remains a trusted tool for professionals studying and diagnosing color vision issues.</p>
               </div>
               <Image
                 src={ishiharaTestOriginalPlate}
@@ -290,42 +290,42 @@ export const CambridgeTest = () => {
             </div>
           </div>
           <div className="description-ishihara-section">
-            <h2>Types of Deficiencies Detected</h2>
+            <h2 className="text-center">Types of Deficiencies Detected</h2>
             <DescriptionCarouselTest
               carouselItems={[
                 {
-                  title: "Red-Green Color Blindness",
-                  description: <><p>Red-green color blindness is the primary type detected by the Ishihara Test, consisting of two main variations: Deuteranopia/Deuteranomaly and Protanopia/Protanomaly. These deficiencies affect how individuals perceive red and green hues, causing confusion between them in everyday scenarios.</p> <p>People with red-green blindness struggle with tasks needing color differentiation, such as reading traffic signals or choosing matching clothing.</p></>,
+                  title: "Red-Green Deficiencies (Protan, Deutan)",
+                  description: <><p><strong>Protanopia</strong> - Known as red-blindness, individuals with protanopia have difficulty distinguishing red hues from other colors. The test evaluates how subjects perceive colors along the protan confusion line, measuring how their ability to distinguish between red and green is affected. Protanopes may confuse red with black or dark gray and struggle with shades involving red tones.</p> <p><strong>Deuteranopia</strong> - Individuals with deuteranopia have difficulty perceiving green tones. The test measures how well they can distinguish green from red. This deficiency makes everyday tasks such as recognizing traffic signals or choosing matching clothing colors more challenging.</p></>,
                   visual: <div className="rounded-lg overflow-hidden"><Image src={ishiharaRedGreen} /></div>
                 },
                 {
-                  title: "Deuteranopia",
-                  description: <><p>Deuteranopia occurs when the green-sensitive cones (M-cones) in the eye are absent or don't function correctly, altering how people perceive green light and shades around it.</p> <p>Those with deuteranopia often confuse colors like green, red, brown, and orange, particularly in dim lighting. This makes daily tasks more challenging, such as understanding color-coded signs, choosing matching clothes, or identifying objects by color.</p> <p>Deuteranomaly, a milder form, involves green cones functioning abnormally, causing less severe confusion but still affecting tasks where accurate color recognition is essential for daily life.</p></>,
+                  title: "Blue-Yellow Deficiencies (Tritan)",
+                  description: <><p><strong>Tritanopia</strong> - Known as blue-yellow blindness, tritanopia is a rare form of color blindness where individuals experience difficulty distinguishing between blue and yellow hues. This type of color vision deficiency is assessed by measuring sensitivity along the tritan confusion line, which evaluates the person’s ability to differentiate between these two shades.</p> <p>People with tritanopia often confuse blue with green or yellow with violet, which can complicate everyday tasks, like identifying the blue sky versus green foliage or distinguishing ripe yellow bananas from unripe green ones. The Cambridge Color Test helps determine the extent to which individuals with tritanopia face challenges in recognizing blue-yellow color differences.</p></>,
                   visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVisionDeutera} rightImage={ishiharaDeuteranopia} /></div>
                 },
                 {
-                  title: "Protanopia",
-                  description: <><p>Protanopia arises from the absence of red-sensitive cones (L-cones), leading to difficulty distinguishing reds from greens and other related shades. This condition affects color perception significantly.</p> <p>Individuals with Protanopia often perceive reds as much darker than those with normal color vision, which can cause confusion between red, black, and brown hues, especially in low light.</p><p>Protanomaly, a milder variant, leads to reduced red sensitivity, where reds may appear less vibrant, especially in dim lighting. This can impact tasks like reading road signs, choosing clothing, or interpreting charts.</p></>,
+                  title: "Severity Detection",
+                  description: <><p>The test checks how well a person can see small differences in colors, known as chromatic sensitivity. Based on this, it creates discrimination ellipses, which are visual shapes that show a person’s color vision abilities and how much their color vision differs from normal.</p> <p>Larger ellipses mean more severe color vision issues, showing that the person has trouble telling apart a wider range of colors. This can make daily tasks involving color, like sorting or recognizing items, more challenging. Smaller ellipses suggest a milder issue, where the person may only have difficulty with certain colors in specific settings, like matching similar shades, but can generally see most colors well.</p></>,
                   visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={ishiharaNormalVisionProta} rightImage={ishiharaProtanopia} /></div>
                 }
               ]}
             />
           </div>
           <div className="description-ishihara-section">
-            <h2>How the Ishihara Test Works?</h2>
+            <h2>How does the Cambridge Color Test Work?</h2>
             <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start">
               <div className="w-ful lg:w-7/12">
-                <p>The Ishihara Test is designed to detect red-green color blindness by showing a series of plates filled with colored dots. Each plate forms numbers or shapes using dots in contrasting colors, which are easily identifiable by those with normal vision but difficult for individuals with red-green color deficiencies.</p>
-                <p>For the most accurate results, the test should be taken in a well-lit setting with neutral lighting to prevent any color distortion. Adjusting digital screens to ensure proper color rendering is also crucial. The test is quick, non-invasive, and typically takes only a few minutes to complete, making it both convenient and accessible.</p>
-                <p>Users view each plate and attempt to identify the numbers or shapes hidden within the dots. Those with normal color vision will easily recognize the figures, while individuals with color blindness may either misidentify the figures or fail to see them altogether.</p>
-                <p>This simple process allows the test to distinguish between normal vision and red-green color blindness with a high degree of accuracy.</p>
+                <p>The Cambridge Color Test uses a Landolt C stimulus, which is a circle with a gap (C-shape) that appears on the screen. The subject identifies the direction of the gap as the test adjusts the colors along the protan (red-green), deutan (green-red), and tritan (blue-yellow) confusion lines.</p>
+                <p>This setup allows the test to precisely assess color discrimination. The test is designed to be easy for both patients and practitioners. Patients simply respond by pressing a button to indicate the direction of the gap, making it accessible for all ages.</p>
+                <p>For accuracy, the test uses high-resolution stimuli, with colors generated at a fine scale to ensure precise measurements of color vision.</p>
+                <p>By introducing controlled variations in color and brightness, the test ensures that results are not influenced by factors like brightness differences, focusing solely on color vision. This makes it a reliable tool for diagnosing even subtle color vision deficiencies.</p>
               </div>
               <div className="w-full lg:w-5/12">
                 <DescriptionStepperTest
                   steps={[
-                    { title: "Detection", description: "The Ishihara Test uses colored dot patterns to detect red-green color blindness based on the user's ability to recognize numbers or shapes." },
-                    { title: "Convenience", description: "This fast, non-invasive test can be completed in minutes, ensuring convenient testing in well-lit environments." },
-                    { title: "Accuracy", description: "The test reliably distinguishes between normal vision and red-green color blindness by analyzing the user's responses to the color plates." }
+                    { title: "Detection", description: "The Cambridge Color Test identifies color vision issues using a C-shaped figure (Landolt C) to test the user’s ability to spot the gap as colors change." },
+                    { title: "Simplicity", description: "Users only need to press a button to indicate the gap’s direction, making it simple and suitable for everyone." },
+                    { title: "Precision", description: "The test adjusts colors and controls brightness to measure color vision with high accuracy, detecting even minor deficiencies." }
                   ]}
                 />
               </div>
@@ -333,14 +333,14 @@ export const CambridgeTest = () => {
             </div>
           </div>
           <div className="description-ishihara-section">
-            <h2>Limitations of the Ishihara Test</h2>
+            <h2>Limitations of the Cambridge Color Test</h2>
             <div>
               <DescriptionGridTest
                 gridItems={[
-                  { title: "Detection Range", description: "The Ishihara Test detects only red-green color blindness and cannot identify types like blue-yellow (Tritanopia) or complete color blindness (Achromatopsia). Additional tests are needed for a full diagnosis." },
-                  { title: "Accuracy in Mild Cases", description: "Mild forms of color blindness, such as Protanomaly or Deuteranomaly, may not be accurately detected by the Ishihara Test. This can lead to misdiagnosis or an incomplete understanding of a person's color vision capabilities." },
-                  { title: "User Limitations", description: "The test requires recognizing numbers or patterns, which can be difficult for young children or individuals with learning challenges. Misunderstanding the instructions can result in inaccurate test outcomes." },
-                  { title: "Environmental Factors", description: "Test results can be affected by lighting conditions, print quality, or screen settings in digital versions. Variability in testing environments can lead to incorrect diagnoses, highlighting the need for standardized conditions." }
+                  { title: "Screen Calibration", description: "The accuracy of the Cambridge Color Test heavily relies on proper screen calibration. If the monitor is not calibrated correctly, it can lead to distorted color presentations, potentially affecting the test results. This highlights the importance of using well-calibrated equipment for accurate assessments." },
+                  { title: "Environmental Factors", description: "Test outcomes can be influenced by external factors such as ambient lighting and screen quality. Poor lighting conditions or variations in screen settings can result in inaccurate discrimination of colors, underscoring the necessity for a controlled testing environment to ensure reliable results." },
+                  { title: "User Limitations", description: "While the test is designed to be straightforward, it may still pose challenges for individuals with certain disabilities or cognitive difficulties. Users may struggle to focus on the colored stimuli or understand the test instructions, which can affect their performance and lead to misleading results." },
+                  { title: "Comprehensive Diagnosis", description: "Although the Cambridge Color Test effectively identifies various color deficiencies, it may not capture all aspects of color vision. For a complete evaluation, it may need to be supplemented with a color blindness test that assesses other types of color blindness or visual functions." }
                 ]}
               />
             </div>
@@ -351,7 +351,7 @@ export const CambridgeTest = () => {
                 <box-icon name="info-circle" color="#64748b"></box-icon>
               </div>
               <p className="disclaimer">
-                NOTE: The Ishihara Test is a screening tool, not a definitive diagnosis. If you suspect you have a color vision deficiency, it is recommended to consult an eye care professional for further evaluation and additional tests, such as the Anomaloscope or Farnsworth D-15 Test, which provide a more comprehensive analysis of color vision.
+                NOTE: The Cambridge Color Test is a highly advanced tool for evaluating color vision deficiencies, but it should not be used as a stand-alone diagnostic measure. If you suspect you have color blindness or acquired color vision loss, it is recommended to visit an eye care specialist for further testing and evaluation.
               </p>
             </div>
           </div>
