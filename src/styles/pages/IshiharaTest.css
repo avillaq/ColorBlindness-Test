@@ -1,27 +1,25 @@
-.item-test-plates, .item-test-controls {
-  flex: 1 1 50%; 
+.ishihara-test-plates, .ishihara-test-controls {
+  flex: 1 1 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.item-test-plates img {
+.ishihara-test-plates img {
   max-width: 250px;
 }
 
 @media (min-width: 400px) {
-  .item-test-plates img {
+  .ishihara-test-plates img {
     max-width: 300px;
   }
 }
 
 @media (min-width: 768px) {
-  .item-test-plates img {
+  .ishihara-test-plates img {
     max-width: 400px;
   }
-} 
-
-
+}
 
 /* Results */
 .cardbody-results {
