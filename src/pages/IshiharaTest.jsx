@@ -79,7 +79,7 @@ export const IshiharaTest = () => {
               <div className="results-summary">
                 <div className="results-score">
                   <div className="score-circle">
-                    <h3>{results.accuracy}</h3>
+                    <h3>{results.accuracy}%</h3>
                     <p>Accuracy</p>
                   </div>
                 </div>
