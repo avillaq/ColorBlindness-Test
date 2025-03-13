@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
 import { Image } from "@heroui/image";
@@ -7,7 +7,7 @@ import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
 import { Progress } from "@heroui/progress";
-import { evaluateCambridgeResults } from "../utils/cambridge-test";
+import { cambridgePlates, evaluateCambridgeResults } from "../utils/cambridge-test";
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
@@ -25,6 +25,50 @@ export const CambridgeTest = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const [results, setResults] = useState(null);
+  const [currentPlate, setCurrentPlate] = useState(0);
+  const [answers, setAnswers] = useState([]);
+  const [shuffledPlates, setShuffledPlates] = useState([]);
+
+  // Clasificación clínica de las placas
+  const plateCategories = {
+    protan: [2, 5, 9, 12],
+    deutan: [3, 6, 10, 13],
+    tritan: [4, 7, 11, 14],
+    control: [1, 8]
+  };
+
+  useEffect(() => {
+    // Mezclar placas manteniendo 1 control al inicio
+    const controls = cambridgePlates.filter(p => p.type === "control");
+    const tests = cambridgePlates.filter(p => p.type === "test")
+      .sort(() => Math.random() - 0.5);
+    setShuffledPlates([...controls, ...tests.slice(0, 10)]);
+  }, []);
+
+  const handleAnswer = (answer) => {
+    const newAnswers = [...answers, {
+      plateId: shuffledPlates[currentPlate].id,
+      answer,
+      correct: answer === shuffledPlates[currentPlate].normalAnswer
+    }];
+
+    setAnswers(newAnswers);
+
+    if (currentPlate < shuffledPlates.length - 1) {
+      setCurrentPlate(prev => prev + 1);
+    } else {
+      const diagnosis = evaluateCambridgeResults(newAnswers);
+      setResults({
+        accuracy: Math.round((newAnswers.filter(a => a.correct).length / newAnswers.length) * 100),
+        diagnosis: diagnosis.type,
+        details: {
+          protan: diagnosis.protanScore,
+          deutan: diagnosis.deutanScore,
+          tritan: diagnosis.tritanScore
+        }
+      });
+    }
+  };
 
   const resetTest = () => {
     setResults(null);
@@ -86,7 +130,7 @@ export const CambridgeTest = () => {
                   <CardBody>
                     <h4>Technical Details</h4>
                     <div className="technical-details">
-                    <div>
+                      <div>
                         <p>Protan Score:</p>
                         <p>{/** */}</p>
                       </div>
@@ -173,13 +217,30 @@ export const CambridgeTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
+                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={shuffledPlates.length}/>
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="cambridge-test-plates">
-                    { /* */}
+                      {shuffledPlates[currentPlate] && (
+                        <img
+                          src={shuffledPlates[currentPlate].imageUrl}
+                          alt={`Cambridge Plate ${shuffledPlates[currentPlate].id}`}
+                          className="plate-image"
+                        />
+                      )}
                     </div>
                     <div className="cambridge-test-controls">
-                    { /* */}
+                      <div className="response-grid">
+                        {['top', 'right', 'bottom', 'left'].map(dir => (
+                          <Button
+                            key={dir}
+                            onPress={() => handleAnswer(dir)}
+                            className="response-button"
+                          >
+                            {dir.toUpperCase()}
+                          </Button>
+                        ))}
+                      </div>
                     </div>
                   </CardBody>
                 </Card>
