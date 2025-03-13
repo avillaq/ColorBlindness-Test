@@ -1,5 +1,5 @@
 import { Home } from '../pages/Home';
-import { Tests } from '../pages/Tests';
+import { TestList } from '../pages/TestList';
 import { NotFound } from '../pages/NotFound';
 import { IshiharaTest } from '../pages/IshiharaTest';
 import { FarnsworthD15Test } from '../pages/FarnsworthD15Test';
@@ -15,7 +15,7 @@ export const routes = [
   },
   {
     path: '/tests',
-    element: Tests,
+    element: TestList,
   },
   {
     path: '/tests/ishihara-test',
