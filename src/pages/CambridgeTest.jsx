@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
-import { InputOtp } from "@heroui/input-otp";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
 import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
 import { Progress } from "@heroui/progress";
-import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test";
+import { evaluateCambridgeResults } from "../utils/cambridge-test";
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
@@ -25,32 +24,9 @@ export const CambridgeTest = () => {
   const [showTest, setShowTest] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const [currentPlate, setCurrentPlate] = useState(0);
-  const [answers, setAnswers] = useState([]);
   const [results, setResults] = useState(null);
-  const [valueInput, setValueInput] = useState("");
-
-  const handleAnswer = (answer) => {
-    const newAnswer = {
-      id: ishiharaPlates[currentPlate].id,
-      response: answer.trim().toLowerCase()
-    };
-
-    const updatedAnswers = [...answers, newAnswer];
-    setAnswers(updatedAnswers);
-    setValueInput("");
-
-    if (currentPlate < ishiharaPlates.length - 1) {
-      setCurrentPlate(currentPlate + 1);
-    } else {
-      const evaluation = evaluateIshiharaResults(updatedAnswers, ishiharaPlates);
-      setResults(evaluation);
-    }
-  };
 
   const resetTest = () => {
-    setCurrentPlate(0);
-    setAnswers([]);
     setResults(null);
   };
 
@@ -79,7 +55,7 @@ export const CambridgeTest = () => {
               <div className="results-summary">
                 <div className="results-score">
                   <div className="score-circle">
-                    <h3>{results.accuracy}</h3>
+                    <h3>{results.accuracy}%</h3>
                     <p>Accuracy</p>
                   </div>
                 </div>
@@ -94,14 +70,14 @@ export const CambridgeTest = () => {
                   <Card>
                     <CardBody>
                       <h4>Correct Answers</h4>
-                      <p className="text-success">{results.correct}/{ishiharaPlates.length}</p>
+                      <p className="text-success">{/** */}</p>
                     </CardBody>
                   </Card>
 
                   <Card>
                     <CardBody>
-                      <h4>Incorrect Answers</h4>
-                      <p className="text-danger">{results.incorrect}/{ishiharaPlates.length}</p>
+                      <h4>Total Trials</h4>
+                      <p>{/** */}</p>
                     </CardBody>
                   </Card>
                 </div>
@@ -110,17 +86,17 @@ export const CambridgeTest = () => {
                   <CardBody>
                     <h4>Technical Details</h4>
                     <div className="technical-details">
-                      <div>
-                        <p>Basic Plates Correct (1-11):</p>
-                        <p>{results.details.basicCorrect}/11</p>
+                    <div>
+                        <p>Protan Score:</p>
+                        <p>{/** */}</p>
                       </div>
                       <div>
-                        <p>Protan Indicators:</p>
-                        <p>{results.details.protanMatches}/3</p>
+                        <p>Deutan Score:</p>
+                        <p>{/** */}</p>
                       </div>
                       <div>
-                        <p>Deutan Indicators:</p>
-                        <p>{results.details.deutanMatches}/3</p>
+                        <p>Tritan Score:</p>
+                        <p>{/** */}</p>
                       </div>
                     </div>
                   </CardBody>
@@ -197,71 +173,13 @@ export const CambridgeTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Progress aria-label="Loading..." size="sm" className="mb-4" value={((currentPlate + 1) / ishiharaPlates.length) * 100} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
-                    <div className="ishihara-test-plates">
-                      <Image
-                        alt={`Ishihara Test Plate ${currentPlate + 1}`}
-                        src={ishiharaPlates[currentPlate].imageUrl}
-                        radius="full"
-                      />
+                    <div className="cambridge-test-plates">
+                    { /* */}
                     </div>
-                    <div className="ishihara-test-controls">
-                      <Card>
-                        <CardBody>
-                          {
-                            (ishiharaPlates[currentPlate].id !== 11 && ishiharaPlates[currentPlate].id !== 14)
-                              ?
-                              <>
-                                <div className="flex justify-between gap-5 items-center">
-                                  <div className="flex gap-2 items-center">
-
-                                    <p>Enter number:</p>
-                                    <InputOtp length={2} isReadOnly value={valueInput} />
-                                  </div>
-
-                                  <Button isIconOnly color="danger" onPress={() => setValueInput("")}>
-                                    <box-icon name="x" color="white"></box-icon>
-                                  </Button>
-                                </div>
-
-                                <div className="grid grid-cols-3 gap-2 mt-4">
-                                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
-                                    <Button key={num} onPress={() => { if (valueInput.length < 2) setValueInput(`${valueInput}${num}`); }}>{num}</Button>
-                                  ))}
-                                  <Button color="warning" onPress={() => handleAnswer("unsure")}>Unsure</Button>
-                                  <Button color="primary" isDisabled={!valueInput} onPress={() => handleAnswer(valueInput)}>Next</Button>
-                                </div>
-                              </>
-                              :
-                              <>
-                                <p className="text-center">What did you see?</p>
-                                <div className="grid grid-cols-1 gap-2 mt-4 w-[250px]">
-                                  {
-                                    (ishiharaPlates[currentPlate].id === 11)
-                                      ?
-                                      <>
-                                        <Button color="primary" onPress={() => handleAnswer("green")}>Green Line</Button>
-                                        <Button color="primary" onPress={() => handleAnswer("gray")}>Gray Line</Button>
-                                        <Button color="primary" onPress={() => handleAnswer("blue & green")}>Blue & Green Line</Button>
-                                        <Button color="primary" onPress={() => handleAnswer("blue")}>Blue Line</Button>
-                                        <Button color="warning" onPress={() => handleAnswer("unsure")}>Unsure</Button>
-                                      </>
-                                      :
-                                      <>
-                                        <Button color="primary" onPress={() => handleAnswer("purple & red")}>Purple & Red Line</Button>
-                                        <Button color="primary" onPress={() => handleAnswer("red")}>Red Line</Button>
-                                        <Button color="primary" onPress={() => handleAnswer("purple")}>Purple Line</Button>
-                                        <Button color="primary" onPress={() => handleAnswer("red & gray")}>Red & Gray Line</Button>
-                                        <Button color="warning" onPress={() => handleAnswer("unsure")}>Unsure</Button>
-                                      </>
-                                  }
-                                </div>
-                              </>
-                          }
-                        </CardBody>
-                      </Card>
+                    <div className="cambridge-test-controls">
+                    { /* */}
                     </div>
                   </CardBody>
                 </Card>
