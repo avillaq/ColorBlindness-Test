@@ -1,4 +1,4 @@
-.tests-container {
+.test-list-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,24 +7,24 @@
   background-color: rgba(245, 247, 250, 0.8);
 } 
 
-.tests-container p {
+.test-list-container p {
   max-width: 100%;
   font-size: 16px;
 }
 
-.tests-container h3 {
+.test-list-container h3 {
   font-size: 18px;
   color: #64748b;
   font-weight: 600;
 }
 
 @media (min-width: 1024px) {
-  .tests-container {
+  .test-list-container {
     padding: 96px 32px;
   }
 }
 @media (min-width: 1280px) {
-  .tests-container {
+  .test-list-container {
     padding: 112px 32px;
   }
 }

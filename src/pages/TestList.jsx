@@ -1,7 +1,7 @@
 import { Card, CardHeader } from "@heroui/card";
 import { Image } from "@heroui/image";
 import { useNavigate } from 'react-router-dom';
-import "../styles/pages/Tests.css"
+import "../styles/pages/TestList.css"
 import anomaloscopeImage from "../assets/anomaloscope-test.webp"
 import cambridgeImage from "../assets/cambridge-test.webp"
 import farnsworthD15Image from "../assets/farnsworth-d15-test.webp"
@@ -9,10 +9,10 @@ import farnsworthLanternImage from "../assets/farnsworth-lantern-test.webp"
 import ishiharaImage from "../assets/ishihara-test.webp"
 import kidsImage from "../assets/kids-test.webp"
 
-export const Tests = () => {
+export const TestList = () => {
   const navigate = useNavigate();
   return (
-    <div className="tests-container">
+    <div className="test-list-container">
       <div className="content-text">
         <p>We use below tests to check color vision deficiency.</p>
       </div>
