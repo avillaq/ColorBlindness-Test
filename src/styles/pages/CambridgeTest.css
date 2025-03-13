@@ -1,22 +1,22 @@
-.ishihara-test-plates, .ishihara-test-controls {
+.cambridge-test-plates, .cambridge-test-controls {
   flex: 1 1 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.ishihara-test-plates img {
+.cambridge-test-plates img {
   max-width: 250px;
 }
 
 @media (min-width: 400px) {
-  .ishihara-test-plates img {
+  .cambridge-test-plates img {
     max-width: 300px;
   }
 }
 
 @media (min-width: 768px) {
-  .ishihara-test-plates img {
+  .cambridge-test-plates img {
     max-width: 400px;
   }
 }
