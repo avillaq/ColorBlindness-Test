@@ -15,12 +15,42 @@ export const cambridgePlates = [
   { id: 14, imageUrl: "/src/assets/cambridge/cambridge-plates/plate14.webp", normalAnswer: "left", type: "test" },
 ];
 
-export const evaluateCambridgeResults = (results) => {
-  const diagnosis = {
-    type: "normal",
-    severity: "normal vision",
-    ellipseRatio: null
+export const evaluateCambridgeResults = (answers) => {
+  const getScore = (ids) => {
+    const relevant = answers.filter(a => ids.includes(a.plateId));
+    return relevant.filter(a => a.correct).length / relevant.length;
   };
+
+  const scores = {
+    protan: getScore([2, 5, 9, 12]),
+    deutan: getScore([3, 6, 10, 13]),
+    tritan: getScore([4, 7, 11, 14]),
+    control: getScore([1, 8])
+  };
+
+  const diagnosis = {
+    type: 'Normal Color Vision',
+    protanScore: Math.round(scores.protan * 100),
+    deutanScore: Math.round(scores.deutan * 100),
+    tritanScore: Math.round(scores.tritan * 100)
+  };
+
+  if (scores.control < 0.8) return { ...diagnosis, type: 'Invalid Test (Control Failed)' };
+
+  const thresholds = {
+    protan: 0.4,
+    deutan: 0.4,
+    tritan: 0.3
+  };
+
+  if (scores.protan <= thresholds.protan && scores.deutan <= thresholds.deutan) {
+    diagnosis.type = scores.protan < scores.deutan ?
+      'Protan Defect' : 'Deutan Defect';
+  }
+
+  if (scores.tritan <= thresholds.tritan) {
+    diagnosis.type = 'Tritan Defect';
+  }
 
   return diagnosis;
 };
