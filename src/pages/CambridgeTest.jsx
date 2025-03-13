@@ -12,13 +12,14 @@ import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test"
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
-import "../styles/pages/IshiharaTest.css";
 import cambridgeTestOriginal from "../assets/cambridge/cambridge-original.webp";
 import cambridgeRedGreen from "../assets/cambridge/cambridge-red-green-blindness.webp";
 import cambridgeNormalVisionDeutera from "../assets/cambridge/cambridge-normal-deutera.webp";
 import cambridgeNormalVisionTrita from "../assets/cambridge/cambridge-normal-trita.webp";
 import cambridgeDeuteranomaly from "../assets/cambridge/cambridge-deuteranomaly.webp";
 import cambridgeTritanopia from "../assets/cambridge/cambridge-tritanopia.webp";
+import "../styles/pages/TestItem.css";
+import "../styles/pages/CambridgeTest.css";
 
 export const CambridgeTest = () => {
   const [showTest, setShowTest] = useState(false);
@@ -58,7 +59,7 @@ export const CambridgeTest = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `ishihara-test-results-${new Date().toISOString().split('T')[0]}.pdf`;
+    link.download = `cambridge-test-results-${new Date().toISOString().split('T')[0]}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -67,7 +68,7 @@ export const CambridgeTest = () => {
 
   if (results) {
     return (
-      <div className="ishihara-test-hero">
+      <div className="item-test-hero">
         <div className="content-text">
           <h2>Test Results</h2>
           <p>Your color vision assessment results are ready.</p>
@@ -151,13 +152,13 @@ export const CambridgeTest = () => {
   }
 
   return (
-    <div className="ishihara-test-container">
-      <div className={`ishihara-test-hero ${showTest ? "gap-3" : "gap-12"}`}>
+    <div className="item-test-container">
+      <div className={`item-test-hero ${showTest ? "gap-3" : "gap-12"}`}>
         <div className="content-text">
           <h2>Cambridge Color Test</h2>
           {!showTest && <p>Take the Cambridge Color Test online to assess your color vision precision. Understand how accurately you perceive subtle color differences.</p>}
         </div>
-        <div className={`content-ishihara-test ${showTest ? "text-right" : "text-center"}`}>
+        <div className={`content-item-test ${showTest ? "text-right" : "text-center"}`}>
           {
             !showTest ?
               <>
@@ -271,8 +272,8 @@ export const CambridgeTest = () => {
       </div>
       {
         !showTest &&
-        <div className="description-ishihara-test">
-          <div className="description-ishihara-section">
+        <div className="description-item-test">
+          <div className="description-item-section">
             <h2>What is the Cambridge Color Test?</h2>
             <div className="flex flex-col items-center lg:flex-row gap-8">
               <div className="flex-1">
@@ -282,13 +283,13 @@ export const CambridgeTest = () => {
               </div>
               <Image
                 src={cambridgeTestOriginal}
-                alt="Ishihara test original plate"
+                alt="Cambridge test plate"
                 width={430}
                 className="flex-1"
               />
             </div>
           </div>
-          <div className="description-ishihara-section">
+          <div className="description-item-section">
             <h2 className="text-center">Types of Deficiencies Detected</h2>
             <DescriptionCarouselTest
               carouselItems={[
@@ -310,7 +311,7 @@ export const CambridgeTest = () => {
               ]}
             />
           </div>
-          <div className="description-ishihara-section">
+          <div className="description-item-section">
             <h2>How does the Cambridge Color Test Work?</h2>
             <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start">
               <div className="w-ful lg:w-7/12">
@@ -331,7 +332,7 @@ export const CambridgeTest = () => {
 
             </div>
           </div>
-          <div className="description-ishihara-section">
+          <div className="description-item-section">
             <h2>Limitations of the Cambridge Color Test</h2>
             <div>
               <DescriptionGridTest
@@ -344,7 +345,7 @@ export const CambridgeTest = () => {
               />
             </div>
           </div>
-          <div className="description-ishihara-section">
+          <div className="description-item-section">
             <div className="disclaimer-container">
               <div className="min-w-6">
                 <box-icon name="info-circle" color="#64748b"></box-icon>
