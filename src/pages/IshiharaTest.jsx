@@ -12,13 +12,14 @@ import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test"
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
-import "../styles/pages/IshiharaTest.css";
 import ishiharaTestOriginalPlate from "../assets/ishihara/ishihara-test-original.webp";
 import ishiharaRedGreen from "../assets/ishihara/ishihara-red-green-blindness.webp";
 import ishiharaNormalVisionProta from "../assets/ishihara/ishihara-normal-prota.webp";
 import ishiharaNormalVisionDeutera from "../assets/ishihara/ishihara-normal-deutera.webp";
 import ishiharaProtanopia from "../assets/ishihara/ishihara-protanopia.webp";
 import ishiharaDeuteranopia from "../assets/ishihara/ishihara-deuteranopia.webp";
+import "../styles/pages/TestItem.css";
+import "../styles/pages/IshiharaTest.css";
 
 export const IshiharaTest = () => {
   const [showTest, setShowTest] = useState(false);
@@ -67,7 +68,7 @@ export const IshiharaTest = () => {
 
   if (results) {
     return (
-      <div className="ishihara-test-hero">
+      <div className="item-test-hero">
         <div className="content-text">
           <h2>Test Results</h2>
           <p>Your color vision assessment results are ready.</p>
@@ -151,13 +152,13 @@ export const IshiharaTest = () => {
   }
 
   return (
-    <div className="ishihara-test-container">
-      <div className={`ishihara-test-hero ${showTest ? "gap-3" : "gap-12"}`}>
+    <div className="item-test-container">
+      <div className={`item-test-hero ${showTest ? "gap-3" : "gap-12"}`}>
         <div className="content-text">
           <h2>Ishihara Test</h2>
           {!showTest && <p>Use the Ishihara Test to detect red-green color deficiencies. Quick and reliable assessment for your color vision health.</p>}
         </div>
-        <div className={`content-ishihara-test ${showTest ? "text-right" : "text-center"}`}>
+        <div className={`content-item-test ${showTest ? "text-right" : "text-center"}`}>
           {
             !showTest ?
               <>
@@ -199,14 +200,14 @@ export const IshiharaTest = () => {
                 <Progress aria-label="Loading..." size="sm" className="mb-4" value={((currentPlate + 1) / ishiharaPlates.length) * 100} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
-                    <div className="ishihara-test-plates">
+                    <div className="item-test-plates">
                       <Image
                         alt={`Ishihara Test Plate ${currentPlate + 1}`}
                         src={ishiharaPlates[currentPlate].imageUrl}
                         radius="full"
                       />
                     </div>
-                    <div className="ishihara-test-controls">
+                    <div className="item-test-controls">
                       <Card>
                         <CardBody>
                           {
@@ -271,8 +272,8 @@ export const IshiharaTest = () => {
       </div>
       {
         !showTest &&
-        <div className="description-ishihara-test">
-          <div className="description-ishihara-section">
+        <div className="description-item-test">
+          <div className="description-item-section">
             <h2>What is ISHIHARA TEST?</h2>
             <div className="flex flex-col items-center lg:flex-row gap-8">
               <div className="flex-1">
@@ -289,7 +290,7 @@ export const IshiharaTest = () => {
               />
             </div>
           </div>
-          <div className="description-ishihara-section">
+          <div className="description-item-section">
             <h2 className="text-center">Types of Deficiencies Detected</h2>
             <DescriptionCarouselTest
               carouselItems={[
@@ -311,7 +312,7 @@ export const IshiharaTest = () => {
               ]}
             />
           </div>
-          <div className="description-ishihara-section">
+          <div className="description-item-section">
             <h2>How the Ishihara Test Works?</h2>
             <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start">
               <div className="w-ful lg:w-7/12">
@@ -332,7 +333,7 @@ export const IshiharaTest = () => {
 
             </div>
           </div>
-          <div className="description-ishihara-section">
+          <div className="description-item-section">
             <h2>Limitations of the Ishihara Test</h2>
             <div>
               <DescriptionGridTest
@@ -345,7 +346,7 @@ export const IshiharaTest = () => {
               />
             </div>
           </div>
-          <div className="description-ishihara-section">
+          <div className="description-item-section">
             <div className="disclaimer-container">
               <div className="min-w-6">
                 <box-icon name="info-circle" color="#64748b"></box-icon>
