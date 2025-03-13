@@ -200,14 +200,14 @@ export const IshiharaTest = () => {
                 <Progress aria-label="Loading..." size="sm" className="mb-4" value={((currentPlate + 1) / ishiharaPlates.length) * 100} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
-                    <div className="item-test-plates">
+                    <div className="ishihara-test-plates">
                       <Image
                         alt={`Ishihara Test Plate ${currentPlate + 1}`}
                         src={ishiharaPlates[currentPlate].imageUrl}
                         radius="full"
                       />
                     </div>
-                    <div className="item-test-controls">
+                    <div className="ishihara-test-controls">
                       <Card>
                         <CardBody>
                           {
