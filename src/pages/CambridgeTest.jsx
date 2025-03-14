@@ -221,13 +221,11 @@ export const CambridgeTest = () => {
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="cambridge-test-plates">
-                      {shuffledPlates[currentPlate] && (
-                        <img
-                          src={shuffledPlates[currentPlate].imageUrl}
-                          alt={`Cambridge Plate ${shuffledPlates[currentPlate].id}`}
-                          className="plate-image"
-                        />
-                      )}
+                      <Image
+                        alt={`Cambridge Plate ${currentPlate + 1}`}
+                        src={shuffledPlates[currentPlate].imageUrl}
+                        radius="full"
+                      />
                     </div>
                     <div className="cambridge-test-controls">
                       <Card classNames={{ body: "px-0 sm:p-4" }}>
