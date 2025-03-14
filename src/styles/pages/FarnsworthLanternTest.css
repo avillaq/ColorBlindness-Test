@@ -1,0 +1,22 @@
+.FarnsworthLanter-test-plates, .FarnsworthLanter-test-controls {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FarnsworthLanter-test-plates img {
+  max-width: 250px;
+}
+
+@media (min-width: 400px) {
+  .FarnsworthLanter-test-plates img {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .FarnsworthLanter-test-plates img {
+    max-width: 400px;
+  }
+}
