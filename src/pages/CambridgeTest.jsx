@@ -30,7 +30,7 @@ export const CambridgeTest = () => {
 
   const handleAnswer = (answer) => {
     const newAnswer = {
-      id: ishiharaPlates[currentPlate].id,
+      id: cambridgePlates[currentPlate].id,
       response: answer.trim().toLowerCase()
     };
 
@@ -76,7 +76,7 @@ export const CambridgeTest = () => {
               <div className="results-summary">
                 <div className="results-score">
                   <div className="score-circle">
-                    <h3>{results.accuracy}%</h3>
+                    <h3>{results.accuracy}</h3>
                     <p>Accuracy</p>
                   </div>
                 </div>
@@ -91,37 +91,17 @@ export const CambridgeTest = () => {
                   <Card>
                     <CardBody>
                       <h4>Correct Answers</h4>
-                      <p className="text-success">{/** */}</p>
+                      <p className="text-success">{results.correct}/{cambridgePlates.length}</p>
                     </CardBody>
                   </Card>
 
                   <Card>
                     <CardBody>
-                      <h4>Total Trials</h4>
-                      <p>{/** */}</p>
+                      <h4>Incorrect Answers</h4>
+                      <p className="text-danger">{results.incorrect}/{cambridgePlates.length}</p>
                     </CardBody>
                   </Card>
                 </div>
-
-                <Card className="mt-4">
-                  <CardBody>
-                    <h4>Technical Details</h4>
-                    <div className="technical-details">
-                      <div>
-                        <p>Protan Score:</p>
-                        <p>{/** */}</p>
-                      </div>
-                      <div>
-                        <p>Deutan Score:</p>
-                        <p>{/** */}</p>
-                      </div>
-                      <div>
-                        <p>Tritan Score:</p>
-                        <p>{/** */}</p>
-                      </div>
-                    </div>
-                  </CardBody>
-                </Card>
               </div>
               <div className="disclaimer-container">
                 <div className="min-w-6">
