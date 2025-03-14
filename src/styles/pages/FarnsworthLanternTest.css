@@ -20,6 +20,10 @@
   animation: falant-fade 2s forwards;
 }
 
+.falant-light.permanent {
+  animation: falant-fade-permanent 2s forwards;
+}
+
 @keyframes falant-fade {
   0% {
     opacity: 0;
@@ -39,6 +43,18 @@
   100% {
     opacity: 0;
     transform: scale(0.9);
+  }
+}
+
+@keyframes falant-fade-permanent {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

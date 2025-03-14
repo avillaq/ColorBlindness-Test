@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
 import { RadioGroup, Radio } from "@heroui/radio";
@@ -32,6 +32,8 @@ export const FarnsworthLanternTest = () => {
   const [currentTrial, setCurrentTrial] = useState(0);
   const [showLights, setShowLights] = useState(true);
   const [answers, setAnswers] = useState([]);
+  const [isPermanentLight, setIsPermanentLight] = useState(true);
+  const timerRef = useRef(null);
 
   const farnsworthLanternPlates = [...FALANT_CONFIG.combinations]
 
@@ -39,6 +41,10 @@ export const FarnsworthLanternTest = () => {
     const expected = farnsworthLanternPlates[currentTrial].colors;
     const selectedColors = [colorUp, colorDown];
     const isCorrect = selectedColors.join() === expected.join();
+
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
 
     setAnswers([...answers, {
       trial: currentTrial + 1,
@@ -53,6 +59,7 @@ export const FarnsworthLanternTest = () => {
     if (currentTrial < farnsworthLanternPlates.length - 1) {
       setCurrentTrial(prev => prev + 1);
       setShowLights(true);
+      setIsPermanentLight(false);
     } else {
       const diagnosis = evaluateFarnsworthLanterResults(answers, farnsworthLanternPlates);
       setResults(diagnosis);
@@ -60,15 +67,27 @@ export const FarnsworthLanternTest = () => {
   };
 
   useEffect(() => {
-    if (showLights) {
-      const timer = setTimeout(() => setShowLights(false), (FALANT_CONFIG.exposureTime + 2000));
-      return () => clearTimeout(timer);
+    if (showLights && !isPermanentLight) {
+      timerRef.current = setTimeout(() => {
+        setShowLights(false);
+      }, FALANT_CONFIG.exposureTime);
+
+      return () => {
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+        }
+      };
     }
-  }, [showLights]);
+  }, [showLights, isPermanentLight]);
 
   const resetTest = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+
     setCurrentTrial(0);
     setShowLights(true);
+    setIsPermanentLight(true);
     setAnswers([]);
     setColorUp("");
     setColorDown("");
@@ -206,7 +225,7 @@ export const FarnsworthLanternTest = () => {
                         {showLights && farnsworthLanternPlates[currentTrial].colors.map((color, i) => (
                           <div
                             key={i}
-                            className={`falant-light ${color}`}
+                            className={`falant-light ${isPermanentLight ? 'permanent' : ''} ${color}`}
                           />
                         ))}
                       </div>
