@@ -79,7 +79,7 @@ export const IshiharaTest = () => {
               <div className="results-summary">
                 <div className="results-score">
                   <div className="score-circle">
-                    <h3>{results.accuracy}%</h3>
+                    <h3>{results.accuracy}</h3>
                     <p>Accuracy</p>
                   </div>
                 </div>
@@ -197,7 +197,7 @@ export const IshiharaTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Progress aria-label="Loading..." size="sm" className="mb-4" value={((currentPlate + 1) / ishiharaPlates.length) * 100} />
+                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={ishiharaPlates.length} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="ishihara-test-plates">
