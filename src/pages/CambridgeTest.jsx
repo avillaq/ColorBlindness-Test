@@ -27,7 +27,6 @@ export const CambridgeTest = () => {
   const [results, setResults] = useState(null);
   const [currentPlate, setCurrentPlate] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [shuffledPlates, setShuffledPlates] = useState([]);
 
   // Clasificación clínica de las placas
   const plateCategories = {
@@ -37,24 +36,16 @@ export const CambridgeTest = () => {
     control: [1, 8]
   };
 
-  useEffect(() => {
-    // Mezclar placas manteniendo 1 control al inicio
-    const controls = cambridgePlates.filter(p => p.type === "control");
-    const tests = cambridgePlates.filter(p => p.type === "test")
-      .sort(() => Math.random() - 0.5);
-    setShuffledPlates([...controls, ...tests.slice(0, 10)]);
-  }, []);
-
   const handleAnswer = (answer) => {
     const newAnswers = [...answers, {
-      plateId: shuffledPlates[currentPlate].id,
+      plateId: cambridgePlates[currentPlate].id,
       answer,
-      correct: answer === shuffledPlates[currentPlate].normalAnswer
+      correct: answer === cambridgePlates[currentPlate].normalAnswer
     }];
 
     setAnswers(newAnswers);
 
-    if (currentPlate < shuffledPlates.length - 1) {
+    if (currentPlate < cambridgePlates.length - 1) {
       setCurrentPlate(prev => prev + 1);
     } else {
       const diagnosis = evaluateCambridgeResults(newAnswers);
@@ -217,13 +208,13 @@ export const CambridgeTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={shuffledPlates.length} />
+                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={cambridgePlates.length} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="cambridge-test-plates">
                       <Image
                         alt={`Cambridge Plate ${currentPlate + 1}`}
-                        src={shuffledPlates[currentPlate].imageUrl}
+                        src={cambridgePlates[currentPlate].imageUrl}
                         radius="full"
                       />
                     </div>
