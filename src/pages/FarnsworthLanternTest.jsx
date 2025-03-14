@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
+import { RadioGroup, Radio } from "@heroui/radio";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
+import { Divider } from "@heroui/divider";
 import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
 import { Progress } from "@heroui/progress";
-import { cambridgePlates, evaluateCambridgeResults } from "../utils/cambridge-test";
+import { FALANT_CONFIG, evaluateFarnsworthLanterResults } from "../utils/farnsworthLanter-test";
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
@@ -24,30 +26,53 @@ export const FarnsworthLanternTest = () => {
   const [showTest, setShowTest] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
+  const [colorUp, setColorUp] = useState("");
+  const [colorDown, setColorDown] = useState("");
   const [results, setResults] = useState(null);
-  const [currentPlate, setCurrentPlate] = useState(0);
+  const [currentTrial, setCurrentTrial] = useState(0);
+  const [showLights, setShowLights] = useState(true);
   const [answers, setAnswers] = useState([]);
 
-  const handleAnswer = (answer) => {
-    const newAnswer = {
-      id: cambridgePlates[currentPlate].id,
-      response: answer.trim().toLowerCase()
-    };
+  const shuffledCombinations = [...FALANT_CONFIG.combinations]
+    .sort(() => Math.random() - 0.5);
 
-    const updatedAnswers = [...answers, newAnswer];
-    setAnswers(updatedAnswers);
+  const evaluateTrial = () => {
+    const expected = shuffledCombinations[currentTrial].colors;
+    const selectedColors = [colorUp, colorDown];
+    const isCorrect = selectedColors.join() === expected.join();
 
-    if (currentPlate < cambridgePlates.length - 1) {
-      setCurrentPlate(currentPlate + 1);
+    setAnswers([...answers, {
+      trial: currentTrial + 1,
+      correct: isCorrect,
+      expected,
+      response: [...selectedColors]
+    }]);
+
+    setColorUp("");
+    setColorDown("");
+
+    if (currentTrial < shuffledCombinations.length - 1) {
+      setCurrentTrial(prev => prev + 1);
+      setShowLights(true);
     } else {
-      const evaluation = evaluateCambridgeResults(updatedAnswers, cambridgePlates);
-      setResults(evaluation);
+      const diagnosis = evaluateFarnsworthLanterResults(answers, shuffledCombinations);
+      setResults(diagnosis);
     }
   };
 
+  useEffect(() => {
+    if (showLights) {
+      const timer = setTimeout(() => setShowLights(false), FALANT_CONFIG.exposureTime);
+      return () => clearTimeout(timer);
+    }
+  }, [showLights]);
+
   const resetTest = () => {
-    setCurrentPlate(0);
+    setCurrentTrial(0);
+    setShowLights(true);
     setAnswers([]);
+    setColorUp("");
+    setColorDown("");
     setResults(null);
   };
 
@@ -174,25 +199,54 @@ export const FarnsworthLanternTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={cambridgePlates.length} />
+                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentTrial + 1} maxValue={shuffledCombinations.length} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="FarnsworthLanter-test-plates">
-                      <Image
-                        alt={`Cambridge Plate ${currentPlate + 1}`}
-                        src={cambridgePlates[currentPlate].imageUrl}
-                        radius="full"
-                      />
+                      <div className="flex flex-col items-center justify-center gap-20 bg-black rounded-lg h-full w-full">
+                        {showLights && shuffledCombinations[currentTrial].colors.map((color, i) => (
+                          <div
+                            key={i}
+                            className={`falant-light ${color}`}
+                          />
+                        ))}
+                      </div>
                     </div>
                     <div className="FarnsworthLanter-test-controls">
                       <Card classNames={{ body: "px-0 sm:p-4" }}>
                         <CardBody>
-                          <p className="text-center">Where is the missing piece of the ring?</p>
-                          <div className="grid grid-cols-3 grid-rows-3 mt-4 gap-0 sm:gap-3">
-                            <Button color="primary" size="lg" className="col-start-2" onPress={() => handleAnswer("top")}>Top</Button>
-                            <Button color="primary" size="lg" className="col-start-3 row-start-2" onPress={() => handleAnswer("right")}>Right</Button>
-                            <Button color="primary" size="lg" className="col-start-2 row-start-3" onPress={() => handleAnswer("bottom")}>Bottom</Button>
-                            <Button color="primary" size="lg" className="col-start-1 row-start-2" onPress={() => handleAnswer("left")}>Left</Button>
+                          <div className="flex flex-col items-center gap-4 w-[285px] sm:w-[400px]">
+                            <Card className="w-[260px] sm:w-full">
+                              <CardBody>
+                                <div className="flex flex-col items-center gap-3">
+                                  <p className="text-center"><strong>UP</strong></p>
+                                  <Divider />
+                                  <div className="w-full">
+                                    <RadioGroup classNames={{ wrapper: "justify-around" }} color="default" orientation="horizontal" value={colorUp} onValueChange={setColorUp}>
+                                      <Radio size="sm" value="red">Red</Radio>
+                                      <Radio size="sm" value="green">Green</Radio>
+                                      <Radio size="sm" value="white">White</Radio>
+                                    </RadioGroup>
+                                  </div>
+                                </div>
+                              </CardBody>
+                            </Card>
+                            <Card className="w-[260px] sm:w-full">
+                              <CardBody>
+                                <div className="flex flex-col items-center gap-3">
+                                  <p className="text-center"><strong>Down</strong></p>
+                                  <Divider />
+                                  <div className="w-full">
+                                    <RadioGroup classNames={{ wrapper: "justify-around" }} color="default" orientation="horizontal" value={colorDown} onValueChange={setColorDown}>
+                                      <Radio size="sm" value="red">Red</Radio>
+                                      <Radio size="sm" value="green">Green</Radio>
+                                      <Radio size="sm" value="white">White</Radio>
+                                    </RadioGroup>
+                                  </div>
+                                </div>
+                              </CardBody>
+                            </Card>
+                            <Button color="primary" isDisabled={!colorUp || !colorDown} onPress={() => evaluateTrial()}>Submit</Button>
                           </div>
                         </CardBody>
                       </Card>
@@ -217,7 +271,7 @@ export const FarnsworthLanternTest = () => {
               </div>
               <Image
                 src={cambridgeTestOriginal}
-                alt="Cambridge test plate"
+                alt="cambridge test plate"
                 width={430}
                 className="flex-1"
               />
