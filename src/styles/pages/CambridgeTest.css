@@ -79,16 +79,3 @@
   color: #ef4444;
   font-weight: 600;
 }
-
-/* Technical Details */
-.technical-details {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.technical-details div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
