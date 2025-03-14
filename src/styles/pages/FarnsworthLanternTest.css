@@ -17,6 +17,9 @@
   height: 20px;
   border-radius: 100%;
   opacity: 0;
+}
+
+.falant-light.fade {
   animation: falant-fade 2s forwards;
 }
 

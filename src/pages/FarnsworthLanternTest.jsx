@@ -31,8 +31,9 @@ export const FarnsworthLanternTest = () => {
   const [results, setResults] = useState(null);
   const [currentTrial, setCurrentTrial] = useState(0);
   const [showLights, setShowLights] = useState(true);
+  const [isFirstTrial, setIsFirstTrial] = useState(true);
   const [answers, setAnswers] = useState([]);
-  const [isPermanentLight, setIsPermanentLight] = useState(true);
+  
   const timerRef = useRef(null);
 
   const farnsworthLanternPlates = [...FALANT_CONFIG.combinations]
@@ -57,9 +58,9 @@ export const FarnsworthLanternTest = () => {
     setColorDown("");
 
     if (currentTrial < farnsworthLanternPlates.length - 1) {
-      setCurrentTrial(prev => prev + 1);
+      setCurrentTrial(currentTrial + 1);
+      setIsFirstTrial(false);
       setShowLights(true);
-      setIsPermanentLight(false);
     } else {
       const diagnosis = evaluateFarnsworthLanterResults(answers, farnsworthLanternPlates);
       setResults(diagnosis);
@@ -67,10 +68,8 @@ export const FarnsworthLanternTest = () => {
   };
 
   useEffect(() => {
-    if (showLights && !isPermanentLight) {
-      timerRef.current = setTimeout(() => {
-        setShowLights(false);
-      }, FALANT_CONFIG.exposureTime);
+    if (showLights && !isFirstTrial) {
+      timerRef.current = setTimeout(() => setShowLights(false), FALANT_CONFIG.exposureTime);
 
       return () => {
         if (timerRef.current) {
@@ -78,7 +77,7 @@ export const FarnsworthLanternTest = () => {
         }
       };
     }
-  }, [showLights, isPermanentLight]);
+  }, [showLights, isFirstTrial]);
 
   const resetTest = () => {
     if (timerRef.current) {
@@ -87,7 +86,7 @@ export const FarnsworthLanternTest = () => {
 
     setCurrentTrial(0);
     setShowLights(true);
-    setIsPermanentLight(true);
+    setIsFirstTrial(true);
     setAnswers([]);
     setColorUp("");
     setColorDown("");
@@ -225,7 +224,7 @@ export const FarnsworthLanternTest = () => {
                         {showLights && farnsworthLanternPlates[currentTrial].colors.map((color, i) => (
                           <div
                             key={i}
-                            className={`falant-light ${isPermanentLight ? 'permanent' : ''} ${color}`}
+                            className={`falant-light ${isFirstTrial ? "permanent" : "fade"} ${color}`}
                           />
                         ))}
                       </div>
