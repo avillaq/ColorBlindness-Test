@@ -17,7 +17,7 @@
   height: 20px;
   border-radius: 100%;
   opacity: 0;
-  animation: falant-fade 10s forwards;
+  animation: falant-fade 2s forwards;
 }
 
 @keyframes falant-fade {
