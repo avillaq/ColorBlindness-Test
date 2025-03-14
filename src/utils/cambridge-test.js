@@ -1,5 +1,5 @@
 export const cambridgePlates = [
-  { id: 1, imageUrl: "/src/assets/cambridge/cambridge-plates/plate1.webp", normalAnswer: "left", type: "control" },
+  { id: 1, imageUrl: "/src/assets/cambridge/cambridge-plates/plate1.webp", normalAnswer: "left", type: "test" },
   { id: 2, imageUrl: "/src/assets/cambridge/cambridge-plates/plate2.webp", normalAnswer: "right", type: "test" },
   { id: 3, imageUrl: "/src/assets/cambridge/cambridge-plates/plate3.webp", normalAnswer: "bottom", type: "test" },
   { id: 4, imageUrl: "/src/assets/cambridge/cambridge-plates/plate4.webp", normalAnswer: "top", type: "test" },
