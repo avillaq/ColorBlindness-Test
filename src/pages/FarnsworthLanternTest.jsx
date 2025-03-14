@@ -33,11 +33,10 @@ export const FarnsworthLanternTest = () => {
   const [showLights, setShowLights] = useState(true);
   const [answers, setAnswers] = useState([]);
 
-  const shuffledCombinations = [...FALANT_CONFIG.combinations]
-    .sort(() => Math.random() - 0.5);
+  const farnsworthLanternPlates = [...FALANT_CONFIG.combinations]
 
   const evaluateTrial = () => {
-    const expected = shuffledCombinations[currentTrial].colors;
+    const expected = farnsworthLanternPlates[currentTrial].colors;
     const selectedColors = [colorUp, colorDown];
     const isCorrect = selectedColors.join() === expected.join();
 
@@ -51,18 +50,18 @@ export const FarnsworthLanternTest = () => {
     setColorUp("");
     setColorDown("");
 
-    if (currentTrial < shuffledCombinations.length - 1) {
+    if (currentTrial < farnsworthLanternPlates.length - 1) {
       setCurrentTrial(prev => prev + 1);
       setShowLights(true);
     } else {
-      const diagnosis = evaluateFarnsworthLanterResults(answers, shuffledCombinations);
+      const diagnosis = evaluateFarnsworthLanterResults(answers, farnsworthLanternPlates);
       setResults(diagnosis);
     }
   };
 
   useEffect(() => {
     if (showLights) {
-      const timer = setTimeout(() => setShowLights(false), FALANT_CONFIG.exposureTime);
+      const timer = setTimeout(() => setShowLights(false), (FALANT_CONFIG.exposureTime + 2000));
       return () => clearTimeout(timer);
     }
   }, [showLights]);
@@ -199,12 +198,12 @@ export const FarnsworthLanternTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentTrial + 1} maxValue={shuffledCombinations.length} />
+                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentTrial + 1} maxValue={farnsworthLanternPlates.length} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="FarnsworthLanter-test-plates">
                       <div className="flex flex-col items-center justify-center gap-20 bg-black rounded-lg h-full w-full">
-                        {showLights && shuffledCombinations[currentTrial].colors.map((color, i) => (
+                        {showLights && farnsworthLanternPlates[currentTrial].colors.map((color, i) => (
                           <div
                             key={i}
                             className={`falant-light ${color}`}
