@@ -1,22 +1,61 @@
-.FarnsworthLanter-test-plates, .FarnsworthLanter-test-controls {
+.FarnsworthLanter-test-plates,
+.FarnsworthLanter-test-controls {
   flex: 1 1 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.FarnsworthLanter-test-plates img {
-  max-width: 250px;
+.FarnsworthLanter-test-plates {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
 }
 
-@media (min-width: 400px) {
-  .FarnsworthLanter-test-plates img {
-    max-width: 300px;
+.falant-light {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  opacity: 0;
+  animation: falant-fade 10s forwards;
+}
+
+@keyframes falant-fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
   }
 }
 
-@media (min-width: 768px) {
-  .FarnsworthLanter-test-plates img {
-    max-width: 400px;
-  }
+.falant-light.red {
+  background: #FF2D2D;
+  box-shadow: 0 0 15px #FF4D4D;
+  border: 2px solid #B22222;
+}
+
+.falant-light.green {
+  background: #00CC66;
+  box-shadow: 0 0 15px #33FF99;
+  border: 2px solid #006600;
+}
+
+.falant-light.white {
+  background: #FFFFFF;
+  box-shadow: 0 0 20px #DDDDDD;
+  border: 2px solid #AAAAAA;
 }
