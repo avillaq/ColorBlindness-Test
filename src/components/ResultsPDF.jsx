@@ -195,11 +195,11 @@ export const ResultsPDF = ({ results }) => (
         <View style={styles.detailsGrid}>
           <View style={styles.detailCard}>
             <Text style={styles.detailTitle}>Correct Answers</Text>
-            <Text style={styles.successText}>{results.correct}/14</Text>
+            <Text style={styles.successText}>{results.correct}/{results.total}</Text>
           </View>
           <View style={styles.detailCard}>
             <Text style={styles.detailTitle}>Incorrect Answers</Text>
-            <Text style={styles.dangerText}>{results.incorrect}/14</Text>
+            <Text style={styles.dangerText}>{results.incorrect}/{results.total}</Text>
           </View>
         </View>
 
