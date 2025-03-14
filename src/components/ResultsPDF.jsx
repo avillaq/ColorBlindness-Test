@@ -203,20 +203,22 @@ export const ResultsPDF = ({ results }) => (
           </View>
         </View>
 
-        <View style={styles.technicalDetails}>
-          <View style={styles.technicalRow}>
-            <Text style={styles.technicalLabel}>Basic Plates Correct (1-11):</Text>
-            <Text style={styles.technicalValue}>{results.details.basicCorrect}/11</Text>
+        {results.details &&
+          <View style={styles.technicalDetails}>
+            <View style={styles.technicalRow}>
+              <Text style={styles.technicalLabel}>Basic Plates Correct (1-11):</Text>
+              <Text style={styles.technicalValue}>{results.details.basicCorrect}/11</Text>
+            </View>
+            <View style={styles.technicalRow}>
+              <Text style={styles.technicalLabel}>Protan Indicators:</Text>
+              <Text style={styles.technicalValue}>{results.details.protanMatches}/3</Text>
+            </View>
+            <View style={styles.technicalRow}>
+              <Text style={styles.technicalLabel}>Deutan Indicators:</Text>
+              <Text style={styles.technicalValue}>{results.details.deutanMatches}/3</Text>
+            </View>
           </View>
-          <View style={styles.technicalRow}>
-            <Text style={styles.technicalLabel}>Protan Indicators:</Text>
-            <Text style={styles.technicalValue}>{results.details.protanMatches}/3</Text>
-          </View>
-          <View style={styles.technicalRow}>
-            <Text style={styles.technicalLabel}>Deutan Indicators:</Text>
-            <Text style={styles.technicalValue}>{results.details.deutanMatches}/3</Text>
-          </View>
-        </View>
+        }
 
         <View style={styles.disclaimer}>
           <Text style={styles.disclaimerText}>
