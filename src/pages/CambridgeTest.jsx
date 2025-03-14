@@ -217,7 +217,7 @@ export const CambridgeTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={shuffledPlates.length}/>
+                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={shuffledPlates.length} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="cambridge-test-plates">
@@ -230,17 +230,17 @@ export const CambridgeTest = () => {
                       )}
                     </div>
                     <div className="cambridge-test-controls">
-                      <div className="response-grid">
-                        {['top', 'right', 'bottom', 'left'].map(dir => (
-                          <Button
-                            key={dir}
-                            onPress={() => handleAnswer(dir)}
-                            className="response-button"
-                          >
-                            {dir.toUpperCase()}
-                          </Button>
-                        ))}
-                      </div>
+                      <Card classNames={{ body: "px-0 sm:p-4" }}>
+                        <CardBody>
+                          <p className="text-center">Where is the missing piece of the ring?</p>
+                          <div className="grid grid-cols-3 grid-rows-3 mt-4 gap-0 sm:gap-3">
+                            <Button color="primary" size="lg" className="col-start-2" onPress={() => handleAnswer("top")}>Top</Button>
+                            <Button color="primary" size="lg" className="col-start-3 row-start-2" onPress={() => handleAnswer("right")}>Right</Button>
+                            <Button color="primary" size="lg" className="col-start-2 row-start-3" onPress={() => handleAnswer("bottom")}>Bottom</Button>
+                            <Button color="primary" size="lg" className="col-start-1 row-start-2" onPress={() => handleAnswer("left")}>Left</Button>
+                          </div>
+                        </CardBody>
+                      </Card>
                     </div>
                   </CardBody>
                 </Card>
