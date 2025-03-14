@@ -28,40 +28,26 @@ export const CambridgeTest = () => {
   const [currentPlate, setCurrentPlate] = useState(0);
   const [answers, setAnswers] = useState([]);
 
-  // Clasificación clínica de las placas
-  const plateCategories = {
-    protan: [2, 5, 9, 12],
-    deutan: [3, 6, 10, 13],
-    tritan: [4, 7, 11, 14],
-    control: [1, 8]
-  };
-
   const handleAnswer = (answer) => {
-    const newAnswers = [...answers, {
-      plateId: cambridgePlates[currentPlate].id,
-      answer,
-      correct: answer === cambridgePlates[currentPlate].normalAnswer
-    }];
+    const newAnswer = {
+      id: ishiharaPlates[currentPlate].id,
+      response: answer.trim().toLowerCase()
+    };
 
-    setAnswers(newAnswers);
+    const updatedAnswers = [...answers, newAnswer];
+    setAnswers(updatedAnswers);
 
     if (currentPlate < cambridgePlates.length - 1) {
-      setCurrentPlate(prev => prev + 1);
+      setCurrentPlate(currentPlate + 1);
     } else {
-      const diagnosis = evaluateCambridgeResults(newAnswers);
-      setResults({
-        accuracy: Math.round((newAnswers.filter(a => a.correct).length / newAnswers.length) * 100),
-        diagnosis: diagnosis.type,
-        details: {
-          protan: diagnosis.protanScore,
-          deutan: diagnosis.deutanScore,
-          tritan: diagnosis.tritanScore
-        }
-      });
+      const evaluation = evaluateCambridgeResults(updatedAnswers, cambridgePlates);
+      setResults(evaluation);
     }
   };
 
   const resetTest = () => {
+    setCurrentPlate(0);
+    setAnswers([]);
     setResults(null);
   };
 
