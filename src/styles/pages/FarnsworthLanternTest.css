@@ -19,15 +19,17 @@
   opacity: 0;
 }
 
-.falant-light.fade {
-  animation: falant-fade 2s forwards;
+.falant-light.temporary {
+  animation: falant-fade-out 2s forwards;
+  animation-delay: 0s;
 }
 
 .falant-light.permanent {
-  animation: falant-fade-permanent 2s forwards;
+  animation: falant-fade-in 2s forwards;
+  animation-delay: 0s;
 }
 
-@keyframes falant-fade {
+@keyframes falant-fade-out {
   0% {
     opacity: 0;
     transform: scale(0.9);
@@ -49,15 +51,18 @@
   }
 }
 
-@keyframes falant-fade-permanent {
+@keyframes falant-fade-in {
   0% {
     opacity: 0;
+    transform: scale(0.9);
   }
   20% {
     opacity: 1;
+    transform: scale(1);
   }
   100% {
     opacity: 1;
+    transform: scale(1);
   }
 }
 
