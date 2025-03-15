@@ -193,7 +193,7 @@ export const ResultsPDF = ({ results }) => (
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Test Results</Text>
         <Text style={styles.headerSubtitle}>Your color vision assessment results are ready.</Text>
-        <Text style={styles.testName}>Farnsworth Lantern Test (FALANT)</Text>
+        <Text style={styles.testName}>{results.testName}</Text>
       </View>
 
       <View style={styles.resultCard}>
