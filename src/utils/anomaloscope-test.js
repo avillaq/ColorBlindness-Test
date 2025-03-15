@@ -17,39 +17,37 @@ export const ANOMALOSCOPE_CONFIG = {
   }
 };
 
-export const evaluateAnomaloscopeResults = (adjustments) => {
+export const evaluateAnomaloscopeResults = (adjustments, config) => {
   const avgRed = adjustments.reduce((sum, a) => sum + a.red, 0) / adjustments.length;
   const avgYellow = adjustments.reduce((sum, a) => sum + a.yellow, 0) / adjustments.length;
   
-  const { normalRedRange, protanRed, deutanGreen } = ANOMALOSCOPE_CONFIG.diagnosisThresholds;
-  
   const diagnosis = {
-    type: "Normal",
-    severity: "None",
-    confidence: 0
+    type: "Normal Vision",
+    severity: "Normal",
+    confidence: 100 - Math.abs(avgRed - 40) * 2 // 40 = normal value
   };
 
-  if (avgRed > protanRed) {
-    diagnosis.type = "Protanomalía";
-    diagnosis.severity = avgRed > 90 ? "Severa" : "Moderada";
-    diagnosis.confidence = Math.min(100, (avgRed - protanRed) * 2);
-  } else if ((100 - avgRed) > deutanGreen) {
-    diagnosis.type = "Deuteranomalía";
-    diagnosis.severity = avgRed < 20 ? "Severa" : "Moderada";
-    diagnosis.confidence = Math.min(100, ((100 - avgRed) - deutanGreen) * 2);
-  } else if (avgRed < normalRedRange[0] || avgRed > normalRedRange[1]) {
-    diagnosis.type = "Anomalía no clasificada";
-    diagnosis.severity = "Leve";
-    diagnosis.confidence = 50;
+  if (avgRed > config.diagnosisThresholds.protanRed) {
+    diagnosis.type = "Protanomaly";
+    diagnosis.severity = avgRed > 90 ? "Severe" : "Moderada";
+  } else if (avgRed < config.diagnosisThresholds.deutanGreen) {
+    diagnosis.type = "Deuteranomaly";
+    diagnosis.severity = avgRed < 20 ? "Severe" : "Moderada";
+  } else if (avgRed < 35 || avgRed > 45) {
+    diagnosis.type = "Mild Anomaly";
+    diagnosis.severity = "Mild";
   }
 
   return {
+    accuracy: `${Math.max(0, 100 - Math.abs(avgRed - 40) * 2).toFixed(1)}%`,
+    correct: adjustments.filter(a => a.red >= 35 && a.red <= 45).length,
+    incorrect: adjustments.length - adjustments.filter(a => a.red >= 35 && a.red <= 45).length,
     diagnosis: `${diagnosis.type} (${diagnosis.severity})`,
-    confidence: diagnosis.confidence,
-    metrics: {
+    details: {
       avgRed: avgRed.toFixed(1),
       avgYellow: avgYellow.toFixed(1),
-      attempts: adjustments.length
+      attempts: adjustments.length,
+      confidence: diagnosis.confidence.toFixed(1)
     }
   };
 };
