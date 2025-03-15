@@ -17,9 +17,9 @@ export const ANOMALOSCOPE_CONFIG = {
   }
 };
 
-export const evaluateAnomaloscopeResults = (adjustments, config) => {
-  const avgRed = adjustments.reduce((sum, a) => sum + a.red, 0) / adjustments.length;
-  const avgYellow = adjustments.reduce((sum, a) => sum + a.yellow, 0) / adjustments.length;
+export const evaluateAnomaloscopeResults = (answers, config) => {
+  const avgRed = answers.reduce((sum, a) => sum + a.red, 0) / answers.length;
+  const avgYellow = answers.reduce((sum, a) => sum + a.yellow, 0) / answers.length;
   
   const diagnosis = {
     type: "Normal Vision",
@@ -40,13 +40,13 @@ export const evaluateAnomaloscopeResults = (adjustments, config) => {
 
   return {
     accuracy: `${Math.max(0, 100 - Math.abs(avgRed - 40) * 2).toFixed(1)}%`,
-    correct: adjustments.filter(a => a.red >= 35 && a.red <= 45).length,
-    incorrect: adjustments.length - adjustments.filter(a => a.red >= 35 && a.red <= 45).length,
+    correct: answers.filter(a => a.red >= 35 && a.red <= 45).length,
+    incorrect: answers.length - answers.filter(a => a.red >= 35 && a.red <= 45).length,
     diagnosis: `${diagnosis.type} (${diagnosis.severity})`,
     details: {
       avgRed: avgRed.toFixed(1),
       avgYellow: avgYellow.toFixed(1),
-      attempts: adjustments.length,
+      attempts: answers.length,
       confidence: diagnosis.confidence.toFixed(1)
     }
   };
