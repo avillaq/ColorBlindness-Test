@@ -129,7 +129,14 @@ const styles = StyleSheet.create({
   technicalDetails: {
     backgroundColor: "#f8fafc",
     padding: 16,
-    borderRadius: 4
+    borderRadius: 4,
+    marginBottom: 16
+  },
+  sectionTitle: {
+    fontSize: 14,
+    color: "#334155",
+    fontWeight: "bold",
+    marginBottom: 8
   },
   technicalRow: {
     flexDirection: "row",
@@ -219,8 +226,9 @@ export const ResultsPDF = ({ results }) => (
           </View>
         </View>
 
-        {results.details &&
+        {results.testName.includes("Ishihara Test") &&
           <View style={styles.technicalDetails}>
+            <Text style={styles.sectionTitle}>Technical Details</Text>
             <View style={styles.technicalRow}>
               <Text style={styles.technicalLabel}>Basic Plates Correct (1-11):</Text>
               <Text style={styles.technicalValue}>{results.details.basicCorrect}/11</Text>
@@ -232,6 +240,24 @@ export const ResultsPDF = ({ results }) => (
             <View style={styles.technicalRow}>
               <Text style={styles.technicalLabel}>Deutan Indicators:</Text>
               <Text style={styles.technicalValue}>{results.details.deutanMatches}/3</Text>
+            </View>
+          </View>
+        }
+
+        {results.testName.includes("Farnsworth Lantern Test (FALANT)") &&
+          <View style={styles.technicalDetails}>
+            <Text style={styles.sectionTitle}>Response Analysis</Text>
+            <View style={styles.technicalRow}>
+              <Text style={styles.technicalLabel}>Critical Red-Green Errors:</Text>
+              <Text style={styles.technicalValue}>{results.details.criticalErrors}</Text>
+            </View>
+            <View style={styles.technicalRow}>
+              <Text style={styles.technicalLabel}>White Light Confusions:</Text>
+              <Text style={styles.technicalValue}>{results.details.whiteConfusions}</Text>
+            </View>
+            <View style={styles.technicalRow}>
+              <Text style={styles.technicalLabel}>Control Errors:</Text>
+              <Text style={styles.technicalValue}>{results.details.controlErrors}</Text>
             </View>
           </View>
         }
