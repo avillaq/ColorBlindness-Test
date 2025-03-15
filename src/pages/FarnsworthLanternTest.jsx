@@ -32,7 +32,7 @@ export const FarnsworthLanternTest = () => {
   const [currentTrial, setCurrentTrial] = useState(0);
   const [isFirstTrial, setIsFirstTrial] = useState(true);
   const [answers, setAnswers] = useState([]);
-  
+
   const [animationKey, setAnimationKey] = useState(0);
 
   const farnsworthLanternPlates = [...FALANT_CONFIG.combinations]
@@ -112,17 +112,38 @@ export const FarnsworthLanternTest = () => {
                   <Card>
                     <CardBody>
                       <h4>Correct Answers</h4>
-                      <p className="text-success">{results.correct}/{cambridgePlates.length}</p>
+                      <p className="text-success">{results.correct}/{farnsworthLanternPlates.length}</p>
                     </CardBody>
                   </Card>
 
                   <Card>
                     <CardBody>
                       <h4>Incorrect Answers</h4>
-                      <p className="text-danger">{results.incorrect}/{cambridgePlates.length}</p>
+                      <p className="text-danger">{results.incorrect}/{farnsworthLanternPlates.length}</p>
                     </CardBody>
                   </Card>
                 </div>
+              </div>
+              <div className="mt-4">
+                <Card>
+                  <CardBody>
+                    <h4 className="mb-2">Error Analysis</h4>
+                    <div className="grid grid-cols-3 gap-2">
+                      <div>
+                        <p className="text-small text-default-500">Critical Errors</p>
+                        <p className="font-bold">{results.details.criticalErrors}</p>
+                      </div>
+                      <div>
+                        <p className="text-small text-default-500">White Confusions</p>
+                        <p className="font-bold">{results.details.whiteConfusions}</p>
+                      </div>
+                      <div>
+                        <p className="text-small text-default-500">Control Errors</p>
+                        <p className="font-bold">{results.details.controlErrors}</p>
+                      </div>
+                    </div>
+                  </CardBody>
+                </Card>
               </div>
               <div className="disclaimer-container">
                 <div className="min-w-6">
