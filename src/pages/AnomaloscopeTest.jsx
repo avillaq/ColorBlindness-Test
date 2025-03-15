@@ -64,7 +64,7 @@ export const AnomaloscopeTest = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `FarnsworthLanter-test-results-${new Date().toISOString().split("T")[0]}.pdf`;
+    link.download = `Anomaloscope-test-results-${new Date().toISOString().split("T")[0]}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -116,16 +116,16 @@ export const AnomaloscopeTest = () => {
                     <h4>Error Analysis</h4>
                     <div className="error-analysis">
                       <div>
-                        <p>Critical Errors</p>
+                        <p>Red Average Setting</p>
                         <p>{results.details.avgRed}</p>
                       </div>
                       <div>
-                        <p>White Confusions</p>
+                        <p>Yellow Average Setting</p>
                         <p>{results.details.avgYellow}</p>
                       </div>
                       <div>
-                        <p>Control Errors</p>
-                        <p>{results.details.confidence}</p>
+                        <p>Match Confidence</p>
+                        <p>{results.details.confidence}%</p>
                       </div>
                     </div>
                   </CardBody>
@@ -210,7 +210,7 @@ export const AnomaloscopeTest = () => {
                         <div
                           className="mix-field"
                           style={{
-                            backgroundColor: `rgb(${controls.red * 2.55}, ${controls.green * 2.55}, 0)`
+                            backgroundColor: `rgb(${Math.round(controls.red * 2.55)}, ${Math.round(controls.green * 2.55)}, 0)`
                           }}
                         >
                           <span>Mix (R+G)</span>
@@ -218,7 +218,7 @@ export const AnomaloscopeTest = () => {
                         <div
                           className="test-field"
                           style={{
-                            backgroundColor: `rgb(255, 255, ${controls.yellow * 3.19})`
+                            backgroundColor: `rgb(${Math.round(255 * (controls.yellow / 100))}, ${Math.round(255 * (controls.yellow / 100))}, 0)`
                           }}
                         >
                           <span>Test (Y)</span>
@@ -267,6 +267,7 @@ export const AnomaloscopeTest = () => {
                     </div>
                   </CardBody>
                 </Card>
+                <p className="text-center mt-3">Adjust the sliders until both squares match in color as closely as possible.</p>
               </>
           }
 
