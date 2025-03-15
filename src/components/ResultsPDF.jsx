@@ -45,6 +45,12 @@ const styles = StyleSheet.create({
     color: "#64748b",
     marginTop: 8
   },
+  testName: {
+    fontSize: 18,
+    color: "#334155",
+    textAlign: "center",
+    marginTop: 8
+  },
   resultCard: {
     backgroundColor: "#ffffff",
     borderRadius: 8,
@@ -151,6 +157,15 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#64748b",
     fontStyle: "italic"
+  },
+  dateRow: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    marginTop: 16
+  },
+  dateText: {
+    fontSize: 10,
+    color: "#94a3b8"
   }
 });
 
@@ -178,6 +193,7 @@ export const ResultsPDF = ({ results }) => (
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Test Results</Text>
         <Text style={styles.headerSubtitle}>Your color vision assessment results are ready.</Text>
+        <Text style={styles.testName}>Farnsworth Lantern Test (FALANT)</Text>
       </View>
 
       <View style={styles.resultCard}>
@@ -195,11 +211,11 @@ export const ResultsPDF = ({ results }) => (
         <View style={styles.detailsGrid}>
           <View style={styles.detailCard}>
             <Text style={styles.detailTitle}>Correct Answers</Text>
-            <Text style={styles.successText}>{results.correct}/{results.total}</Text>
+            <Text style={styles.successText}>{results.correct}/{results.correct + results.incorrect}</Text>
           </View>
           <View style={styles.detailCard}>
             <Text style={styles.detailTitle}>Incorrect Answers</Text>
-            <Text style={styles.dangerText}>{results.incorrect}/{results.total}</Text>
+            <Text style={styles.dangerText}>{results.incorrect}/{results.correct + results.incorrect}</Text>
           </View>
         </View>
 
@@ -225,6 +241,10 @@ export const ResultsPDF = ({ results }) => (
             NOTE: This test is not a substitute for professional medical evaluation.
             Consult an eye specialist for confirmation.
           </Text>
+        </View>
+
+        <View style={styles.dateRow}>
+          <Text style={styles.dateText}>Generated: {new Date().toLocaleDateString()}</Text>
         </View>
       </View>
     </Page>
