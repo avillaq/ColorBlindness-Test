@@ -123,23 +123,22 @@ export const FarnsworthLanternTest = () => {
                     </CardBody>
                   </Card>
                 </div>
-              </div>
-              <div className="mt-4">
-                <Card>
+
+                <Card className="mt-4">
                   <CardBody>
-                    <h4 className="mb-2">Error Analysis</h4>
-                    <div className="grid grid-cols-3 gap-2">
+                    <h4>Error Analysis</h4>
+                    <div className="error-analysis">
                       <div>
-                        <p className="text-small text-default-500">Critical Errors</p>
-                        <p className="font-bold">{results.details.criticalErrors}</p>
+                        <p>Critical Errors</p>
+                        <p>{results.details.criticalErrors}</p>
                       </div>
                       <div>
-                        <p className="text-small text-default-500">White Confusions</p>
-                        <p className="font-bold">{results.details.whiteConfusions}</p>
+                        <p>White Confusions</p>
+                        <p>{results.details.whiteConfusions}</p>
                       </div>
                       <div>
-                        <p className="text-small text-default-500">Control Errors</p>
-                        <p className="font-bold">{results.details.controlErrors}</p>
+                        <p>Control Errors</p>
+                        <p>{results.details.controlErrors}</p>
                       </div>
                     </div>
                   </CardBody>
