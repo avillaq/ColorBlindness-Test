@@ -4,27 +4,43 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.anomaloscope-test-plates {
+  flex-direction: column;
+  justify-content: start;
+  gap: 24px;
+  height: 100%;
 }
 
 .color-fields {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0;
-  height: 200px;
+  gap: 24px;
 }
 
-.mix-field, .test-field {
-  width: 200px;
-  height: 200px;
-  border-radius: 15px;
+.mix-field,
+.test-field {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 640px) {
+
+  .mix-field,
+  .test-field {
+    width: 230px;
+    height: 230px;
+  }
 }
 
 .controls {
