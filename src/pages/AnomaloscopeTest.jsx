@@ -99,14 +99,14 @@ export const AnomaloscopeTest = () => {
                   <Card>
                     <CardBody>
                       <h4>Correct Answers</h4>
-                      <p className="text-success">{results.correct}/{farnsworthLanternPlates.length}</p>
+                      <p className="text-success">{results.correct}/{ANOMALOSCOPE_CONFIG.maxAttempts}</p>
                     </CardBody>
                   </Card>
 
                   <Card>
                     <CardBody>
                       <h4>Incorrect Answers</h4>
-                      <p className="text-danger">{results.incorrect}/{farnsworthLanternPlates.length}</p>
+                      <p className="text-danger">{results.incorrect}/{ANOMALOSCOPE_CONFIG.maxAttempts}</p>
                     </CardBody>
                   </Card>
                 </div>
@@ -117,15 +117,15 @@ export const AnomaloscopeTest = () => {
                     <div className="error-analysis">
                       <div>
                         <p>Critical Errors</p>
-                        <p>{results.details.criticalErrors}</p>
+                        <p>{results.details.avgRed}</p>
                       </div>
                       <div>
                         <p>White Confusions</p>
-                        <p>{results.details.whiteConfusions}</p>
+                        <p>{results.details.avgYellow}</p>
                       </div>
                       <div>
                         <p>Control Errors</p>
-                        <p>{results.details.controlErrors}</p>
+                        <p>{results.details.confidence}</p>
                       </div>
                     </div>
                   </CardBody>
