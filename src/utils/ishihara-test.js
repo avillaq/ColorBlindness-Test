@@ -65,6 +65,7 @@ export const evaluateIshiharaResults = (answers, plates) => {
   }
 
   return {
+    testName: "Ishihara Test",
     accuracy: `${((correct / plates.length) * 100).toFixed(2)}%`,
     correct,
     incorrect: plates.length - correct,

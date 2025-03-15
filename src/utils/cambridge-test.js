@@ -37,6 +37,7 @@ export const evaluateCambridgeResults = (answers, plates) => {
   }
 
   return {
+    testName: "Cambridge Color Test",
     accuracy: `${((correct / plates.length) * 100).toFixed(2)}%`,
     correct,
     incorrect: plates.length - correct,

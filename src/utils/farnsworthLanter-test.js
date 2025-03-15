@@ -40,6 +40,7 @@ export const evaluateFarnsworthLanterResults = (answers, combinations) => {
   const diagnosis = controlErrors > 0 ? "Invalid (Control Failed)" : criticalErrors > FALANT_CONFIG.maxErrors || whiteConfusions > 0 ? "Color Vision Deficiency Detected" : "Normal Color Vision";
 
   return {
+    testName: "Farnsworth Lantern Test (FALANT)",
     accuracy: accuracy.toFixed(2) + "%",
     correct: totalCorrect,
     incorrect: combinations.length - totalCorrect,
