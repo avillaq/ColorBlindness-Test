@@ -26,7 +26,7 @@ export const AnomaloscopeTest = () => {
   const [results, setResults] = useState(null);
   const [currentAttempt, setCurrentAttempt] = useState(0);
   const [controls, setControls] = useState(ANOMALOSCOPE_CONFIG.initialValues);
-  const [adjustments, setAdjustments] = useState([]);
+  const [answers, setAnswers] = useState([]);
 
   const updateColorMix = (type, value) => {
     setControls(prev => {
@@ -40,14 +40,14 @@ export const AnomaloscopeTest = () => {
     });
   };
 
-  const handleAttempt = () => {
-    setAdjustments([...adjustments, controls]);
+  const handleAnswer = () => {
+    setAnswers([...answers, controls]);
 
     if (currentAttempt < ANOMALOSCOPE_CONFIG.maxAttempts - 1) {
       setCurrentAttempt(prev => prev + 1);
       setControls(ANOMALOSCOPE_CONFIG.initialValues);
     } else {
-      const diagnosis = evaluateAnomaloscopeResults(adjustments, ANOMALOSCOPE_CONFIG);
+      const diagnosis = evaluateAnomaloscopeResults(answers, ANOMALOSCOPE_CONFIG);
       setResults(diagnosis);
     }
   };
@@ -55,7 +55,7 @@ export const AnomaloscopeTest = () => {
   const resetTest = () => {
     setCurrentAttempt(0);
     setControls(ANOMALOSCOPE_CONFIG.initialValues);
-    setAdjustments([]);
+    setAnswers([]);
     setResults(null);
   };
 
@@ -256,7 +256,7 @@ export const AnomaloscopeTest = () => {
 
                             <Button
                               color="primary"
-                              onPress={handleAttempt}
+                              onPress={handleAnswer}
                               className="submit-button"
                             >
                               {currentAttempt < 2 ? "Next attempt" : "Finish test"}
