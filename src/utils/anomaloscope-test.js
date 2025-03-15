@@ -39,6 +39,7 @@ export const evaluateAnomaloscopeResults = (answers, config) => {
   }
 
   return {
+    testName: "Anomaloscope Test",
     accuracy: `${Math.max(0, 100 - Math.abs(avgRed - 40) * 2).toFixed(1)}%`,
     correct: answers.filter(a => a.red >= 35 && a.red <= 45).length,
     incorrect: answers.length - answers.filter(a => a.red >= 35 && a.red <= 45).length,
