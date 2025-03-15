@@ -269,6 +269,7 @@ export const FarnsworthLanternTest = () => {
                     </div>
                   </CardBody>
                 </Card>
+                <p className="text-center mt-3"><strong>Note</strong> : Please select the correct option from the image quickly before it disappears. You have 2 seconds to choose.</p>
               </>
           }
 
