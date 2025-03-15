@@ -7,10 +7,10 @@ import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
 import { Progress } from "@heroui/progress";
-import { FALANT_CONFIG, evaluateFarnsworthLanterResults } from "../utils/farnsworthLanter-test";
-import { pdf } from '@react-pdf/renderer';
-import { ResultsPDF } from '../components/ResultsPDF';
-import ReactCompareImage from 'react-compare-image';
+import { ANOMALOSCOPE_CONFIG, evaluateAnomaloscopeResults } from "../utils/anomaloscope-test";
+import { pdf } from "@react-pdf/renderer";
+import { ResultsPDF } from "../components/ResultsPDF";
+import ReactCompareImage from "react-compare-image";
 import anomaloscopeTestOriginal from "../assets/anomaloscope/anomaloscope-original.webp";
 import anomaloscopeNormalVision from "../assets/anomaloscope/anomaloscope-normal.webp";
 import anomaloscopeProtanopia from "../assets/anomaloscope/anomaloscope-protanopia.webp";
@@ -23,58 +23,45 @@ export const AnomaloscopeTest = () => {
   const [showTest, setShowTest] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const [colorUp, setColorUp] = useState("");
-  const [colorDown, setColorDown] = useState("");
   const [results, setResults] = useState(null);
-  const [currentTrial, setCurrentTrial] = useState(0);
-  const [isFirstTrial, setIsFirstTrial] = useState(true);
-  const [answers, setAnswers] = useState([]);
+  const [currentAttempt, setCurrentAttempt] = useState(0);
+  const [controls, setControls] = useState(ANOMALOSCOPE_CONFIG.initialValues);
+  const [adjustments, setAdjustments] = useState([]);
 
-  const [animationKey, setAnimationKey] = useState(0);
+  const updateColorMix = (type, value) => {
+    setControls(prev => {
+      const newValues = { ...prev };
+      if (type === "red") {
+        newValues.red = value;
+        newValues.green = 100 - value;
+      }
+      if (type === "yellow") newValues.yellow = value;
+      return newValues;
+    });
+  };
 
-  const farnsworthLanternPlates = [...FALANT_CONFIG.combinations]
+  const handleMatchAttempt = () => {
+    setAdjustments([...adjustments, controls]);
 
-  const evaluateTrial = () => {
-    const expected = farnsworthLanternPlates[currentTrial].colors;
-    const selectedColors = [colorUp, colorDown];
-    const isCorrect = selectedColors.join() === expected.join();
-
-    setAnswers([...answers, {
-      trial: currentTrial + 1,
-      correct: isCorrect,
-      expected,
-      response: [...selectedColors]
-    }]);
-
-    setColorUp("");
-    setColorDown("");
-
-    if (currentTrial < farnsworthLanternPlates.length - 1) {
-      setCurrentTrial(currentTrial + 1);
-      setIsFirstTrial(false);
-      setAnimationKey(animationKey + 1);
+    if (currentAttempt < ANOMALOSCOPE_CONFIG.maxAttempts - 1) {
+      setCurrentAttempt(prev => prev + 1);
+      setControls(ANOMALOSCOPE_CONFIG.initialValues);
     } else {
-      const diagnosis = evaluateFarnsworthLanterResults(answers, farnsworthLanternPlates);
+      const diagnosis = evaluateAnomaloscopeResults(adjustments);
       setResults(diagnosis);
     }
   };
 
   const resetTest = () => {
-    setCurrentTrial(0);
-    setIsFirstTrial(true);
-    setAnswers([]);
-    setColorUp("");
-    setColorDown("");
     setResults(null);
-    setAnimationKey(0);
   };
 
   const handleDownloadPDF = async () => {
     const blob = await pdf(<ResultsPDF results={results} />).toBlob();
     const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = url;
-    link.download = `FarnsworthLanter-test-results-${new Date().toISOString().split('T')[0]}.pdf`;
+    link.download = `FarnsworthLanter-test-results-${new Date().toISOString().split("T")[0]}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -212,18 +199,65 @@ export const AnomaloscopeTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentTrial + 1} maxValue={farnsworthLanternPlates.length} />
+                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentAttempt + 1} maxValue={ANOMALOSCOPE_CONFIG.maxAttempts} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="anomaloscope-test-plates">
-
+                      <div className="color-fields">
+                        <div
+                          className="mix-field"
+                          style={{
+                            backgroundColor: `rgb(${controls.red * 2.55}, ${controls.green * 2.55}, 0)`
+                          }}
+                        >
+                          <span>Mix (R+G)</span>
+                        </div>
+                        <div
+                          className="test-field"
+                          style={{
+                            backgroundColor: `rgb(255, 255, ${controls.yellow * 3.19})`
+                          }}
+                        >
+                          <span>Test (Y)</span>
+                        </div>
+                      </div>
                     </div>
+
                     <div className="anomaloscope-test-controls">
                       <Card classNames={{ body: "px-0 sm:p-4" }}>
                         <CardBody>
-                          <div className="flex flex-col items-center gap-4 w-[285px] sm:w-[400px]">
-                            
-                            <Button color="primary" onPress={() => evaluateTrial()}>Submit</Button>
+                          <div className="controls">
+                            <div className="slider-container">
+                              <label>Red: {controls.red}%</label>
+                              <input
+                                type="range"
+                                min="0"
+                                max="100"
+                                value={controls.red}
+                                onChange={(e) => updateColorMix("red", parseInt(e.target.value))}
+                                className="slider"
+                              />
+                            </div>
+
+                            <div className="slider-container">
+                              <label>Yellow: {controls.yellow}%</label>
+                              <input
+                                type="range"
+                                min="20"
+                                max="80"
+                                value={controls.yellow}
+                                onChange={(e) => updateColorMix("yellow", parseInt(e.target.value))}
+                                className="slider"
+                              />
+                            </div>
+
+                            <Button
+                              color="primary"
+                              onPress={handleMatchAttempt}
+                              className="submit-button"
+                            >
+                              {currentAttempt < 2 ? "Next attempt" : "Finish test"}
+                            </Button>
                           </div>
                         </CardBody>
                       </Card>
