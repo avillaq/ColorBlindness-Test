@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardBody } from "@heroui/card";
+import { Card, CardBody, CardHeader } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
@@ -206,6 +206,7 @@ export const AnomaloscopeTest = () => {
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="anomaloscope-test-plates">
+                      <p className="text-center mt-2 text-sm text-gray-600">Adjust the sliders until both squares match in color as closely as possible.</p>
                       <div className="color-fields">
                         <div
                           className="mix-field"
@@ -267,7 +268,6 @@ export const AnomaloscopeTest = () => {
                     </div>
                   </CardBody>
                 </Card>
-                <p className="text-center mt-3">Adjust the sliders until both squares match in color as closely as possible.</p>
               </>
           }
 
