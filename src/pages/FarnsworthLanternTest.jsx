@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
 import { RadioGroup, Radio } from "@heroui/radio";
@@ -30,11 +30,10 @@ export const FarnsworthLanternTest = () => {
   const [colorDown, setColorDown] = useState("");
   const [results, setResults] = useState(null);
   const [currentTrial, setCurrentTrial] = useState(0);
-  const [showLights, setShowLights] = useState(true);
   const [isFirstTrial, setIsFirstTrial] = useState(true);
   const [answers, setAnswers] = useState([]);
   
-  const timerRef = useRef(null);
+  const [animationKey, setAnimationKey] = useState(0);
 
   const farnsworthLanternPlates = [...FALANT_CONFIG.combinations]
 
@@ -42,10 +41,6 @@ export const FarnsworthLanternTest = () => {
     const expected = farnsworthLanternPlates[currentTrial].colors;
     const selectedColors = [colorUp, colorDown];
     const isCorrect = selectedColors.join() === expected.join();
-
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-    }
 
     setAnswers([...answers, {
       trial: currentTrial + 1,
@@ -60,37 +55,21 @@ export const FarnsworthLanternTest = () => {
     if (currentTrial < farnsworthLanternPlates.length - 1) {
       setCurrentTrial(currentTrial + 1);
       setIsFirstTrial(false);
-      setShowLights(true);
+      setAnimationKey(animationKey + 1);
     } else {
       const diagnosis = evaluateFarnsworthLanterResults(answers, farnsworthLanternPlates);
       setResults(diagnosis);
     }
   };
 
-  useEffect(() => {
-    if (showLights && !isFirstTrial) {
-      timerRef.current = setTimeout(() => setShowLights(false), FALANT_CONFIG.exposureTime);
-
-      return () => {
-        if (timerRef.current) {
-          clearTimeout(timerRef.current);
-        }
-      };
-    }
-  }, [showLights, isFirstTrial]);
-
   const resetTest = () => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-    }
-
     setCurrentTrial(0);
-    setShowLights(true);
     setIsFirstTrial(true);
     setAnswers([]);
     setColorUp("");
     setColorDown("");
     setResults(null);
+    setAnimationKey(0);
   };
 
   const handleDownloadPDF = async () => {
@@ -221,10 +200,10 @@ export const FarnsworthLanternTest = () => {
                   <CardBody className="cardbody-test">
                     <div className="FarnsworthLanter-test-plates">
                       <div className="flex flex-col items-center justify-center gap-20 bg-black rounded-lg h-full w-full">
-                        {showLights && farnsworthLanternPlates[currentTrial].colors.map((color, i) => (
+                        {farnsworthLanternPlates[currentTrial].colors.map((color, i) => (
                           <div
-                            key={i}
-                            className={`falant-light ${isFirstTrial ? "permanent" : "fade"} ${color}`}
+                            key={`light-${i}-${animationKey}`}
+                            className={`falant-light ${isFirstTrial ? "permanent" : "temporary"} ${color}`}
                           />
                         ))}
                       </div>
