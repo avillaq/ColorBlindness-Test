@@ -229,47 +229,28 @@ export const AnomaloscopeTest = () => {
                     </div>
 
                     <div className="anomaloscope-test-controls">
-                      <Card classNames={{ body: "px-0 sm:p-4" }}>
+                      <Card className="w-full max-w-[400px]" classNames={{ body: "px-0 sm:p-4" }}>
                         <CardBody>
-                          <div className="controls">
-                            <div className="slider-container">
-                              <Slider
-                                className="max-w-md"
-                                defaultValue={controls.red}
-                                label={`Red: ${controls.red}%`}
-                                maxValue={100}
-                                minValue={0}
-                                onChange={(e) => updateColorMix("red", parseInt(e.target.value))}
-                              />
-{/*                               <input
-                                type="range"
-                                min="0"
-                                max="100"
-                                onChange={(e) => updateColorMix("red", parseInt(e.target.value))}
-                                className="slider"
-                              /> */}
-                            </div>
-
-                            <div className="slider-container">
-                              <Slider
-                                className="max-w-md"
-                                defaultValue={controls.yellow}
-                                label={`Yellow: ${controls.yellow}%`}
-                                maxValue={80}
-                                minValue={20}
-                                onChange={(e) => updateColorMix("yellow", parseInt(e.target.value))}
-                              />
-{/*                               <input
-                                onChange={(e) => updateColorMix("yellow", parseInt(e.target.value))}
-                                className="slider"
-                              /> */}
-                            </div>
-
-                            <Button
-                              color="primary"
-                              onPress={handleAnswer}
-                              className="submit-button"
-                            >
+                          <div className="flex flex-col items-center gap-4 p-4">
+                            <Slider
+                              defaultValue={controls.red}
+                              label={`Red: ${controls.red}%`}
+                              maxValue={100}
+                              minValue={0}
+                              size="sm"
+                              hideValue={true}
+                              onChange={(value) => updateColorMix("red", parseInt(value))}
+                            />
+                            <Slider
+                              defaultValue={controls.yellow}
+                              label={`Yellow: ${controls.yellow}%`}
+                              maxValue={80}
+                              minValue={20}
+                              size="sm"
+                              hideValue={true}
+                              onChange={(value) => updateColorMix("yellow", parseInt(value))}
+                            />
+                            <Button color="primary" onPress={handleAnswer}>
                               {currentAttempt < 2 ? "Next attempt" : "Finish test"}
                             </Button>
                           </div>
