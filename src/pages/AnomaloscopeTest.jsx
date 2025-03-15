@@ -13,7 +13,7 @@ import { FALANT_CONFIG, evaluateFarnsworthLanterResults } from "../utils/farnswo
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
-import farnsworthLanternTestOriginal from "../assets/farnsworthLantern/farnsworthLantern-original.webp";
+import anomaloscopeTestOriginal from "../assets/anomaloscope/anomaloscope-original.webp";
 import farnsworthLanternNormalVision from "../assets/farnsworthLantern/farnsworthLantern-normal.webp";
 import farnsworthLanternProtanopia from "../assets/farnsworthLantern/farnsworthLantern-protanopia.webp";
 import farnsworthLanternDeuteranomaly from "../assets/farnsworthLantern/farnsworthLantern-deuteranomaly.webp";
@@ -286,8 +286,8 @@ export const AnomaloscopeTest = () => {
                 <p>This test has been widely used in academic research to validate other color vision tests. Its scientific accuracy and reliability make it a key instrument in the diagnosis and classification of color blindness, ensuring its place as a trusted tool in both medical and occupational screenings. Its precision in detecting subtle deficiencies makes it unparalleled in color vision diagnostics.</p>
               </div>
               <Image
-                src={farnsworthLanternTestOriginal}
-                alt="Farnsworth Lantern test plate"
+                src={anomaloscopeTestOriginal}
+                alt="Anomaloscope test original"
                 width={430}
                 className="flex-1"
               />
