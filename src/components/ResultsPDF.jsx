@@ -141,7 +141,9 @@ const styles = StyleSheet.create({
   technicalRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 8
+    marginTop: 8,
+    marginBottom: 8,
+    padding: 8,
   },
   technicalLabel: {
     fontSize: 12,
@@ -258,6 +260,24 @@ export const ResultsPDF = ({ results }) => (
             <View style={styles.technicalRow}>
               <Text style={styles.technicalLabel}>Control Errors:</Text>
               <Text style={styles.technicalValue}>{results.details.controlErrors}</Text>
+            </View>
+          </View>
+        }
+
+        {results.testName.includes("Anomaloscope Test") &&
+          <View style={styles.technicalDetails}>
+            <Text style={styles.sectionTitle}>Response Analysis</Text>
+            <View style={styles.technicalRow}>
+              <Text style={styles.technicalLabel}>Red Average Setting:</Text>
+              <Text style={styles.technicalValue}>{results.details.avgRed}</Text>
+            </View>
+            <View style={styles.technicalRow}>
+              <Text style={styles.technicalLabel}>Yellow Average Setting:</Text>
+              <Text style={styles.technicalValue}>{results.details.avgYellow}</Text>
+            </View>
+            <View style={styles.technicalRow}>
+              <Text style={styles.technicalLabel}>Match Confidence:</Text>
+              <Text style={styles.technicalValue}>{results.details.confidence}</Text>
             </View>
           </View>
         }
