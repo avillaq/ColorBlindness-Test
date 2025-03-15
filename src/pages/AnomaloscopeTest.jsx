@@ -40,19 +40,22 @@ export const AnomaloscopeTest = () => {
     });
   };
 
-  const handleMatchAttempt = () => {
+  const handleAttempt = () => {
     setAdjustments([...adjustments, controls]);
 
     if (currentAttempt < ANOMALOSCOPE_CONFIG.maxAttempts - 1) {
       setCurrentAttempt(prev => prev + 1);
       setControls(ANOMALOSCOPE_CONFIG.initialValues);
     } else {
-      const diagnosis = evaluateAnomaloscopeResults(adjustments);
+      const diagnosis = evaluateAnomaloscopeResults(adjustments, ANOMALOSCOPE_CONFIG);
       setResults(diagnosis);
     }
   };
 
   const resetTest = () => {
+    setCurrentAttempt(0);
+    setControls(ANOMALOSCOPE_CONFIG.initialValues);
+    setAdjustments([]);
     setResults(null);
   };
 
@@ -253,7 +256,7 @@ export const AnomaloscopeTest = () => {
 
                             <Button
                               color="primary"
-                              onPress={handleMatchAttempt}
+                              onPress={handleAttempt}
                               className="submit-button"
                             >
                               {currentAttempt < 2 ? "Next attempt" : "Finish test"}
@@ -264,7 +267,6 @@ export const AnomaloscopeTest = () => {
                     </div>
                   </CardBody>
                 </Card>
-                <p className="text-center mt-3"><strong>Note</strong> : Please select the correct option from the image quickly before it disappears. You have 2 seconds to choose.</p>
               </>
           }
 
