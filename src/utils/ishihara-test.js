@@ -1,6 +1,6 @@
 // Source: https://web.stanford.edu/group/vista/wikiupload/0/0a/Ishihara.14.Plate.Instructions.pdf
 
-export const ishiharaPlates = [
+export const ISHIHARA_CONFIG = [
   { id: 1, imageUrl: "/src/assets/ishihara/ishihara-plates/plate1.webp", normalAnswer: "12", deficientAnswer: "12", type: "control" },
   { id: 2, imageUrl: "/src/assets/ishihara/ishihara-plates/plate2.webp", normalAnswer: "8", deficientAnswer: "3", type: "test" },
   { id: 3, imageUrl: "/src/assets/ishihara/ishihara-plates/plate3.webp", normalAnswer: "5", deficientAnswer: "2", type: "test" },

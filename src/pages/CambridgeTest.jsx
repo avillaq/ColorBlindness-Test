@@ -7,7 +7,7 @@ import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
 import { Progress } from "@heroui/progress";
-import { cambridgePlates, evaluateCambridgeResults } from "../utils/cambridge-test";
+import { CAMBRIDGE_CONFIG, evaluateCambridgeResults } from "../utils/cambridge-test";
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
@@ -30,17 +30,17 @@ export const CambridgeTest = () => {
 
   const handleAnswer = (answer) => {
     const newAnswer = {
-      id: cambridgePlates[currentPlate].id,
+      id: CAMBRIDGE_CONFIG[currentPlate].id,
       response: answer.trim().toLowerCase()
     };
 
     const updatedAnswers = [...answers, newAnswer];
     setAnswers(updatedAnswers);
 
-    if (currentPlate < cambridgePlates.length - 1) {
+    if (currentPlate < CAMBRIDGE_CONFIG.length - 1) {
       setCurrentPlate(currentPlate + 1);
     } else {
-      const evaluation = evaluateCambridgeResults(updatedAnswers, cambridgePlates);
+      const evaluation = evaluateCambridgeResults(updatedAnswers, CAMBRIDGE_CONFIG);
       setResults(evaluation);
     }
   };
@@ -91,14 +91,14 @@ export const CambridgeTest = () => {
                   <Card>
                     <CardBody>
                       <h4>Correct Answers</h4>
-                      <p className="text-success">{results.correct}/{cambridgePlates.length}</p>
+                      <p className="text-success">{results.correct}/{CAMBRIDGE_CONFIG.length}</p>
                     </CardBody>
                   </Card>
 
                   <Card>
                     <CardBody>
                       <h4>Incorrect Answers</h4>
-                      <p className="text-danger">{results.incorrect}/{cambridgePlates.length}</p>
+                      <p className="text-danger">{results.incorrect}/{CAMBRIDGE_CONFIG.length}</p>
                     </CardBody>
                   </Card>
                 </div>
@@ -174,13 +174,13 @@ export const CambridgeTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={cambridgePlates.length} />
+                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={CAMBRIDGE_CONFIG.length} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="cambridge-test-plates">
                       <Image
                         alt={`Cambridge Plate ${currentPlate + 1}`}
-                        src={cambridgePlates[currentPlate].imageUrl}
+                        src={CAMBRIDGE_CONFIG[currentPlate].imageUrl}
                         radius="full"
                       />
                     </div>

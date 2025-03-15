@@ -8,7 +8,7 @@ import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
 import { Progress } from "@heroui/progress";
-import { ishiharaPlates, evaluateIshiharaResults } from "../utils/ishihara-test";
+import { ISHIHARA_CONFIG, evaluateIshiharaResults } from "../utils/ishihara-test";
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
@@ -32,7 +32,7 @@ export const IshiharaTest = () => {
 
   const handleAnswer = (answer) => {
     const newAnswer = {
-      id: ishiharaPlates[currentPlate].id,
+      id: ISHIHARA_CONFIG[currentPlate].id,
       response: answer.trim().toLowerCase()
     };
 
@@ -40,10 +40,10 @@ export const IshiharaTest = () => {
     setAnswers(updatedAnswers);
     setValueInput("");
 
-    if (currentPlate < ishiharaPlates.length - 1) {
+    if (currentPlate < ISHIHARA_CONFIG.length - 1) {
       setCurrentPlate(currentPlate + 1);
     } else {
-      const evaluation = evaluateIshiharaResults(updatedAnswers, ishiharaPlates);
+      const evaluation = evaluateIshiharaResults(updatedAnswers, ISHIHARA_CONFIG);
       setResults(evaluation);
     }
   };
@@ -94,14 +94,14 @@ export const IshiharaTest = () => {
                   <Card>
                     <CardBody>
                       <h4>Correct Answers</h4>
-                      <p className="text-success">{results.correct}/{ishiharaPlates.length}</p>
+                      <p className="text-success">{results.correct}/{ISHIHARA_CONFIG.length}</p>
                     </CardBody>
                   </Card>
 
                   <Card>
                     <CardBody>
                       <h4>Incorrect Answers</h4>
-                      <p className="text-danger">{results.incorrect}/{ishiharaPlates.length}</p>
+                      <p className="text-danger">{results.incorrect}/{ISHIHARA_CONFIG.length}</p>
                     </CardBody>
                   </Card>
                 </div>
@@ -197,13 +197,13 @@ export const IshiharaTest = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={ishiharaPlates.length} />
+                <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={ISHIHARA_CONFIG.length} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
                     <div className="ishihara-test-plates">
                       <Image
                         alt={`Ishihara Test Plate ${currentPlate + 1}`}
-                        src={ishiharaPlates[currentPlate].imageUrl}
+                        src={ISHIHARA_CONFIG[currentPlate].imageUrl}
                         radius="full"
                       />
                     </div>
@@ -211,7 +211,7 @@ export const IshiharaTest = () => {
                       <Card>
                         <CardBody>
                           {
-                            (ishiharaPlates[currentPlate].id !== 11 && ishiharaPlates[currentPlate].id !== 14)
+                            (ISHIHARA_CONFIG[currentPlate].id !== 11 && ISHIHARA_CONFIG[currentPlate].id !== 14)
                               ?
                               <>
                                 <div className="flex justify-between gap-5 items-center">
@@ -239,7 +239,7 @@ export const IshiharaTest = () => {
                                 <p className="text-center">What did you see?</p>
                                 <div className="grid grid-cols-1 gap-2 mt-4 w-[250px]">
                                   {
-                                    (ishiharaPlates[currentPlate].id === 11)
+                                    (ISHIHARA_CONFIG[currentPlate].id === 11)
                                       ?
                                       <>
                                         <Button color="primary" onPress={() => handleAnswer("green")}>Green Line</Button>
