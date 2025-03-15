@@ -17,7 +17,7 @@ export const ANOMALOSCOPE_CONFIG = {
   }
 };
 
-export const evaluateAnomaloscopeResults = (answers, config) => {
+export const evaluateAnomaloscopeResults = (answers) => {
   const avgRed = answers.reduce((sum, a) => sum + a.red, 0) / answers.length;
   const avgYellow = answers.reduce((sum, a) => sum + a.yellow, 0) / answers.length;
   const consistency = Math.sqrt(answers.reduce((sum, a) => sum + Math.pow(a.red - avgRed, 2), 0) / answers.length);

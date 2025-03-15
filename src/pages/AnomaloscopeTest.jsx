@@ -48,7 +48,7 @@ export const AnomaloscopeTest = () => {
       setCurrentAttempt(prev => prev + 1);
       setControls(ANOMALOSCOPE_CONFIG.initialValues);
     } else {
-      const diagnosis = evaluateAnomaloscopeResults(answers, ANOMALOSCOPE_CONFIG);
+      const diagnosis = evaluateAnomaloscopeResults(answers);
       setResults(diagnosis);
     }
   };
