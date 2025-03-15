@@ -15,7 +15,7 @@ import anomaloscopeTestOriginal from "../assets/anomaloscope/anomaloscope-origin
 import anomaloscopeNormalVision from "../assets/anomaloscope/anomaloscope-normal.webp";
 import anomaloscopeProtanopia from "../assets/anomaloscope/anomaloscope-protanopia.webp";
 import anomaloscopeTritanopia from "../assets/anomaloscope/anomaloscope-tritanopia.webp";
-import farnsworthLanternRedGreen from "../assets/farnsworthLantern/farnsworthLantern-red-green-blindness.webp";
+import anomaloscopeRedGreen from "../assets/anomaloscope/anomaloscope-red-green-blindness.webp";
 import "../styles/pages/TestItem.css";
 import "../styles/pages/AnomaloscopeTest.css";
 
@@ -272,7 +272,7 @@ export const AnomaloscopeTest = () => {
                 {
                   title: "Severity Detection",
                   description: <><p><strong>Anomalous Trichromats</strong> - Individuals with mild color vision issues, called anomalous trichromats, need slight adjustments in red or green proportions to match colors. The test can detect these small shifts in perception, revealing minor difficulties in distinguishing certain shades, which can affect everyday activities like choosing clothing, reading color-coded charts, or even identifying food ripeness.</p> <p><strong>Dichromats</strong> - People with more severe deficiencies, known as dichromats, can match a wide range of red-green mixtures to yellow by adjusting brightness. This broader range of matches shows a more serious deficiency, often making it hard to distinguish between traffic lights, warning signs, or color-coded systems in daily life, leading to challenges in driving or workplace safety.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><Image src={farnsworthLanternRedGreen} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><Image src={anomaloscopeRedGreen} /></div>
                 }
               ]}
             />
