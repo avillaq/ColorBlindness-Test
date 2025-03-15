@@ -66,7 +66,6 @@ export const evaluateIshiharaResults = (answers, plates) => {
 
   return {
     accuracy: `${((correct / plates.length) * 100).toFixed(2)}%`,
-    total: plates.length,
     correct,
     incorrect: plates.length - correct,
     diagnosis,
