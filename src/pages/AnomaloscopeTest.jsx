@@ -3,6 +3,7 @@ import { Card, CardBody, CardHeader } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
+import { Slider } from "@heroui/slider";
 import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
@@ -232,27 +233,36 @@ export const AnomaloscopeTest = () => {
                         <CardBody>
                           <div className="controls">
                             <div className="slider-container">
-                              <label>Red: {controls.red}%</label>
-                              <input
+                              <Slider
+                                className="max-w-md"
+                                defaultValue={controls.red}
+                                label={`Red: ${controls.red}%`}
+                                maxValue={100}
+                                minValue={0}
+                                onChange={(e) => updateColorMix("red", parseInt(e.target.value))}
+                              />
+{/*                               <input
                                 type="range"
                                 min="0"
                                 max="100"
-                                value={controls.red}
                                 onChange={(e) => updateColorMix("red", parseInt(e.target.value))}
                                 className="slider"
-                              />
+                              /> */}
                             </div>
 
                             <div className="slider-container">
-                              <label>Yellow: {controls.yellow}%</label>
-                              <input
-                                type="range"
-                                min="20"
-                                max="80"
-                                value={controls.yellow}
+                              <Slider
+                                className="max-w-md"
+                                defaultValue={controls.yellow}
+                                label={`Yellow: ${controls.yellow}%`}
+                                maxValue={80}
+                                minValue={20}
+                                onChange={(e) => updateColorMix("yellow", parseInt(e.target.value))}
+                              />
+{/*                               <input
                                 onChange={(e) => updateColorMix("yellow", parseInt(e.target.value))}
                                 className="slider"
-                              />
+                              /> */}
                             </div>
 
                             <Button
