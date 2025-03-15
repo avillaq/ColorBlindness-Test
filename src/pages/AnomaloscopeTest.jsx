@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
-import { RadioGroup, Radio } from "@heroui/radio";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
-import { Divider } from "@heroui/divider";
 import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
@@ -14,12 +12,12 @@ import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
 import anomaloscopeTestOriginal from "../assets/anomaloscope/anomaloscope-original.webp";
-import farnsworthLanternNormalVision from "../assets/farnsworthLantern/farnsworthLantern-normal.webp";
-import farnsworthLanternProtanopia from "../assets/farnsworthLantern/farnsworthLantern-protanopia.webp";
-import farnsworthLanternDeuteranomaly from "../assets/farnsworthLantern/farnsworthLantern-deuteranomaly.webp";
+import anomaloscopeNormalVision from "../assets/anomaloscope/anomaloscope-normal.webp";
+import anomaloscopeProtanopia from "../assets/anomaloscope/anomaloscope-protanopia.webp";
+import anomaloscopeTritanopia from "../assets/anomaloscope/anomaloscope-tritanopia.webp";
 import farnsworthLanternRedGreen from "../assets/farnsworthLantern/farnsworthLantern-red-green-blindness.webp";
 import "../styles/pages/TestItem.css";
-import "../styles/pages/FarnsworthLanternTest.css";
+import "../styles/pages/AnomaloscopeTest.css";
 
 export const AnomaloscopeTest = () => {
   const [showTest, setShowTest] = useState(false);
@@ -217,51 +215,15 @@ export const AnomaloscopeTest = () => {
                 <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentTrial + 1} maxValue={farnsworthLanternPlates.length} />
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
-                    <div className="FarnsworthLanter-test-plates">
-                      <div className="flex flex-col items-center justify-center gap-20 bg-black rounded-lg h-full w-full">
-                        {farnsworthLanternPlates[currentTrial].colors.map((color, i) => (
-                          <div
-                            key={`light-${i}-${animationKey}`}
-                            className={`falant-light ${isFirstTrial ? "permanent" : "temporary"} ${color}`}
-                          />
-                        ))}
-                      </div>
+                    <div className="anomaloscope-test-plates">
+
                     </div>
-                    <div className="FarnsworthLanter-test-controls">
+                    <div className="anomaloscope-test-controls">
                       <Card classNames={{ body: "px-0 sm:p-4" }}>
                         <CardBody>
                           <div className="flex flex-col items-center gap-4 w-[285px] sm:w-[400px]">
-                            <Card className="w-[260px] sm:w-full">
-                              <CardBody>
-                                <div className="flex flex-col items-center gap-3">
-                                  <p className="text-center"><strong>UP</strong></p>
-                                  <Divider />
-                                  <div className="w-full">
-                                    <RadioGroup classNames={{ wrapper: "justify-around" }} color="default" orientation="horizontal" value={colorUp} onValueChange={setColorUp}>
-                                      <Radio size="sm" value="red">Red</Radio>
-                                      <Radio size="sm" value="green">Green</Radio>
-                                      <Radio size="sm" value="white">White</Radio>
-                                    </RadioGroup>
-                                  </div>
-                                </div>
-                              </CardBody>
-                            </Card>
-                            <Card className="w-[260px] sm:w-full">
-                              <CardBody>
-                                <div className="flex flex-col items-center gap-3">
-                                  <p className="text-center"><strong>Down</strong></p>
-                                  <Divider />
-                                  <div className="w-full">
-                                    <RadioGroup classNames={{ wrapper: "justify-around" }} color="default" orientation="horizontal" value={colorDown} onValueChange={setColorDown}>
-                                      <Radio size="sm" value="red">Red</Radio>
-                                      <Radio size="sm" value="green">Green</Radio>
-                                      <Radio size="sm" value="white">White</Radio>
-                                    </RadioGroup>
-                                  </div>
-                                </div>
-                              </CardBody>
-                            </Card>
-                            <Button color="primary" isDisabled={!colorUp || !colorDown} onPress={() => evaluateTrial()}>Submit</Button>
+                            
+                            <Button color="primary" onPress={() => evaluateTrial()}>Submit</Button>
                           </div>
                         </CardBody>
                       </Card>
@@ -300,12 +262,12 @@ export const AnomaloscopeTest = () => {
                 {
                   title: "Red-Green Deficiencies (Rayleigh Match)",
                   description: <><p><strong>Protanopia</strong> - Protanopia refers to a difficulty in seeing red light. Individuals with this condition need a higher proportion of red in the mix to match yellow. This indicates that their red-sensitive cone cells in the retina may not be functioning properly. They struggle with distinguishing between reds, greens, and browns. As a result, tasks involving color recognition, such as reading traffic lights or selecting ripe fruit, can be more challenging.</p> <p><strong>Deuteranopia</strong> - Deuteranopia occurs when individuals have trouble with green light perception. They need more green light in the mix to match yellow. This deficiency, like protanopia, causes difficulty distinguishing reds and greens, as well as colors in between, such as orange. Everyday activities like matching clothing colors or interpreting color-coded information can be particularly difficult for those with deuteranopia.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={farnsworthLanternNormalVision} rightImage={farnsworthLanternProtanopia} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={anomaloscopeNormalVision} rightImage={anomaloscopeProtanopia} /></div>
                 },
                 {
                   title: "Blue-Yellow Deficiencies",
                   description: <><p><strong>Tritanopia (Moreland Match)</strong> - This rare deficiency affects the ability to perceive blue and yellow. Individuals with tritanopia often confuse blue with green and yellow with pink or red. The Moreland Match detects these color vision problems by testing how users distinguish between shades of blue and yellow. People with tritanopia may find it difficult to perform tasks like identifying interpreting warning signs that use these colors.</p><p><strong>Engelking-Trendelenburg Match</strong> - This is another match used for diagnosing blue-yellow color blindness. This test involves matching cyan, blue, and green hues and helps identify if the individual struggles with differentiating those colors. Individuals with this deficiency may have trouble distinguishing between colors in nature, such as the blue of the sky and the green of trees, which can affect visual tasks outdoors.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={farnsworthLanternNormalVision} rightImage={farnsworthLanternDeuteranomaly} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={anomaloscopeNormalVision} rightImage={anomaloscopeTritanopia} /></div>
                 },
                 {
                   title: "Severity Detection",
