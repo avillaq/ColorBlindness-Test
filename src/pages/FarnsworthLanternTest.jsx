@@ -13,12 +13,11 @@ import { FALANT_CONFIG, evaluateFarnsworthLanterResults } from "../utils/farnswo
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
-import cambridgeTestOriginal from "../assets/cambridge/cambridge-original.webp";
-import cambridgeRedGreen from "../assets/cambridge/cambridge-red-green-blindness.webp";
-import cambridgeNormalVisionDeutera from "../assets/cambridge/cambridge-normal-deutera.webp";
-import cambridgeNormalVisionTrita from "../assets/cambridge/cambridge-normal-trita.webp";
-import cambridgeDeuteranomaly from "../assets/cambridge/cambridge-deuteranomaly.webp";
-import cambridgeTritanopia from "../assets/cambridge/cambridge-tritanopia.webp";
+import farnsworthLanternTestOriginal from "../assets/farnsworthLantern/farnsworthLantern-original.webp";
+import farnsworthLanternNormalVision from "../assets/farnsworthLantern/farnsworthLantern-normal.webp";
+import farnsworthLanternProtanopia from "../assets/farnsworthLantern/farnsworthLantern-protanopia.webp";
+import farnsworthLanternDeuteranomaly from "../assets/farnsworthLantern/farnsworthLantern-deuteranomaly.webp";
+import farnsworthLanternRedGreen from "../assets/farnsworthLantern/farnsworthLantern-red-green-blindness.webp";
 import "../styles/pages/TestItem.css";
 import "../styles/pages/FarnsworthLanternTest.css";
 
@@ -287,8 +286,8 @@ export const FarnsworthLanternTest = () => {
                 <p>The Farnsworth Lantern Test is valued for its simplicity and effectiveness. It mimics real-world conditions by using colors commonly found in signal lights, making it a practical tool for occupational screening. While it effectively identifies moderate to severe red-green color vision deficiencies, it may not detect mild cases or other types of color blindness. Nevertheless, it remains an important test for ensuring that individuals in critical roles can accurately perceive essential visual signals.</p>
               </div>
               <Image
-                src={cambridgeTestOriginal}
-                alt="cambridge test plate"
+                src={farnsworthLanternTestOriginal}
+                alt="Farnsworth Lantern test plate"
                 width={430}
                 className="flex-1"
               />
@@ -301,17 +300,17 @@ export const FarnsworthLanternTest = () => {
                 {
                   title: "Protan Deficiency (Red-Blindness)",
                   description: <><p><strong>Protanopia</strong> - People with protanopia have difficulty seeing red light because their eyes lack functioning red cone cells. During the Farnsworth Lantern Test, they might easily confuse red lights with green or white lights, or, in some cases, not perceive the red light at all. This deficiency can significantly impact tasks that rely on accurate color identification.</p> <p><strong>Protanomaly</strong> - This is a milder form of red-blindness where the red cone cells are present but do not function as they should. Individuals with protanomaly experience reduced sensitivity to red light and often struggle to differentiate between red and green lights during the test. This difficulty can affect their ability to interpret essential visual cues correctly in real-world situations.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><Image src={cambridgeRedGreen} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={farnsworthLanternNormalVision} rightImage={farnsworthLanternProtanopia} /></div>
                 },
                 {
                   title: "Deutan Deficiency (Green-Blindness)",
                   description: <><p><strong>Deuteranopia</strong> - Individuals with deuteranopia lack functioning green cone cells, making it difficult for them to perceive green light accurately. During the Farnsworth Lantern Test, they may frequently confuse green lights with red or white lights, leading to potential misinterpretation of important visual cues that rely on color differentiation, which is critical in safety-sensitive roles.</p><p><strong>Deuteranomaly</strong> - This is a milder form of green-blindness where green cone cells are present but do not function optimally. People with deuteranomaly have reduced sensitivity to green light, often struggling to distinguish between red and green lights during the test. This difficulty can be especially challenging in environments requiring precise color perception, impacting their performance in color-dependent tasks.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={cambridgeNormalVisionTrita} rightImage={cambridgeTritanopia} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={farnsworthLanternNormalVision} rightImage={farnsworthLanternDeuteranomaly} /></div>
                 },
                 {
                   title: "Severity Detection",
                   description: <><p>Protanopia arises from the absence of red-sensitive cones (L-cones), leading to difficulty distinguishing reds from greens and other related shades. This condition impacts color perception significantly and can affect various tasks that rely on accurate color recognition.</p> <p>Color-deficient people might mistakenly identify a red light as "green" or vice versa, causing potential confusion. They may also incorrectly perceive a white light as red or green. When two lights of the same color but different brightness are shown, they may assume the brighter light is an entirely different color.</p><p>Individuals who are completely color-blind to red or green (dichromats) cannot distinguish any of these colors accurately and may resort to guessing randomly during the test.</p></>,
-                  visual: <div className="rounded-lg overflow-hidden"><ReactCompareImage leftImage={cambridgeNormalVisionDeutera} rightImage={cambridgeDeuteranomaly} /></div>
+                  visual: <div className="rounded-lg overflow-hidden"><Image src={farnsworthLanternRedGreen} /></div>
                 }
               ]}
             />
