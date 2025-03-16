@@ -54,9 +54,9 @@ export const FarnsworthLanternTest = () => {
     setColorDown("");
 
     if (currentTrial < farnsworthLanternPlates.length - 1) {
-      setCurrentTrial(currentTrial + 1);
+      setCurrentTrial(prev => prev + 1);
       setIsFirstTrial(false);
-      setAnimationKey(animationKey + 1);
+      setAnimationKey(prev => prev + 1);
     } else {
       const diagnosis = evaluateFarnsworthLanterResults(updatedAnswers, farnsworthLanternPlates);
       setResults(diagnosis);
