@@ -23,7 +23,7 @@ export const getRandomInitialValues = () => {
     Math.floor(Math.random() * 25) + 55 // 55-79% (more red)
   ];
   const redValue = redOptions[Math.floor(Math.random() * redOptions.length)];
-  
+
   return {
     red: redValue,
     green: 100 - redValue,
@@ -35,6 +35,9 @@ export const evaluateAnomaloscopeResults = (answers) => {
   const avgRed = answers.reduce((sum, a) => sum + a.red, 0) / answers.length;
   const avgYellow = answers.reduce((sum, a) => sum + a.yellow, 0) / answers.length;
   const consistency = Math.sqrt(answers.reduce((sum, a) => sum + Math.pow(a.red - avgRed, 2), 0) / answers.length);
+
+  const inNormalRange = answers.filter(a => a.red >= 35 && a.red <= 45).length;
+  const outOfNormalRange = answers.length - inNormalRange;
 
   let diagnosis = {
     type: "Normal Color Vision",
@@ -65,8 +68,8 @@ export const evaluateAnomaloscopeResults = (answers) => {
   return {
     testName: "Anomaloscope Test",
     accuracy: `${Math.round(diagnosis.confidence)}%`,
-    normalRange: answers.filter(a => a.red >= 35 && a.red <= 45).length,
-    outOfRange: answers.length - answers.filter(a => a.red >= 35 && a.red <= 45).length,
+    normalRange: inNormalRange,
+    outOfRange: outOfNormalRange,
     diagnosis: `${diagnosis.type} ${diagnosis.severity !== "None" ? `(${diagnosis.severity})` : ""}`,
     details: {
       avgRed: avgRed.toFixed(1),
