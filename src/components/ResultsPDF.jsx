@@ -141,8 +141,6 @@ const styles = StyleSheet.create({
   technicalRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 8,
-    marginBottom: 8,
     padding: 8,
   },
   technicalLabel: {
@@ -155,7 +153,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   disclaimer: {
-    marginTop: 24,
+    marginTop: 16,
     padding: 16,
     backgroundColor: "#f8fafc",
     borderRadius: 4,
@@ -170,7 +168,7 @@ const styles = StyleSheet.create({
   dateRow: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    marginTop: 16
+    marginTop: 8
   },
   dateText: {
     fontSize: 10,
@@ -217,16 +215,32 @@ export const ResultsPDF = ({ results }) => (
           </View>
         </View>
 
-        <View style={styles.detailsGrid}>
-          <View style={styles.detailCard}>
-            <Text style={styles.detailTitle}>Correct Answers</Text>
-            <Text style={styles.successText}>{results.correct}/{results.correct + results.incorrect}</Text>
-          </View>
-          <View style={styles.detailCard}>
-            <Text style={styles.detailTitle}>Incorrect Answers</Text>
-            <Text style={styles.dangerText}>{results.incorrect}/{results.correct + results.incorrect}</Text>
-          </View>
-        </View>
+        {
+          !results.testName.includes("Anomaloscope Test") ?
+
+            <View style={styles.detailsGrid}>
+              <View style={styles.detailCard}>
+                <Text style={styles.detailTitle}>Correct Answers</Text>
+                <Text style={styles.successText}>{results.correct}/{results.correct + results.incorrect}</Text>
+              </View>
+              <View style={styles.detailCard}>
+                <Text style={styles.detailTitle}>Incorrect Answers</Text>
+                <Text style={styles.dangerText}>{results.incorrect}/{results.correct + results.incorrect}</Text>
+              </View>
+            </View>
+            :
+            <View style={styles.detailsGrid}>
+              <View style={styles.detailCard}>
+                <Text style={styles.detailTitle}>Matches in Normal Range</Text>
+                <Text style={styles.successText}>{results.normalRange}/{results.normalRange + results.outOfRange}</Text>
+              </View>
+              <View style={styles.detailCard}>
+                <Text style={styles.detailTitle}>Matches Outside Range</Text>
+                <Text style={styles.dangerText}>{results.outOfRange}/{results.normalRange + results.outOfRange}</Text>
+              </View>
+            </View>
+        }
+
 
         {results.testName.includes("Ishihara Test") &&
           <View style={styles.technicalDetails}>
@@ -268,16 +282,16 @@ export const ResultsPDF = ({ results }) => (
           <View style={styles.technicalDetails}>
             <Text style={styles.sectionTitle}>Response Analysis</Text>
             <View style={styles.technicalRow}>
-              <Text style={styles.technicalLabel}>Red Average Setting:</Text>
-              <Text style={styles.technicalValue}>{results.details.avgRed}</Text>
+              <Text style={styles.technicalLabel}>Red-Green Ratio:</Text>
+              <Text style={styles.technicalValue}>{results.details.avgRed}% R / {(100 - results.details.avgRed).toFixed(1)}% G</Text>
             </View>
             <View style={styles.technicalRow}>
-              <Text style={styles.technicalLabel}>Yellow Average Setting:</Text>
+              <Text style={styles.technicalLabel}>Yellow Brightness:</Text>
               <Text style={styles.technicalValue}>{results.details.avgYellow}</Text>
             </View>
             <View style={styles.technicalRow}>
-              <Text style={styles.technicalLabel}>Match Confidence:</Text>
-              <Text style={styles.technicalValue}>{results.details.confidence}</Text>
+              <Text style={styles.technicalLabel}>Match Consistency:</Text>
+              <Text style={styles.technicalValue}>{results.details.matchConsistency}</Text>
             </View>
           </View>
         }
