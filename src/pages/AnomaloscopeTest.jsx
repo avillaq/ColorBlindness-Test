@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardBody, CardHeader } from "@heroui/card";
+import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
 import { Image } from "@heroui/image";
 import { Button } from "@heroui/button";
@@ -8,7 +8,7 @@ import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
 import { Progress } from "@heroui/progress";
-import { ANOMALOSCOPE_CONFIG, evaluateAnomaloscopeResults } from "../utils/anomaloscope-test";
+import { ANOMALOSCOPE_CONFIG, getRandomInitialValues, evaluateAnomaloscopeResults } from "../utils/anomaloscope-test";
 import { pdf } from "@react-pdf/renderer";
 import { ResultsPDF } from "../components/ResultsPDF";
 import ReactCompareImage from "react-compare-image";
@@ -26,7 +26,7 @@ export const AnomaloscopeTest = () => {
 
   const [results, setResults] = useState(null);
   const [currentAttempt, setCurrentAttempt] = useState(0);
-  const [controls, setControls] = useState(ANOMALOSCOPE_CONFIG.initialValues);
+  const [controls, setControls] = useState(getRandomInitialValues());
   const [answers, setAnswers] = useState([]);
 
   const updateColorMix = (type, value) => {
@@ -46,7 +46,7 @@ export const AnomaloscopeTest = () => {
 
     if (currentAttempt < ANOMALOSCOPE_CONFIG.maxAttempts - 1) {
       setCurrentAttempt(prev => prev + 1);
-      setControls(ANOMALOSCOPE_CONFIG.initialValues);
+      setControls(getRandomInitialValues());
     } else {
       const diagnosis = evaluateAnomaloscopeResults(answers);
       setResults(diagnosis);
@@ -55,7 +55,7 @@ export const AnomaloscopeTest = () => {
 
   const resetTest = () => {
     setCurrentAttempt(0);
-    setControls(ANOMALOSCOPE_CONFIG.initialValues);
+    setControls(getRandomInitialValues());
     setAnswers([]);
     setResults(null);
   };
