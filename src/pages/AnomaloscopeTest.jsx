@@ -55,6 +55,7 @@ export const AnomaloscopeTest = () => {
   };
 
   const resetTest = () => {
+    setShowTest(false);
     setCurrentAttempt(0);
     setControls(getRandomInitialValues());
     setAnswers([]);
@@ -203,7 +204,7 @@ export const AnomaloscopeTest = () => {
               </>
               :
               <>
-                <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
+                <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
                 <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentAttempt + 1} maxValue={ANOMALOSCOPE_CONFIG.maxAttempts} />

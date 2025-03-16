@@ -46,6 +46,7 @@ export const CambridgeTest = () => {
   };
 
   const resetTest = () => {
+    setShowTest(false);
     setCurrentPlate(0);
     setAnswers([]);
     setResults(null);
@@ -171,7 +172,7 @@ export const CambridgeTest = () => {
               </>
               :
               <>
-                <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
+                <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
                 <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={CAMBRIDGE_CONFIG.length} />

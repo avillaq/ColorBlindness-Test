@@ -33,14 +33,12 @@ export const FarnsworthLanternTest = () => {
   const [answers, setAnswers] = useState([]);
 
   const [animationKey, setAnimationKey] = useState(0);
-
   const [farnsworthLanternPlates, setFarnsworthLanternPlates] = useState([]);
 
   useEffect(() => {
     if (showTest && farnsworthLanternPlates.length === 0) {
       const shuffled = [...FALANT_CONFIG.combinations].sort(() => Math.random() - 0.5);
       setFarnsworthLanternPlates(shuffled);
-      console.log(shuffled);
     }
   }, [showTest, farnsworthLanternPlates.length]);
 

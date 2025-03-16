@@ -49,6 +49,7 @@ export const IshiharaTest = () => {
   };
 
   const resetTest = () => {
+    setShowTest(false);
     setCurrentPlate(0);
     setAnswers([]);
     setResults(null);
@@ -194,7 +195,7 @@ export const IshiharaTest = () => {
               </>
               :
               <>
-                <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
+                <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
                 <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentPlate + 1} maxValue={ISHIHARA_CONFIG.length} />
