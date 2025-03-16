@@ -41,12 +41,14 @@ export const FarnsworthLanternTest = () => {
     const selectedColors = [colorUp, colorDown];
     const isCorrect = selectedColors.join() === expected.join();
 
-    setAnswers([...answers, {
+    const updatedAnswers = [...answers, {
       trial: currentTrial + 1,
       correct: isCorrect,
       expected,
       response: [...selectedColors]
-    }]);
+    }];
+
+    setAnswers(updatedAnswers);
 
     setColorUp("");
     setColorDown("");
@@ -56,7 +58,7 @@ export const FarnsworthLanternTest = () => {
       setIsFirstTrial(false);
       setAnimationKey(animationKey + 1);
     } else {
-      const diagnosis = evaluateFarnsworthLanterResults(answers, farnsworthLanternPlates);
+      const diagnosis = evaluateFarnsworthLanterResults(updatedAnswers, farnsworthLanternPlates);
       setResults(diagnosis);
     }
   };
