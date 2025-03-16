@@ -27,7 +27,11 @@ export const evaluateFarnsworthLanterResults = (answers, combinations) => {
     if (!answer.correct) {
       if (type === "critical") criticalErrors++;
       if (type === "control") controlErrors++;
-      if (answer.response.includes("white") && !answer.expected.includes("white")) {
+      
+      const hasWhiteExpected = answer.expected.includes("white");
+      const hasWhiteResponse = answer.response.includes("white");
+
+      if (hasWhiteExpected !== hasWhiteResponse) {
         whiteConfusions++;
       }
     }
