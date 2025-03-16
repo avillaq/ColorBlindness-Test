@@ -68,19 +68,19 @@
 
 .falant-light.red {
   background: #FF2D2D;
-  box-shadow: 0 0 15px #FF4D4D;
+  box-shadow: 0 0 20px 5px rgba(255, 45, 45, 0.7);
   border: 2px solid #B22222;
 }
 
 .falant-light.green {
   background: #00CC66;
-  box-shadow: 0 0 15px #33FF99;
+  box-shadow: 0 0 20px 5px rgba(0, 204, 102, 0.7);
   border: 2px solid #006600;
 }
 
 .falant-light.white {
   background: #FFFFFF;
-  box-shadow: 0 0 20px #DDDDDD;
+  box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.8);
   border: 2px solid #AAAAAA;
 }
 
