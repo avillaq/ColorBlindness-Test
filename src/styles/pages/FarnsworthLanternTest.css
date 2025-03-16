@@ -35,12 +35,12 @@
     transform: scale(0.9);
   }
 
-  20% {
+  10% {
     opacity: 1;
     transform: scale(1);
   }
 
-  80% {
+  90% {
     opacity: 1;
     transform: scale(1);
   }
