@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
 import { RadioGroup, Radio } from "@heroui/radio";
@@ -34,9 +34,19 @@ export const FarnsworthLanternTest = () => {
 
   const [animationKey, setAnimationKey] = useState(0);
 
-  const farnsworthLanternPlates = [...FALANT_CONFIG.combinations]
+  const [farnsworthLanternPlates, setFarnsworthLanternPlates] = useState([]);
+
+  useEffect(() => {
+    if (showTest && farnsworthLanternPlates.length === 0) {
+      const shuffled = [...FALANT_CONFIG.combinations].sort(() => Math.random() - 0.5);
+      setFarnsworthLanternPlates(shuffled);
+      console.log(shuffled);
+    }
+  }, [showTest, farnsworthLanternPlates.length]);
 
   const evaluateTrial = () => {
+    if (farnsworthLanternPlates.length === 0) return;
+
     const expected = farnsworthLanternPlates[currentTrial].colors;
     const selectedColors = [colorUp, colorDown];
     const isCorrect = selectedColors.join() === expected.join();
@@ -49,7 +59,6 @@ export const FarnsworthLanternTest = () => {
     }];
 
     setAnswers(updatedAnswers);
-
     setColorUp("");
     setColorDown("");
 
@@ -64,6 +73,8 @@ export const FarnsworthLanternTest = () => {
   };
 
   const resetTest = () => {
+    setShowTest(false);
+    setFarnsworthLanternPlates([]);
     setCurrentTrial(0);
     setIsFirstTrial(true);
     setAnswers([]);
@@ -213,7 +224,7 @@ export const FarnsworthLanternTest = () => {
               </>
               :
               <>
-                <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { setShowTest(false); resetTest(); }} >
+                <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
                 <Progress aria-label="Loading..." size="sm" className="mb-4" value={currentTrial + 1} maxValue={farnsworthLanternPlates.length} />
@@ -221,7 +232,7 @@ export const FarnsworthLanternTest = () => {
                   <CardBody className="cardbody-test">
                     <div className="FarnsworthLanter-test-plates">
                       <div className="flex flex-col items-center justify-center gap-20 bg-black rounded-lg h-full w-full">
-                        {farnsworthLanternPlates[currentTrial].colors.map((color, i) => (
+                        {farnsworthLanternPlates.length > 0 && farnsworthLanternPlates[currentTrial].colors.map((color, i) => (
                           <div
                             key={`light-${i}-${animationKey}`}
                             className={`falant-light ${isFirstTrial ? "permanent" : "temporary"} ${color}`}
