@@ -51,13 +51,13 @@ export const evaluateAnomaloscopeResults = (answers) => {
   return {
     testName: "Anomaloscope Test",
     accuracy: `${Math.round(diagnosis.confidence)}%`,
-    correct: answers.filter(a => a.red >= 35 && a.red <= 45).length,
-    incorrect: answers.length - answers.filter(a => a.red >= 35 && a.red <= 45).length,
-    diagnosis: `${diagnosis.type} (${diagnosis.severity})`,
+    normalRange: answers.filter(a => a.red >= 35 && a.red <= 45).length,
+    outOfRange: answers.length - answers.filter(a => a.red >= 35 && a.red <= 45).length,
+    diagnosis: `${diagnosis.type} ${diagnosis.severity !== "None" ? `(${diagnosis.severity})` : ""}`,
     details: {
-      avgRed: avgRed.toFixed(2),
-      avgYellow: avgYellow.toFixed(2),
-      consistency: consistency.toFixed(2),
+      avgRed: avgRed.toFixed(1),
+      avgYellow: avgYellow.toFixed(1),
+      matchConsistency: (100 - Math.min(consistency * 5, 100)).toFixed(0) + "%",
       confidence: diagnosis.confidence.toFixed(0)
     }
   };
