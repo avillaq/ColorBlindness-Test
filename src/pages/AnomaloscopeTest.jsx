@@ -99,34 +99,34 @@ export const AnomaloscopeTest = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <Card>
                     <CardBody>
-                      <h4>Correct Answers</h4>
-                      <p className="text-success">{results.correct}/{ANOMALOSCOPE_CONFIG.maxAttempts}</p>
+                      <h4>Matches in Normal Range</h4>
+                      <p className="text-success">{results.normalRange}/{ANOMALOSCOPE_CONFIG.maxAttempts}</p>
                     </CardBody>
                   </Card>
 
                   <Card>
                     <CardBody>
-                      <h4>Incorrect Answers</h4>
-                      <p className="text-danger">{results.incorrect}/{ANOMALOSCOPE_CONFIG.maxAttempts}</p>
+                      <h4>Matches Outside Range</h4>
+                      <p className="text-danger">{results.outOfRange}/{ANOMALOSCOPE_CONFIG.maxAttempts}</p>
                     </CardBody>
                   </Card>
                 </div>
 
                 <Card className="mt-4">
                   <CardBody>
-                    <h4>Error Analysis</h4>
-                    <div className="error-analysis">
+                    <h4>Analysis</h4>
+                    <div className="analysis">
                       <div>
-                        <p>Red Average Setting</p>
-                        <p>{results.details.avgRed}</p>
+                        <p>Red-Green Ratio</p>
+                        <p>{results.details.avgRed}% R / {(100 - results.details.avgRed).toFixed(1)}% G</p>
                       </div>
                       <div>
-                        <p>Yellow Average Setting</p>
-                        <p>{results.details.avgYellow}</p>
+                        <p>Yellow Brightness</p>
+                        <p>{results.details.avgYellow}%</p>
                       </div>
                       <div>
-                        <p>Match Confidence</p>
-                        <p>{results.details.confidence}%</p>
+                        <p>Match Consistency</p>
+                        <p>{results.details.matchConsistency}</p>
                       </div>
                     </div>
                   </CardBody>
