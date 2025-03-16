@@ -42,13 +42,13 @@
   }
 }
 /* Error Analysis */
-.error-analysis {
+.results-details .analysis {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.error-analysis div {
+.results-details .analysis div {
   display: flex;
   justify-content: space-between;
   margin: 8px 0;
