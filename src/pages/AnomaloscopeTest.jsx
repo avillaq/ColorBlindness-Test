@@ -42,13 +42,14 @@ export const AnomaloscopeTest = () => {
   };
 
   const handleAnswer = () => {
-    setAnswers([...answers, controls]);
-
+    const updatedAnswers = [...answers, controls];
+    setAnswers(updatedAnswers);
+    
     if (currentAttempt < ANOMALOSCOPE_CONFIG.maxAttempts - 1) {
       setCurrentAttempt(prev => prev + 1);
       setControls(getRandomInitialValues());
     } else {
-      const diagnosis = evaluateAnomaloscopeResults(answers);
+      const diagnosis = evaluateAnomaloscopeResults(updatedAnswers);
       setResults(diagnosis);
     }
   };
@@ -101,6 +102,7 @@ export const AnomaloscopeTest = () => {
                     <CardBody>
                       <h4>Matches in Normal Range</h4>
                       <p className="text-success">{results.normalRange}/{ANOMALOSCOPE_CONFIG.maxAttempts}</p>
+                      <span className="text-xs text-gray-500">(Normal: 35-45% red)</span>
                     </CardBody>
                   </Card>
 
@@ -108,6 +110,7 @@ export const AnomaloscopeTest = () => {
                     <CardBody>
                       <h4>Matches Outside Range</h4>
                       <p className="text-danger">{results.outOfRange}/{ANOMALOSCOPE_CONFIG.maxAttempts}</p>
+                      <span className="text-xs text-gray-500">(Indicates possible deficiency)</span>
                     </CardBody>
                   </Card>
                 </div>
