@@ -181,10 +181,7 @@ export const FarnsworthD15Test = () => {
                 </Button>
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
-                    <div className="farnsworthD15-test-plates">
-                      {}
-                    </div>
-                    <div className="farnsworthD15-test-controls">
+                    <div className="farnsworthD15-test">
                       <Card>
                         <CardBody>
                           {}
