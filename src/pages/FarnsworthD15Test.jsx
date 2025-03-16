@@ -26,7 +26,7 @@ export const FarnsworthD15Test = () => {
   const [results, setResults] = useState(null);
 
   const handleAnswer = (answer) => {
-    { /**/}
+    { /**/ }
   };
 
   const resetTest = () => {
@@ -181,13 +181,7 @@ export const FarnsworthD15Test = () => {
                 </Button>
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
-                    <div className="farnsworthD15-test">
-                      <Card>
-                        <CardBody>
-                          {}
-                        </CardBody>
-                      </Card>
-                    </div>
+                    {}
                   </CardBody>
                 </Card>
               </>
