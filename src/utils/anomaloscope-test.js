@@ -17,6 +17,20 @@ export const ANOMALOSCOPE_CONFIG = {
   }
 };
 
+export const getRandomInitialValues = () => {
+  const redOptions = [
+    Math.floor(Math.random() * 25), // 0-24% (more green)
+    Math.floor(Math.random() * 25) + 55 // 55-79% (more red)
+  ];
+  const redValue = redOptions[Math.floor(Math.random() * redOptions.length)];
+  
+  return {
+    red: redValue,
+    green: 100 - redValue,
+    yellow: Math.floor(Math.random() * 40) + 30 // 30-69% brightness
+  };
+};
+
 export const evaluateAnomaloscopeResults = (answers) => {
   const avgRed = answers.reduce((sum, a) => sum + a.red, 0) / answers.length;
   const avgYellow = answers.reduce((sum, a) => sum + a.yellow, 0) / answers.length;
