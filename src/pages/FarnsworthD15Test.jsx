@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/modal";
 import { Image } from "@heroui/image";
@@ -22,17 +22,55 @@ export const FarnsworthD15Test = () => {
   const [showTest, setShowTest] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const [answers, setAnswers] = useState([]);
   const [results, setResults] = useState(null);
+  const [referenceCap, setReferenceCap] = useState(null);
+  const [colorCaps, setColorCaps] = useState([]);
+  const [arrangement, setArrangement] = useState([]);
 
-  const handleAnswer = (answer) => {
-    { /**/ }
+  useEffect(() => {
+    if (showTest && colorCaps.length === 0 && arrangement.length === 0) {
+      const reference = FARNSWORTH_D15_CONFIG.caps.find(cap => cap.isReference);
+      const capsToArrange = FARNSWORTH_D15_CONFIG.caps.filter(cap => !cap.isReference);
+
+      const shuffled = [...capsToArrange].sort(() => Math.random() - 0.5);
+
+      setReferenceCap(reference);
+      setColorCaps(shuffled);
+      setArrangement([reference]);
+
+    }
+  }, [showTest, colorCaps.length, arrangement.length]);
+
+  const moveCapToArrangement = (index) => {
+    if (arrangement.length < 16) {
+      const newArrangement = [...arrangement, colorCaps[index]];
+      const newColorCaps = colorCaps.filter((_, i) => i !== index);
+
+      setArrangement(newArrangement);
+      setColorCaps(newColorCaps);
+    }
+  };
+
+  const moveBackFromArrangement = (index) => {
+    if (index === 0) return;
+
+    const capToMove = arrangement[index];
+    const newArrangement = arrangement.filter((_, i) => i !== index);
+    const newColorCaps = [...colorCaps, capToMove];
+
+    setArrangement(newArrangement);
+    setColorCaps(newColorCaps);
+  };
+
+  const finishTest = () => {
+    const results = evaluateFarnsworthD15Results(arrangement);
+    setResults(results);
   };
 
   const resetTest = () => {
     setShowTest(false);
-    setCurrentPlate(0);
-    setAnswers([]);
+    setColorCaps([]);
+    setArrangement([]);
     setResults(null);
   };
 
@@ -181,7 +219,51 @@ export const FarnsworthD15Test = () => {
                 </Button>
                 <Card className="h-[610px] md:h-[428px]">
                   <CardBody className="cardbody-test">
-                    {}
+                    <div className="flex flex-col p-4 gap-4 h-full">
+                      {referenceCap && (
+                        <>
+                          <div className="text-center mb-4">
+                            <p>Arrange the color discs in order by selecting them below and adding them to your sequence.</p>
+                            <p>Try to create a natural progression of colors, starting from the reference disc.</p>
+                          </div>
+
+                          <div className="arrangement-area">
+                            <div className="caps-arrangement">
+                              {arrangement.map((cap, index) => (
+                                <div
+                                  key={`arrangement-${cap.id}`}
+                                  className="color-cap"
+                                  style={{ backgroundColor: cap.color }}
+                                  onClick={() => index !== 0 && moveBackFromArrangement(index)}
+                                >
+                                  <span className="cap-label">{cap.label}</span>
+                                  {index === 0 && <span className="reference-marker">Reference</span>}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="caps-selection-area">
+                            <div className="caps-tray">
+                              {colorCaps.map((cap, index) => (
+                                <div
+                                  key={`selection-${cap.id}`}
+                                  className="color-cap"
+                                  style={{ backgroundColor: cap.color }}
+                                  onClick={() => moveCapToArrangement(index)}
+                                >
+                                  <span className="cap-label">{cap.label}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="text-center mt-4">
+                            <Button color="primary" isDisabled={arrangement.length !== 16} onPress={finishTest}>Complete Test</Button>
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </CardBody>
                 </Card>
               </>
