@@ -33,7 +33,7 @@ const cieLabDistance = (color1, color2) => {
 };
 
 // Calcular la distancia en el espacio CIE Lab
-const calculateConfusionAngle = (arrangement) => {
+const calculateConfusionAngle = (arrangement, config) => {
   // Implementación real del cálculo de ángulos de confusión
   // basada en estudios clínicos
   const indexSequence = arrangement.map(cap => cap.id);
@@ -51,21 +51,21 @@ const calculateConfusionAngle = (arrangement) => {
     const nextId = indexSequence[i + 1];
 
     // Verificar cruces de líneas de confusión para cada tipo
-    FARNSWORTH_D15_CONFIG.errorPatterns.protan.forEach(pair => {
+    config.errorPatterns.protan.forEach(pair => {
       if ((currentId === pair[0] && nextId === pair[1]) ||
         (currentId === pair[1] && nextId === pair[0])) {
         crossingCount.protan++;
       }
     });
 
-    FARNSWORTH_D15_CONFIG.errorPatterns.deutan.forEach(pair => {
+    config.errorPatterns.deutan.forEach(pair => {
       if ((currentId === pair[0] && nextId === pair[1]) ||
         (currentId === pair[1] && nextId === pair[0])) {
         crossingCount.deutan++;
       }
     });
 
-    FARNSWORTH_D15_CONFIG.errorPatterns.tritan.forEach(pair => {
+    config.errorPatterns.tritan.forEach(pair => {
       if ((currentId === pair[0] && nextId === pair[1]) ||
         (currentId === pair[1] && nextId === pair[0])) {
         crossingCount.tritan++;
@@ -96,8 +96,8 @@ const calculateTotalError = (arrangement) => {
 };
 
 // Analizar el patrón para detectar deficiencias específicas
-const detectDeficiencyPattern = (arrangement) => {
-  const confusionAngles = calculateConfusionAngle(arrangement);
+const detectDeficiencyPattern = (arrangement, config) => {
+  const confusionAngles = calculateConfusionAngle(arrangement, config);
 
   // Determinar el tipo de deficiencia basado en la cantidad de cruces
   let deficiencyType = 'Normal';
@@ -137,10 +137,12 @@ const detectDeficiencyPattern = (arrangement) => {
   };
 };
 
-export const evaluateFarnsworthD15Results = (arrangement) => {
+export const evaluateFarnsworthD15Results = (arrangement, config) => {
+  console.log("Arreglo: ",arrangement)
   // Calcular errores
-  const correctOrder = FARNSWORTH_D15_CONFIG.caps.filter(cap => !cap.isReference);
-
+  const correctOrder = [...config.caps];
+  console.log("Orden Correcto", correctOrder);
+  
   // Número de posiciones correctas
   let correctPositions = 0;
   for (let i = 0; i < arrangement.length; i++) {
@@ -149,11 +151,13 @@ export const evaluateFarnsworthD15Results = (arrangement) => {
     }
   }
 
+  correctPositions--; // Correct Positions without cap reference   
+
   // Calcular el error total
   const totalError = calculateTotalError(arrangement);
 
   // Detectar el patrón de deficiencia
-  const deficiencyPattern = detectDeficiencyPattern(arrangement);
+  const deficiencyPattern = detectDeficiencyPattern(arrangement, config);
 
   // Calcular precisión general (como porcentaje)
   const accuracy = Math.max(0, 100 - Math.min(100, totalError / 5));
@@ -175,7 +179,7 @@ export const evaluateFarnsworthD15Results = (arrangement) => {
     testName: "Farnsworth D15 Test",
     accuracy: `${Math.round(accuracy)}%`,
     correct: correctPositions,
-    incorrect: arrangement.length - correctPositions,
+    incorrect: (arrangement.length - 1) - correctPositions,
     diagnosis: diagnosis,
     details: {
       deficiencyType: deficiencyPattern.type,
