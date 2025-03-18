@@ -63,7 +63,7 @@ export const FarnsworthD15Test = () => {
   };
 
   const finishTest = () => {
-    const results = evaluateFarnsworthD15Results(arrangement);
+    const results = evaluateFarnsworthD15Results(arrangement, FARNSWORTH_D15_CONFIG);
     setResults(results);
   };
 
@@ -110,42 +110,47 @@ export const FarnsworthD15Test = () => {
               </div>
 
               <div className="results-details">
-                <div className="grid grid-cols-2 gap-4">
-                  <Card>
-                    <CardBody>
-                      <h4>Correct Answers</h4>
-                      <p className="text-success">{results.correct}/{FARNSWORTH_D15_CONFIG.length}</p>
-                    </CardBody>
-                  </Card>
-
-                  <Card>
-                    <CardBody>
-                      <h4>Incorrect Answers</h4>
-                      <p className="text-danger">{results.incorrect}/{FARNSWORTH_D15_CONFIG.length}</p>
-                    </CardBody>
-                  </Card>
-                </div>
-
                 <Card className="mt-4">
                   <CardBody>
                     <h4>Technical Details</h4>
                     <div className="technical-details">
                       <div>
-                        <p>Basic Plates Correct (1-11):</p>
-                        <p>{results.details.basicCorrect}/11</p>
+                        <p>Deficiency Type:</p>
+                        <p>{results.details.deficiencyType}</p>
                       </div>
                       <div>
-                        <p>Protan Indicators:</p>
-                        <p>{results.details.protanMatches}/3</p>
+                        <p>Confidence Level:</p>
+                        <p>{results.details.confidenceLevel}</p>
                       </div>
                       <div>
-                        <p>Deutan Indicators:</p>
-                        <p>{results.details.deutanMatches}/3</p>
+                        <p>Total Error Score:</p>
+                        <p>{results.details.totalError}</p>
+                      </div>
+                    </div>
+                  </CardBody>
+                </Card>
+                <Card className="mt-4">
+                  <CardBody>
+                    <h4>Color Axis Crossings</h4>
+                    <div className="color-crossings">
+                      <div>
+                        <p>Protan Crossings:</p>
+                        <p>{results.details.protanCrossings}</p>
+                      </div>
+                      <div>
+                        <p>Deutan Crossings:</p>
+                        <p>{results.details.deutanCrossings}</p>
+                      </div>
+                      <div>
+                        <p>Tritan Crossings:</p>
+                        <p>{results.details.tritanCrossings}</p>
                       </div>
                     </div>
                   </CardBody>
                 </Card>
               </div>
+
+              
               <div className="disclaimer-container">
                 <div className="min-w-6">
                   <box-icon name="info-circle" color="#64748b"></box-icon>
@@ -217,9 +222,9 @@ export const FarnsworthD15Test = () => {
                 <Button size="sm" isIconOnly color="primary" variant="light" onPress={() => { resetTest(); }} >
                   <box-icon name="x" size="lg" color="gray" animation="tada-hover"></box-icon>
                 </Button>
-                <Card className="h-[610px] md:h-[428px]">
+                <Card className="h-[660px] sm:h-[560px] lg:h-[520px] xl:h-[460px]">
                   <CardBody className="cardbody-test">
-                    <div className="flex flex-col p-4 gap-4 h-full">
+                    <div className="flex flex-col sm:p-4 gap-4 w-full h-full">
                       {referenceCap && (
                         <>
                           <div className="text-center mb-4">
@@ -228,34 +233,30 @@ export const FarnsworthD15Test = () => {
                           </div>
 
                           <div className="arrangement-area">
-                            <div className="caps-arrangement">
-                              {arrangement.map((cap, index) => (
-                                <div
-                                  key={`arrangement-${cap.id}`}
-                                  className="color-cap"
-                                  style={{ backgroundColor: cap.color }}
-                                  onClick={() => index !== 0 && moveBackFromArrangement(index)}
-                                >
-                                  <span className="cap-label">{cap.label}</span>
-                                  {index === 0 && <span className="reference-marker">Reference</span>}
-                                </div>
-                              ))}
-                            </div>
+                            {arrangement.map((cap, index) => (
+                              <div
+                                key={`arrangement-${cap.id}`}
+                                className="color-cap"
+                                style={{ backgroundColor: cap.color }}
+                                onClick={() => index !== 0 && moveBackFromArrangement(index)}
+                              >
+                                {index === 0 && <span className="reference-marker">Reference</span>}
+                              </div>
+                            ))}
                           </div>
-
+                          <div className="flex justify-center items-center">
+                            <box-icon name="right-arrow-circle" type="solid" color="#0066cc" size="md" rotate="270"></box-icon>
+                          </div>
                           <div className="caps-selection-area">
-                            <div className="caps-tray">
-                              {colorCaps.map((cap, index) => (
-                                <div
-                                  key={`selection-${cap.id}`}
-                                  className="color-cap"
-                                  style={{ backgroundColor: cap.color }}
-                                  onClick={() => moveCapToArrangement(index)}
-                                >
-                                  <span className="cap-label">{cap.label}</span>
-                                </div>
-                              ))}
-                            </div>
+                            {colorCaps.map((cap, index) => (
+                              <div
+                                key={`selection-${cap.id}`}
+                                className="color-cap"
+                                style={{ backgroundColor: cap.color }}
+                                onClick={() => moveCapToArrangement(index)}
+                              >
+                              </div>
+                            ))}
                           </div>
 
                           <div className="text-center mt-4">
