@@ -138,11 +138,11 @@ const detectDeficiencyPattern = (arrangement, config) => {
 };
 
 export const evaluateFarnsworthD15Results = (arrangement, config) => {
-  console.log("Arreglo: ",arrangement)
+  console.log("Arreglo: ", arrangement)
   // Calcular errores
   const correctOrder = [...config.caps];
   console.log("Orden Correcto", correctOrder);
-  
+
   // Número de posiciones correctas
   let correctPositions = 0;
   for (let i = 0; i < arrangement.length; i++) {
@@ -187,7 +187,7 @@ export const evaluateFarnsworthD15Results = (arrangement, config) => {
       protanCrossings: deficiencyPattern.crossings.protan,
       deutanCrossings: deficiencyPattern.crossings.deutan,
       tritanCrossings: deficiencyPattern.crossings.tritan,
-      totalError: Math.round(totalError)
+      totalError: Math.round(totalError),
     }
   };
 };
