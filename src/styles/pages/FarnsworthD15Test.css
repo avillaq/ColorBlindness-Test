@@ -1,21 +1,3 @@
-/* Technical Details */
-.technical-details {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.technical-details div {
-  display: flex;
-  justify-content: space-between;
-  margin: 8px 0;
-  padding: 8px;
-  background: #f8fafc;
-  border-radius: 6px;
-}
-
-/*   *************************************/
-
 /* Arrangement Area */
 .arrangement-area {
   display: flex;
@@ -78,43 +60,37 @@
   }
 }
 
-
-/* Technical Results */
-.technical-details,
-.color-crossings {
+/* Technical Details */
+.technical-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
-.technical-details div,
-.color-crossings div {
+.technical-details div {
   display: flex;
   justify-content: space-between;
-  margin: 4px 0;
+  margin: 8px 0;
   padding: 8px;
   background: #f8fafc;
   border-radius: 6px;
 }
 
-/* Polar Diagram */
-.polar-diagram-container {
+/* Plot */
+.plot-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 24px;
-  padding: 16px;
-  background-color: white;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  width: 100%;
 }
 
-.polar-diagram {
-  width: 100%;
-  max-width: 220px;
-  margin: 16px auto;
-}
-
-.color-arrangement-diagram {
-  width: 100%;
+.plot-description {
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+  margin-bottom: 8px;
+  max-width: 320px;
 }
