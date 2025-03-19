@@ -7,6 +7,7 @@ import { DescriptionCarouselTest } from "../components/DescriptionCarouselTest";
 import { DescriptionStepperTest } from "../components/DescriptionStepperTest";
 import { DescriptionGridTest } from "../components/DescriptionGridTest";
 import { FARNSWORTH_D15_CONFIG, evaluateFarnsworthD15Results } from "../utils/farnsworthD15-test";
+import { ResultPlot } from "../components/ResultPlot";
 import { pdf } from '@react-pdf/renderer';
 import { ResultsPDF } from '../components/ResultsPDF';
 import ReactCompareImage from 'react-compare-image';
@@ -132,7 +133,7 @@ export const FarnsworthD15Test = () => {
                 <Card className="mt-4">
                   <CardBody>
                     <h4>Color Axis Crossings</h4>
-                    <div className="color-crossings">
+                    <div className="technical-details">
                       <div>
                         <p>Protan Crossings:</p>
                         <p>{results.details.protanCrossings}</p>
@@ -149,8 +150,18 @@ export const FarnsworthD15Test = () => {
                   </CardBody>
                 </Card>
               </div>
+              <div className="flex flex-col items-center w-full">
+                <h4 className="font-semibold mb-2">Color Arrangement Analysis</h4>
+                <div className="plot-container">
+                  <p>CIE Lab Color Space</p>
+                  <div className="plot-description">
+                    Shows the a* (green-red) and b* (blue-yellow) dimensions of the CIE Lab color space.
+                    <br />Crossings of the confusion lines indicate color deficiency.
+                  </div>
+                  <ResultPlot arrangement={arrangement} />
+                </div>
+              </div>
 
-              
               <div className="disclaimer-container">
                 <div className="min-w-6">
                   <box-icon name="info-circle" color="#64748b"></box-icon>
