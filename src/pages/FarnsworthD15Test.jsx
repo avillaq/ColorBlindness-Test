@@ -94,7 +94,7 @@ export const FarnsworthD15Test = () => {
           <h2>Test Results</h2>
           <p>Your color vision assessment results are ready.</p>
         </div>
-        <div className="mt-4 w-full max-w-[550px]">
+        <div className="mt-4 w-full max-w-[580px]">
           <Card>
             <CardBody className="cardbody-results">
               <div className="results-summary">
@@ -113,52 +113,29 @@ export const FarnsworthD15Test = () => {
               <div className="results-details">
                 <Card className="mt-4">
                   <CardBody>
-                    <h4>Technical Details</h4>
+                    <h4>Key Findings</h4>
                     <div className="technical-details">
                       <div>
                         <p>Deficiency Type:</p>
                         <p>{results.details.deficiencyType}</p>
                       </div>
                       <div>
-                        <p>Confidence Level:</p>
-                        <p>{results.details.confidenceLevel}</p>
+                        <p>Severity:</p>
+                        <p>{results.details.severity}</p>
                       </div>
                       <div>
-                        <p>Total Error Score:</p>
-                        <p>{results.details.totalError}</p>
-                      </div>
-                    </div>
-                  </CardBody>
-                </Card>
-                <Card className="mt-4">
-                  <CardBody>
-                    <h4>Color Axis Crossings</h4>
-                    <div className="technical-details">
-                      <div>
-                        <p>Protan Crossings:</p>
-                        <p>{results.details.protanCrossings}</p>
-                      </div>
-                      <div>
-                        <p>Deutan Crossings:</p>
-                        <p>{results.details.deutanCrossings}</p>
-                      </div>
-                      <div>
-                        <p>Tritan Crossings:</p>
-                        <p>{results.details.tritanCrossings}</p>
+                        <p>Confidence:</p>
+                        <p>{results.details.confidence}</p>
                       </div>
                     </div>
                   </CardBody>
                 </Card>
               </div>
               <div className="flex flex-col items-center w-full">
-                <h4 className="font-semibold mb-2">Color Arrangement Analysis</h4>
+                <h4 className="font-semibold mb-2">Color Arrangement Pattern</h4>
                 <Card className="w-full">
                   <CardBody className="px-0 flex flex-col items-center">
                     <p>CIE Lab Color Space</p>
-                    <div className="plot-description">
-                      Shows the a* (green-red) and b* (blue-yellow) dimensions of the CIE Lab color space.
-                      <br />Crossings of the confusion lines indicate color deficiency.
-                    </div>
                     <ResultPlot arrangement={arrangement} />
                   </CardBody>
                 </Card>
