@@ -26,31 +26,33 @@ export const FARNSWORTH_D15_CONFIG = {
 };
 
 const cieLabDistance = (color1, color2) => {
-  const deltaL = color1.L - color2.L;
-  const deltaA = color1.a - color2.a;
-  const deltaB = color1.b - color2.b;
+  const kL = 1.0;
+  const kA = 1.5;
+  const kB = 1.0;
+
+  const deltaL = (color1.L - color2.L) * kL;
+  const deltaA = (color1.a - color2.a) * kA;
+  const deltaB = (color1.b - color2.b) * kB;
+
   return Math.sqrt(deltaL * deltaL + deltaA * deltaA + deltaB * deltaB);
 };
 
-// Calcular la distancia en el espacio CIE Lab
+// Calculate the confusion angles for a given arrangement
 const calculateConfusionAngle = (arrangement, config) => {
-  // Implementación real del cálculo de ángulos de confusión
-  // basada en estudios clínicos
   const indexSequence = arrangement.map(cap => cap.id);
 
-  // Detectar cruces en ejes de confusión
   const crossingCount = {
     protan: 0,
     deutan: 0,
     tritan: 0
   };
 
-  // Analizar el patrón de ordenamiento y compararlo con patrones típicos
+  // Compare typical patterns for each type of color vision deficiency
   for (let i = 0; i < indexSequence.length - 1; i++) {
     const currentId = indexSequence[i];
     const nextId = indexSequence[i + 1];
 
-    // Verificar cruces de líneas de confusión para cada tipo
+
     config.errorPatterns.protan.forEach(pair => {
       if ((currentId === pair[0] && nextId === pair[1]) ||
         (currentId === pair[1] && nextId === pair[0])) {
@@ -76,16 +78,14 @@ const calculateConfusionAngle = (arrangement, config) => {
   return crossingCount;
 };
 
-// Calcular el error total del arreglo
+// Calculate the total error
 const calculateTotalError = (arrangement) => {
   let totalError = 0;
 
-  // El orden correcto es secuencial: 1, 2, 3, ..., 15, 16
   for (let i = 0; i < arrangement.length - 1; i++) {
     const currentCap = arrangement[i];
     const nextCap = arrangement[i + 1];
 
-    // Calcular el error como la distancia en el espacio CIE Lab
     totalError += cieLabDistance(
       currentCap.cieLabValues,
       nextCap.cieLabValues
@@ -95,99 +95,113 @@ const calculateTotalError = (arrangement) => {
   return totalError;
 };
 
-// Analizar el patrón para detectar deficiencias específicas
+// Analyze the arrangement to detect the type of color vision deficiency
 const detectDeficiencyPattern = (arrangement, config) => {
   const confusionAngles = calculateConfusionAngle(arrangement, config);
+  const totalCrossings = confusionAngles.protan + confusionAngles.deutan + confusionAngles.tritan;
 
-  // Determinar el tipo de deficiencia basado en la cantidad de cruces
   let deficiencyType = 'Normal';
   let confidence = 'High';
 
-  const maxCrosses = Math.max(
-    confusionAngles.protan,
-    confusionAngles.deutan,
-    confusionAngles.tritan
-  );
+  const MAJOR_CROSSING_THRESHOLD = 3;
+  const MINOR_CROSSING_THRESHOLD = 1;
 
-  if (maxCrosses >= 3) {
-    // Determinar el tipo predominante
-    if (confusionAngles.protan > confusionAngles.deutan &&
-      confusionAngles.protan > confusionAngles.tritan) {
+  if (totalCrossings >= MAJOR_CROSSING_THRESHOLD) {
+    const patterns = {
+      protan: {
+        count: confusionAngles.protan,
+        threshold: 0.4 * totalCrossings
+      },
+      deutan: {
+        count: confusionAngles.deutan,
+        threshold: 0.4 * totalCrossings
+      },
+      tritan: {
+        count: confusionAngles.tritan,
+        threshold: 0.4 * totalCrossings
+      }
+    };
+
+    if (patterns.protan.count >= patterns.protan.threshold) {
       deficiencyType = 'Protan';
-    } else if (confusionAngles.deutan > confusionAngles.protan &&
-      confusionAngles.deutan > confusionAngles.tritan) {
+      confidence = patterns.protan.count > patterns.protan.threshold * 1.5 ? 'High' : 'Medium';
+    } else if (patterns.deutan.count >= patterns.deutan.threshold) {
       deficiencyType = 'Deutan';
-    } else if (confusionAngles.tritan > confusionAngles.protan &&
-      confusionAngles.tritan > confusionAngles.deutan) {
+      confidence = patterns.deutan.count > patterns.deutan.threshold * 1.5 ? 'High' : 'Medium';
+    } else if (patterns.tritan.count >= patterns.tritan.threshold) {
       deficiencyType = 'Tritan';
-    } else if (confusionAngles.protan === confusionAngles.deutan &&
-      confusionAngles.protan > confusionAngles.tritan) {
-      deficiencyType = 'Red-Green';
-      confidence = 'Medium';
-    } else {
+      confidence = patterns.tritan.count > patterns.tritan.threshold * 1.5 ? 'High' : 'Medium';
+    }
+
+    const hasMultiplePatterns = Object.values(patterns)
+      .filter(p => p.count >= MINOR_CROSSING_THRESHOLD).length > 1;
+
+    if (hasMultiplePatterns) {
       deficiencyType = 'Mixed';
-      confidence = 'Low';
+      confidence = 'Medium';
     }
   }
 
   return {
     type: deficiencyType,
     confidence,
-    crossings: confusionAngles
+    crossings: confusionAngles,
+    details: {
+      totalCrossings,
+      patternStrength: totalCrossings / arrangement.length
+    }
   };
 };
 
 export const evaluateFarnsworthD15Results = (arrangement, config) => {
-  console.log("Arreglo: ", arrangement)
-  // Calcular errores
-  const correctOrder = [...config.caps];
-  console.log("Orden Correcto", correctOrder);
-
-  // Número de posiciones correctas
-  let correctPositions = 0;
-  for (let i = 0; i < arrangement.length; i++) {
-    if (arrangement[i].id === correctOrder[i].id) {
-      correctPositions++;
-    }
-  }
-
-  correctPositions--; // Correct Positions without cap reference   
-
-  // Calcular el error total
   const totalError = calculateTotalError(arrangement);
-
-  // Detectar el patrón de deficiencia
   const deficiencyPattern = detectDeficiencyPattern(arrangement, config);
 
-  // Calcular precisión general (como porcentaje)
-  const accuracy = Math.max(0, 100 - Math.min(100, totalError / 5));
+  const ERROR_THRESHOLDS = {
+    SEVERE: 100,
+    MODERATE: 60,
+    MILD: 30
+  };
 
-  // Determinación del diagnóstico
+  const accuracy = Math.max(0, 100 - (
+    (totalError / 5) * 0.6 +
+    (deficiencyPattern.details.patternStrength * 100) * 0.4
+  ));
+
   let diagnosis = "Normal Color Vision";
+  let severity = "None";
+
   if (deficiencyPattern.type !== 'Normal') {
-    diagnosis = `${deficiencyPattern.type} Color Deficiency`;
-    if (totalError > 60) {
-      diagnosis += " (Moderate to Severe)";
-    } else if (totalError > 30) {
-      diagnosis += " (Mild to Moderate)";
+    if (totalError > ERROR_THRESHOLDS.SEVERE) {
+      severity = "Severe";
+    } else if (totalError > ERROR_THRESHOLDS.MODERATE) {
+      severity = "Moderate to Severe";
+    } else if (totalError > ERROR_THRESHOLDS.MILD) {
+      severity = "Mild to Moderate";
     } else {
-      diagnosis += " (Mild)";
+      severity = "Mild";
     }
+
+    diagnosis = `${deficiencyPattern.type} Color Vision Deficiency (${severity})`;
   }
 
   return {
     testName: "Farnsworth D15 Test",
     accuracy: `${Math.round(accuracy)}%`,
-    correct: correctPositions,
-    incorrect: (arrangement.length - 1) - correctPositions,
-    diagnosis: diagnosis,
+    diagnosis,
     details: {
       deficiencyType: deficiencyPattern.type,
-      confidenceLevel: deficiencyPattern.confidence,
-      protanCrossings: deficiencyPattern.crossings.protan,
-      deutanCrossings: deficiencyPattern.crossings.deutan,
-      tritanCrossings: deficiencyPattern.crossings.tritan,
+      severity,
+      confidence: deficiencyPattern.confidence,
+      crossings: deficiencyPattern.crossings,
       totalError: Math.round(totalError),
+      patternStrength: deficiencyPattern.details.patternStrength.toFixed(2),
+      errorAnalysis: {
+        totalCrossings: deficiencyPattern.details.totalCrossings,
+        protanScore: deficiencyPattern.crossings.protan,
+        deutanScore: deficiencyPattern.crossings.deutan,
+        tritanScore: deficiencyPattern.crossings.tritan
+      }
     }
   };
 };
