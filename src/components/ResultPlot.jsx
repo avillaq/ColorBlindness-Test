@@ -43,8 +43,8 @@ export const ResultPlot = ({ arrangement }) => {
     maxB += rangeB * 0.1;
 
     // Función para convertir valores CIE Lab a coordenadas del canvas
-    const aToX = (a) => padding + ((a - minB) / (maxB - minB)) * plotWidth;
-    const bToY = (b) => padding + ((b - minA) / (maxA - minA)) * plotHeight;
+    const aToX = (a) => padding + ((a - minA) / (maxA - minA)) * plotHeight;
+    const bToY = (b) => padding + ((b - minB) / (maxB - minB)) * plotWidth;
 
     // Dibujar el orden ideal (línea gris punteada)
     const idealOrder = [...originalCaps].sort((a, b) => a.id - b.id);
@@ -56,15 +56,15 @@ export const ResultPlot = ({ arrangement }) => {
 
     const firstIdealCap = idealOrder[0];
     ctx.moveTo(
+      bToY(firstIdealCap.cieLabValues.b),
       aToX(firstIdealCap.cieLabValues.a),
-      bToY(firstIdealCap.cieLabValues.b)
     );
 
     for (let i = 1; i < idealOrder.length; i++) {
       const cap = idealOrder[i];
       ctx.lineTo(
+        bToY(cap.cieLabValues.b),
         aToX(cap.cieLabValues.a),
-        bToY(cap.cieLabValues.b)
       );
     }
 
@@ -81,29 +81,50 @@ export const ResultPlot = ({ arrangement }) => {
     if (arrangement.length > 1) {
       ctx.strokeStyle = '#1e40af';
       ctx.lineWidth = 2;
-      ctx.beginPath();
 
-      const firstCap = arrangement[0];
-      ctx.moveTo(
-        aToX(firstCap.cieLabValues.a),
-        bToY(firstCap.cieLabValues.b)
-      );
+      for (let i = 0; i < arrangement.length - 1; i++) {
+        const currentCap = arrangement[i];
+        const nextCap = arrangement[i + 1];
 
-      for (let i = 1; i < arrangement.length; i++) {
-        const cap = arrangement[i];
+        const x1 = bToY(currentCap.cieLabValues.b);
+        const y1 = aToX(currentCap.cieLabValues.a);
+        const x2 = bToY(nextCap.cieLabValues.b);
+        const y2 = aToX(nextCap.cieLabValues.a);
+
+        const midX = (x1 + x2) / 2;
+        const midY = (y1 + y2) / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+
+        const angle = Math.atan2(y2 - y1, x2 - x1);
+        const headLength = 4;
+        const arrowPoint = {
+          x: midX,
+          y: midY
+        };
+
+        ctx.beginPath();
+        ctx.moveTo(midX + headLength * Math.cos(angle), midY + headLength * Math.sin(angle));
         ctx.lineTo(
-          aToX(cap.cieLabValues.a),
-          bToY(cap.cieLabValues.b)
+          arrowPoint.x - headLength * Math.cos(angle - Math.PI / 6),
+          arrowPoint.y - headLength * Math.sin(angle - Math.PI / 6)
         );
+        ctx.moveTo(midX + headLength * Math.cos(angle), midY + headLength * Math.sin(angle));
+        ctx.lineTo(
+          arrowPoint.x - headLength * Math.cos(angle + Math.PI / 6),
+          arrowPoint.y - headLength * Math.sin(angle + Math.PI / 6)
+        );
+        ctx.stroke();
       }
-
-      ctx.stroke();
-    } 
+    }
 
     // Points for each cap
     originalCaps.forEach(cap => {a
-      const x = aToX(cap.cieLabValues.a);
-      const y = bToY(cap.cieLabValues.b);
+      const y = aToX(cap.cieLabValues.a);
+      const x = bToY(cap.cieLabValues.b);
 
       const userCapIndex = arrangement.findIndex(c => c.id === cap.id);
       const isInUserArrangement = userCapIndex >= 0;
@@ -138,20 +159,20 @@ export const ResultPlot = ({ arrangement }) => {
     ctx.strokeStyle = '#94a3b8';
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(width - 120, 20);
-    ctx.lineTo(width - 80, 20);
+    ctx.moveTo(20, height - 45); 
+    ctx.lineTo(60, height - 45); 
     ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillText('Ideal Order', width - 75, 20);
+    ctx.fillText('Ideal Order', 65, height - 45);
 
     // User
     ctx.strokeStyle = '#1e40af';
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(width - 120, 45);
-    ctx.lineTo(width - 80, 45);
+    ctx.moveTo(20, height - 20);
+    ctx.lineTo(60, height - 20);
     ctx.stroke();
-    ctx.fillText('Your Order', width - 75, 45);
+    ctx.fillText('Your Order', 65, height - 20);
 
   }, [arrangement, originalCaps]);
 
