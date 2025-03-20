@@ -2,10 +2,31 @@ import { useRef, useEffect } from 'react';
 import { FARNSWORTH_D15_CONFIG } from '../utils/farnsworthD15-test';
 
 export const ResultPlot = ({ arrangement }) => {
+  const containerRef = useRef(null);
   const cieLABCanvasRef = useRef(null);
   const originalCaps = FARNSWORTH_D15_CONFIG.caps;
 
   useEffect(() => {
+    if (!containerRef.current) return;
+    const resizeObserver = new ResizeObserver(entries => {
+      const [entry] = entries;
+      if (!entry) return;
+      const width = entry.contentRect.width;
+      const canvas = cieLABCanvasRef.current;
+      if (!canvas) return;
+      
+      const aspectRatio = 350 / 295;
+      canvas.width = width;
+      canvas.height = width * aspectRatio;
+
+      drawPlot();
+    });
+    resizeObserver.observe(containerRef.current);
+    return () => resizeObserver.disconnect();
+  }, []);
+
+
+  const drawPlot = () => {
     if (!cieLABCanvasRef.current || !arrangement?.length) return;
 
     const canvas = cieLABCanvasRef.current;
@@ -33,8 +54,8 @@ export const ResultPlot = ({ arrangement }) => {
     maxB += rangeB * 0.05;
 
     // CIE L*a*b* to canvas coordinates
-    const aToX = (a) =>  ((a - minA) / (maxA - minA)) * height;
-    const bToY = (b) =>  ((b - minB) / (maxB - minB)) * width;
+    const aToX = (a) => ((a - minA) / (maxA - minA)) * height;
+    const bToY = (b) => ((b - minB) / (maxB - minB)) * width;
 
     // Lines for user order 
     if (arrangement.length > 1) {
@@ -121,8 +142,11 @@ export const ResultPlot = ({ arrangement }) => {
     ctx.lineTo(60, height - 20);
     ctx.stroke();
     ctx.fillText('Your Order', 65, height - 20);
+  }
 
-  }, [arrangement, originalCaps]);
+  useEffect(() => {
+    drawPlot();
+  }, [arrangement]);
 
   const getBrightness = (hexColor) => {
     const rgb = hexToRgb(hexColor);
@@ -141,10 +165,8 @@ export const ResultPlot = ({ arrangement }) => {
   };
 
   return (
-    <canvas
-      ref={cieLABCanvasRef}
-      width={295}
-      height={350}
-    />
+    <div ref={containerRef} style={{ width: '100%' }}>
+      <canvas ref={cieLABCanvasRef} />
+    </div>
   );
 };
