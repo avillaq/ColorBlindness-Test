@@ -2,21 +2,21 @@ export const FARNSWORTH_D15_CONFIG = {
   referenceCapColor: "#3A4863",
   caps: [
     { id: 1, color: "#3A4863", isReference: true, label: "R", cieLabValues: { L: 41.8, a: -4.3, b: -22.1 } },
-    { id: 2, color: "#3A5C8F", isReference: false, label: "2", cieLabValues: { L: 42.9, a: -6.2, b: -18.5 } },
-    { id: 3, color: "#3B70AB", isReference: false, label: "3", cieLabValues: { L: 44.3, a: -7.9, b: -14.8 } },
-    { id: 4, color: "#3B88B6", isReference: false, label: "4", cieLabValues: { L: 45.9, a: -10.6, b: -11.1 } },
-    { id: 5, color: "#3BA3BC", isReference: false, label: "5", cieLabValues: { L: 47.4, a: -13.2, b: -6.8 } },
-    { id: 6, color: "#3BBEB6", isReference: false, label: "6", cieLabValues: { L: 48.8, a: -15.3, b: -2.0 } },
-    { id: 7, color: "#42C18B", isReference: false, label: "7", cieLabValues: { L: 49.8, a: -17.5, b: 3.7 } },
-    { id: 8, color: "#63C164", isReference: false, label: "8", cieLabValues: { L: 50.5, a: -19.1, b: 8.9 } },
-    { id: 9, color: "#88BD46", isReference: false, label: "9", cieLabValues: { L: 50.9, a: -14.7, b: 13.8 } },
-    { id: 10, color: "#B1B231", isReference: false, label: "10", cieLabValues: { L: 50.7, a: -7.9, b: 18.0 } },
-    { id: 11, color: "#D3A232", isReference: false, label: "11", cieLabValues: { L: 50.1, a: -0.2, b: 21.1 } },
-    { id: 12, color: "#D98141", isReference: false, label: "12", cieLabValues: { L: 49.2, a: 7.6, b: 18.9 } },
-    { id: 13, color: "#D66551", isReference: false, label: "13", cieLabValues: { L: 47.9, a: 14.6, b: 16.2 } },
-    { id: 14, color: "#C85566", isReference: false, label: "14", cieLabValues: { L: 46.3, a: 21.1, b: 9.5 } },
-    { id: 15, color: "#A25979", isReference: false, label: "15", cieLabValues: { L: 44.3, a: 14.8, b: -0.5 } },
-    { id: 16, color: "#7B5B86", isReference: false, label: "16", cieLabValues: { L: 43.1, a: 4.2, b: -11.4 } }
+    { id: 2, color: "#3A5C8F", isReference: false, label: "1", cieLabValues: { L: 42.9, a: -6.2, b: -18.5 } },
+    { id: 3, color: "#3B70AB", isReference: false, label: "2", cieLabValues: { L: 44.3, a: -7.9, b: -14.8 } },
+    { id: 4, color: "#3B88B6", isReference: false, label: "3", cieLabValues: { L: 45.9, a: -10.6, b: -11.1 } },
+    { id: 5, color: "#3BA3BC", isReference: false, label: "4", cieLabValues: { L: 47.4, a: -13.2, b: -6.8 } },
+    { id: 6, color: "#3BBEB6", isReference: false, label: "5", cieLabValues: { L: 48.8, a: -15.3, b: -2.0 } },
+    { id: 7, color: "#42C18B", isReference: false, label: "6", cieLabValues: { L: 49.8, a: -17.5, b: 3.7 } },
+    { id: 8, color: "#63C164", isReference: false, label: "7", cieLabValues: { L: 50.5, a: -19.1, b: 8.9 } },
+    { id: 9, color: "#88BD46", isReference: false, label: "8", cieLabValues: { L: 50.9, a: -14.7, b: 13.8 } },
+    { id: 10, color: "#B1B231", isReference: false, label: "9", cieLabValues: { L: 50.7, a: -7.9, b: 18.0 } },
+    { id: 11, color: "#D3A232", isReference: false, label: "10", cieLabValues: { L: 50.1, a: -0.2, b: 21.1 } },
+    { id: 12, color: "#D98141", isReference: false, label: "11", cieLabValues: { L: 49.2, a: 7.6, b: 18.9 } },
+    { id: 13, color: "#D66551", isReference: false, label: "12", cieLabValues: { L: 47.9, a: 14.6, b: 16.2 } },
+    { id: 14, color: "#C85566", isReference: false, label: "13", cieLabValues: { L: 46.3, a: 21.1, b: 9.5 } },
+    { id: 15, color: "#A25979", isReference: false, label: "14", cieLabValues: { L: 44.3, a: 14.8, b: -0.5 } },
+    { id: 16, color: "#7B5B86", isReference: false, label: "15", cieLabValues: { L: 43.1, a: 4.2, b: -11.4 } }
   ],
   errorPatterns: {
     protan: [[15, 2], [14, 3], [13, 4], [12, 5], [11, 6], [10, 7], [9, 8]],
@@ -163,11 +163,9 @@ export const evaluateFarnsworthD15Results = (arrangement, config) => {
     MILD: 30
   };
 
-// Calcular el error ideal (el error mínimo posible con el orden perfecto)
+// Calculate el error ideal
 const idealArrangement = [...config.caps].sort((a, b) => a.id - b.id);
 const idealError = calculateTotalError(idealArrangement);
-
-// Normalizar el error total respecto al error ideal
 const normalizedError = Math.max(0, (totalError - idealError) / idealError);
 
 const accuracy = Math.max(0, 100 - (
