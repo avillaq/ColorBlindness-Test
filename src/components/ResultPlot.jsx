@@ -20,11 +20,6 @@ export const ResultPlot = ({ arrangement }) => {
     ctx.fillStyle = '#f8fafc';
     ctx.fillRect(0, 0, width, height);
 
-    // Configurar ejes de coordenadas
-    const padding = 30;
-    const plotWidth = width - 2 * padding;
-    const plotHeight = height - 2 * padding;
-
     // Encontrar los límites de los valores a/b para todos los discos
     let minA = Infinity, maxA = -Infinity, minB = Infinity, maxB = -Infinity;
     originalCaps.forEach(cap => {
@@ -37,45 +32,14 @@ export const ResultPlot = ({ arrangement }) => {
     // Añadir un margen del 10% a los límites
     const rangeA = maxA - minA;
     const rangeB = maxB - minB;
-    minA -= rangeA * 0.1;
-    maxA += rangeA * 0.1;
-    minB -= rangeB * 0.1;
-    maxB += rangeB * 0.1;
+    minA -= rangeA * 0.05;
+    maxA += rangeA * 0.05;
+    minB -= rangeB * 0.05;
+    maxB += rangeB * 0.05;
 
     // Función para convertir valores CIE Lab a coordenadas del canvas
-    const aToX = (a) => padding + ((a - minA) / (maxA - minA)) * plotHeight;
-    const bToY = (b) => padding + ((b - minB) / (maxB - minB)) * plotWidth;
-
-    // Dibujar el orden ideal (línea gris punteada)
-    const idealOrder = [...originalCaps].sort((a, b) => a.id - b.id);
-
-    ctx.strokeStyle = '#94a3b8';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([3, 3]);
-    ctx.beginPath();
-
-    const firstIdealCap = idealOrder[0];
-    ctx.moveTo(
-      bToY(firstIdealCap.cieLabValues.b),
-      aToX(firstIdealCap.cieLabValues.a),
-    );
-
-    for (let i = 1; i < idealOrder.length; i++) {
-      const cap = idealOrder[i];
-      ctx.lineTo(
-        bToY(cap.cieLabValues.b),
-        aToX(cap.cieLabValues.a),
-      );
-    }
-
-    // Cerrar el círculo
-    ctx.lineTo(
-      aToX(firstIdealCap.cieLabValues.a),
-      bToY(firstIdealCap.cieLabValues.b)
-    );
-
-    ctx.stroke();
-    ctx.setLineDash([]);
+    const aToX = (a) =>  ((a - minA) / (maxA - minA)) * height;
+    const bToY = (b) =>  ((b - minB) / (maxB - minB)) * width;
 
     // Dibujar el orden del usuario (línea sólida)
     if (arrangement.length > 1) {
@@ -195,7 +159,7 @@ export const ResultPlot = ({ arrangement }) => {
   return (
     <canvas
       ref={cieLABCanvasRef}
-      width={280}
+      width={300}
       height={350}
     />
   );
