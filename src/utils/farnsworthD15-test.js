@@ -163,10 +163,17 @@ export const evaluateFarnsworthD15Results = (arrangement, config) => {
     MILD: 30
   };
 
-  const accuracy = Math.max(0, 100 - (
-    (totalError / 5) * 0.6 +
-    (deficiencyPattern.details.patternStrength * 100) * 0.4
-  ));
+// Calcular el error ideal (el error mínimo posible con el orden perfecto)
+const idealArrangement = [...config.caps].sort((a, b) => a.id - b.id);
+const idealError = calculateTotalError(idealArrangement);
+
+// Normalizar el error total respecto al error ideal
+const normalizedError = Math.max(0, (totalError - idealError) / idealError);
+
+const accuracy = Math.max(0, 100 - (
+  (normalizedError * 100) * 0.6 +
+  (deficiencyPattern.details.patternStrength * 100) * 0.4
+));
 
   let diagnosis = "Normal Color Vision";
   let severity = "None";
