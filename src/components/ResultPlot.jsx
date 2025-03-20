@@ -15,7 +15,7 @@ export const ResultPlot = ({ arrangement }) => {
 
     ctx.clearRect(0, 0, width, height);
 
-    // Encontrar los límites de los valores a/b para todos los discos
+    // Find min and max values for a and b
     let minA = Infinity, maxA = -Infinity, minB = Infinity, maxB = -Infinity;
     originalCaps.forEach(cap => {
       minA = Math.min(minA, cap.cieLabValues.a);
@@ -32,11 +32,11 @@ export const ResultPlot = ({ arrangement }) => {
     minB -= rangeB * 0.05;
     maxB += rangeB * 0.05;
 
-    // Función para convertir valores CIE Lab a coordenadas del canvas
+    // CIE L*a*b* to canvas coordinates
     const aToX = (a) =>  ((a - minA) / (maxA - minA)) * height;
     const bToY = (b) =>  ((b - minB) / (maxB - minB)) * width;
 
-    // Dibujar el orden del usuario (línea sólida)
+    // Lines for user order 
     if (arrangement.length > 1) {
       ctx.strokeStyle = '#1e40af';
       ctx.lineWidth = 2;
