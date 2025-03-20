@@ -152,14 +152,16 @@ export const FarnsworthD15Test = () => {
               </div>
               <div className="flex flex-col items-center w-full">
                 <h4 className="font-semibold mb-2">Color Arrangement Analysis</h4>
-                <div className="plot-container">
-                  <p>CIE Lab Color Space</p>
-                  <div className="plot-description">
-                    Shows the a* (green-red) and b* (blue-yellow) dimensions of the CIE Lab color space.
-                    <br />Crossings of the confusion lines indicate color deficiency.
-                  </div>
-                  <ResultPlot arrangement={arrangement} />
-                </div>
+                <Card className="w-full">
+                  <CardBody className="px-0 flex flex-col items-center">
+                    <p>CIE Lab Color Space</p>
+                    <div className="plot-description">
+                      Shows the a* (green-red) and b* (blue-yellow) dimensions of the CIE Lab color space.
+                      <br />Crossings of the confusion lines indicate color deficiency.
+                    </div>
+                    <ResultPlot arrangement={arrangement} />
+                  </CardBody>
+                </Card>
               </div>
 
               <div className="disclaimer-container">
