@@ -13,12 +13,7 @@ export const ResultPlot = ({ arrangement }) => {
     const width = canvas.width;
     const height = canvas.height;
 
-    // Limpiar canvas
     ctx.clearRect(0, 0, width, height);
-
-    // Dibujar fondo
-    ctx.fillStyle = '#f8fafc';
-    ctx.fillRect(0, 0, width, height);
 
     // Encontrar los límites de los valores a/b para todos los discos
     let minA = Infinity, maxA = -Infinity, minB = Infinity, maxB = -Infinity;
@@ -29,7 +24,7 @@ export const ResultPlot = ({ arrangement }) => {
       maxB = Math.max(maxB, cap.cieLabValues.b);
     });
 
-    // Añadir un margen del 10% a los límites
+    // Margin
     const rangeA = maxA - minA;
     const rangeB = maxB - minB;
     minA -= rangeA * 0.05;
@@ -86,7 +81,7 @@ export const ResultPlot = ({ arrangement }) => {
     }
 
     // Points for each cap
-    originalCaps.forEach(cap => {a
+    originalCaps.forEach(cap => {
       const y = aToX(cap.cieLabValues.a);
       const x = bToY(cap.cieLabValues.b);
 
@@ -118,17 +113,6 @@ export const ResultPlot = ({ arrangement }) => {
     ctx.font = '12px Arial';
     ctx.fillStyle = '#1e293b';
 
-    // Ideal
-    ctx.setLineDash([3, 3]);
-    ctx.strokeStyle = '#94a3b8';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(20, height - 45); 
-    ctx.lineTo(60, height - 45); 
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillText('Ideal Order', 65, height - 45);
-
     // User
     ctx.strokeStyle = '#1e40af';
     ctx.lineWidth = 2;
@@ -159,7 +143,7 @@ export const ResultPlot = ({ arrangement }) => {
   return (
     <canvas
       ref={cieLABCanvasRef}
-      width={300}
+      width={295}
       height={350}
     />
   );
