@@ -16,6 +16,13 @@ import farnsworthD15Example from "../assets/farnsworthD15/farnsworthD15-test-exa
 import farnsworthD15NormalVision from "../assets/farnsworthD15/farnsworthD15-normal.webp";
 import farnsworthD15Protanopia from "../assets/farnsworthD15/farnsworthD15-protanopia.webp";
 import farnsworthD15Tritanopia from "../assets/farnsworthD15/farnsworthD15-tritanopia.webp";
+import D15NormalPattern from "../assets/farnsworthD15/D15-normal-pattern.webp";
+import D15ProtanPattern from "../assets/farnsworthD15/D15-protan-pattern.webp";
+import D15DeutanPattern from "../assets/farnsworthD15/D15-deutan-pattern.webp";
+import D15TritanPattern from "../assets/farnsworthD15/D15-tritan-pattern.webp";
+import D15MildDeutanPattern from "../assets/farnsworthD15/D15-mild-deutan-pattern.webp";
+import D15MinorNormalPattern from "../assets/farnsworthD15/D15-minor-normal-pattern.webp";
+
 import "../styles/pages/TestItem.css";
 import "../styles/pages/FarnsworthD15Test.css";
 
@@ -133,12 +140,54 @@ export const FarnsworthD15Test = () => {
               </div>
               <div className="flex flex-col items-center w-full">
                 <h4 className="font-semibold mb-2">Color Arrangement Pattern</h4>
-                <Card className="w-full">
+                <Card>
                   <CardBody className="px-0 flex flex-col items-center">
                     <p>CIE Lab Color Space</p>
                     <ResultPlot arrangement={arrangement} />
                   </CardBody>
                 </Card>
+              </div>
+              <div className="flex flex-col items-center w-full">
+                <h4 className="font-semibold mb-2">Common patterns</h4>
+                <div className="grid gap-3 grid-cols-1 grid-rows-6 sm:grid-cols-2 sm:grid-rows-3">
+                  <Card>
+                    <CardBody className="px-0 flex flex-col items-center">
+                      <p>Normal</p>
+                      <Image src={D15NormalPattern} />
+                    </CardBody>
+                  </Card>
+                  <Card>
+                    <CardBody className="px-0 flex flex-col items-center">
+                      <p>Normal - Minor Error</p>
+                      <Image src={D15MinorNormalPattern} />
+                    </CardBody>
+                  </Card>
+                  <Card>
+                    <CardBody className="px-0 flex flex-col items-center">
+                      <p>Protan</p>
+                      <Image src={D15ProtanPattern} />
+                    </CardBody>
+                  </Card>
+                  <Card>
+                    <CardBody className="px-0 flex flex-col items-center">
+                      <p>Deutan</p>
+                      <Image src={D15DeutanPattern} />
+                    </CardBody>
+                  </Card>
+                  <Card>
+                    <CardBody className="px-0 flex flex-col items-center">
+                      <p>Mild Deutan</p>
+                      <Image src={D15MildDeutanPattern} />
+                    </CardBody>
+                  </Card>
+                  <Card>
+                    <CardBody className="px-0 flex flex-col items-center">
+                      <p>Tritan</p>
+                      <Image src={D15TritanPattern} />
+                    </CardBody>
+                  </Card>
+                </div>
+
               </div>
 
               <div className="disclaimer-container">
