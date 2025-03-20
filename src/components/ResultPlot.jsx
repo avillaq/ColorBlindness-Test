@@ -5,7 +5,6 @@ export const ResultPlot = ({ arrangement }) => {
   const cieLABCanvasRef = useRef(null);
   const originalCaps = FARNSWORTH_D15_CONFIG.caps;
 
-  // Efecto para el gráfico CIE Lab
   useEffect(() => {
     if (!cieLABCanvasRef.current || !arrangement?.length) return;
 
@@ -44,67 +43,8 @@ export const ResultPlot = ({ arrangement }) => {
     maxB += rangeB * 0.1;
 
     // Función para convertir valores CIE Lab a coordenadas del canvas
-    const aToX = (a) => padding + ((a - minA) / (maxA - minA)) * plotWidth;
-    const bToY = (b) => height - padding - ((b - minB) / (maxB - minB)) * plotHeight;
-
-    // Dibujar ejes
-    ctx.strokeStyle = '#94a3b8';
-    ctx.lineWidth = 1;
-
-    // Eje a (horizontal)
-    ctx.beginPath();
-    ctx.moveTo(padding, height - padding);
-    ctx.lineTo(width - padding, height - padding);
-    ctx.stroke();
-
-    // Eje b (vertical)
-    ctx.beginPath();
-    ctx.moveTo(padding, padding);
-    ctx.lineTo(padding, height - padding);
-    ctx.stroke();
-
-    // Dibujar etiquetas de ejes
-    ctx.fillStyle = '#1e293b';
-    ctx.font = '12px Arial';
-    ctx.textAlign = 'center';
-
-    // Etiqueta eje a
-    ctx.fillText('a* (verde-rojo)', width / 2, height - 5);
-
-    // Etiqueta eje b
-    ctx.save();
-    ctx.translate(10, height / 2);
-    ctx.rotate(-Math.PI / 2);
-    ctx.fillText('b* (azul-amarillo)', 0, 0);
-    ctx.restore();
-
-    // Dibujar valores de referencia en los ejes
-    ctx.font = '10px Arial';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-
-    // Valores en eje a
-    const aStep = Math.ceil((maxA - minA) / 5);
-    for (let a = Math.ceil(minA); a <= Math.floor(maxA); a += aStep) {
-      const x = aToX(a);
-      ctx.beginPath();
-      ctx.moveTo(x, height - padding - 3);
-      ctx.lineTo(x, height - padding + 3);
-      ctx.stroke();
-      ctx.fillText(a.toFixed(0), x, height - padding + 15);
-    }
-
-    // Valores en eje b
-    const bStep = Math.ceil((maxB - minB) / 5);
-    ctx.textAlign = 'right';
-    for (let b = Math.ceil(minB); b <= Math.floor(maxB); b += bStep) {
-      const y = bToY(b);
-      ctx.beginPath();
-      ctx.moveTo(padding - 3, y);
-      ctx.lineTo(padding + 3, y);
-      ctx.stroke();
-      ctx.fillText(b.toFixed(0), padding - 8, y);
-    }
+    const aToX = (a) => padding + ((a - minB) / (maxB - minB)) * plotWidth;
+    const bToY = (b) => padding + ((b - minA) / (maxA - minA)) * plotHeight;
 
     // Dibujar el orden ideal (línea gris punteada)
     const idealOrder = [...originalCaps].sort((a, b) => a.id - b.id);
@@ -158,28 +98,28 @@ export const ResultPlot = ({ arrangement }) => {
       }
 
       ctx.stroke();
-    }
+    } 
 
-    // Dibujar puntos para cada disco
-    originalCaps.forEach(cap => {
+    // Points for each cap
+    originalCaps.forEach(cap => {a
       const x = aToX(cap.cieLabValues.a);
       const y = bToY(cap.cieLabValues.b);
 
       const userCapIndex = arrangement.findIndex(c => c.id === cap.id);
       const isInUserArrangement = userCapIndex >= 0;
 
-      // Dibujar círculo
+      // circle
       ctx.fillStyle = cap.color;
       ctx.beginPath();
       ctx.arc(x, y, 10, 0, 2 * Math.PI);
       ctx.fill();
 
-      // Borde
+      // Border
       ctx.strokeStyle = isInUserArrangement ? '#000' : '#475569';
       ctx.lineWidth = isInUserArrangement ? 2 : 1;
       ctx.stroke();
 
-      // Número del disco
+      // Label
       ctx.fillStyle = getBrightness(cap.color) > 128 ? '#000' : '#fff';
       ctx.font = '10px Arial';
       ctx.textAlign = 'center';
@@ -187,7 +127,7 @@ export const ResultPlot = ({ arrangement }) => {
       ctx.fillText(cap.label, x, y);
     });
 
-    // Leyenda
+    // Legend
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
     ctx.font = '12px Arial';
@@ -204,7 +144,7 @@ export const ResultPlot = ({ arrangement }) => {
     ctx.setLineDash([]);
     ctx.fillText('Ideal Order', width - 75, 20);
 
-    // Usuario
+    // User
     ctx.strokeStyle = '#1e40af';
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -215,34 +155,27 @@ export const ResultPlot = ({ arrangement }) => {
 
   }, [arrangement, originalCaps]);
 
-  // Helper to determine if text should be white or black based on background
   const getBrightness = (hexColor) => {
     const rgb = hexToRgb(hexColor);
     return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
   };
 
   const hexToRgb = (hex) => {
-    // Remove # if present
     hex = hex.replace('#', '');
-
-    // Convert 3-digit hex to 6-digits
     if (hex.length === 3) {
       hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
     }
-
-    // Parse the hex values
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
-
     return { r, g, b };
   };
 
   return (
     <canvas
       ref={cieLABCanvasRef}
-      width={350}
-      height={280}
+      width={280}
+      height={350}
     />
   );
 };
