@@ -67,19 +67,19 @@ const calculateConfusionAngle = (arrangement, config) => {
 
 
     config.errorPatterns.protan.forEach(pair => {
-      if ((currentId === pair[0] && nextId === pair[1])) {
+      if (currentId === pair[0] && nextId === pair[1]) {
         crossingCount.protan++;
       }
     });
 
     config.errorPatterns.deutan.forEach(pair => {
-      if ((currentId === pair[0] && nextId === pair[1])) {
+      if (currentId === pair[0] && nextId === pair[1]) {
         crossingCount.deutan++;
       }
     });
 
     config.errorPatterns.tritan.forEach(pair => {
-      if ((currentId === pair[0] && nextId === pair[1])) {
+      if (currentId === pair[0] && nextId === pair[1]) {
         crossingCount.tritan++;
       }
     });
@@ -120,15 +120,15 @@ const detectDeficiencyPattern = (arrangement, config) => {
     const patterns = {
       protan: {
         count: confusionAngles.protan,
-        threshold: 0.35 * totalCrossings
+        threshold: 0.30 * totalCrossings
       },
       deutan: {
         count: confusionAngles.deutan,
-        threshold: 0.35 * totalCrossings
+        threshold: 0.30 * totalCrossings
       },
       tritan: {
         count: confusionAngles.tritan,
-        threshold: 0.35 * totalCrossings
+        threshold: 0.30 * totalCrossings
       }
     };
 
