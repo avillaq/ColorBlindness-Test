@@ -103,22 +103,22 @@ const detectDeficiencyPattern = (arrangement, config) => {
   let deficiencyType = 'Normal';
   let confidence = 'High';
 
-  const MAJOR_CROSSING_THRESHOLD = 3;
+  const MAJOR_CROSSING_THRESHOLD = 2;
   const MINOR_CROSSING_THRESHOLD = 1;
 
   if (totalCrossings >= MAJOR_CROSSING_THRESHOLD) {
     const patterns = {
       protan: {
         count: confusionAngles.protan,
-        threshold: 0.4 * totalCrossings
+        threshold: 0.35 * totalCrossings
       },
       deutan: {
         count: confusionAngles.deutan,
-        threshold: 0.4 * totalCrossings
+        threshold: 0.35 * totalCrossings
       },
       tritan: {
         count: confusionAngles.tritan,
-        threshold: 0.4 * totalCrossings
+        threshold: 0.35 * totalCrossings
       }
     };
 
