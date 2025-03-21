@@ -21,25 +21,24 @@ export const Footer = () => {
             <div>
               <Link color="foreground" href="/">Home</Link>
               <Link color="foreground" href="/tests">Take Test</Link>
-              <Link color="foreground" href="/education">Education</Link>
+              <Link color="foreground" href="/faq">FAQ</Link>
               <Link color="foreground" href="/about">About Us</Link>
             </div>
           </div>
           <div className="footer-links">
-            <h3>Resources</h3>
+            <h3>Popular</h3>
             <div>
-              <Link color="foreground" href="/education">Articles</Link>
-              <Link color="foreground" href="/education">Video Tuhrefrials</Link>
-              <Link color="foreground" href="/education">FAQ</Link>
-              <Link color="foreground" href="/education">Research</Link>
+              <Link color="foreground" href="/tests/ishihara-test">Ishihara Test</Link>
+              <Link color="foreground" href="/tests/farnsworth-d-15-test">Farnsworth D15 Test</Link>
+              <Link color="foreground" href="/tests/anomaloscope-test">Anomaloscope Test</Link>
+              <Link color="foreground" href="/tests/farnsworth-lantern-test">Farnsworth Lantern Test</Link>
+              <Link color="foreground" href="/tests/cambridge-test">Cambridge Test</Link>
             </div>
           </div>
           <div className="footer-links">
             <h3>Legal</h3>
             <div>
-              <Link color="foreground" href="/privacy">Privacy Policy</Link>
-              <Link color="foreground" href="/terms">Terms of Service</Link>
-              <Link color="foreground" href="/disclaimer">Accessibility Statement</Link>
+              <Link color="foreground" href="/disclaimer">Disclaimer</Link>
               <Link color="foreground" href="/contact">Contact Us</Link>
             </div>
           </div>
