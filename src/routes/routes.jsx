@@ -6,7 +6,6 @@ import { FarnsworthD15Test } from '../pages/FarnsworthD15Test';
 import { CambridgeTest } from '../pages/CambridgeTest';
 import { FarnsworthLanternTest } from '../pages/FarnsworthLanternTest';
 import { AnomaloscopeTest } from '../pages/AnomaloscopeTest';
-import { KidsTest } from '../pages/KidsTest';
 
 export const routes = [
   {
@@ -36,10 +35,6 @@ export const routes = [
   {
     path: '/tests/anomaloscope-test',
     element: AnomaloscopeTest,
-  },
-  {
-    path: '/tests/kids-colorblindness-test',
-    element: KidsTest,
   },
   {
     path: '*',

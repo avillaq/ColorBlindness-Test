@@ -7,7 +7,6 @@ import cambridgeImage from "../assets/cambridge-test.webp"
 import farnsworthD15Image from "../assets/farnsworth-d15-test.webp"
 import farnsworthLanternImage from "../assets/farnsworth-lantern-test.webp"
 import ishiharaImage from "../assets/ishihara-test.webp"
-import kidsImage from "../assets/kids-test.webp"
 
 export const TestList = () => {
   const navigate = useNavigate();
@@ -98,23 +97,6 @@ export const TestList = () => {
               width={80}
             />
             <h3>Farnsworth Lantern Test</h3>
-          </CardHeader>
-        </Card>
-
-        <Card
-          isPressable
-          className="test-card"
-          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
-          onPress={() => navigate("/tests/kids-colorblindness-test")} >
-          <CardHeader className="flex flex-col gap-3">
-            <Image
-              alt="Kids Test logo"
-              height={80}
-              radius="full"
-              src={kidsImage}
-              width={80}
-            />
-            <h3>Kids ColorBlindness Test</h3>
           </CardHeader>
         </Card>
       </div>

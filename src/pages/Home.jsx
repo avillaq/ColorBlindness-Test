@@ -11,7 +11,6 @@ import cambridgeImage from "../assets/cambridge-test.webp"
 import farnsworthD15Image from "../assets/farnsworth-d15-test.webp"
 import farnsworthLanternImage from "../assets/farnsworth-lantern-test.webp"
 import ishiharaImage from "../assets/ishihara-test.webp"
-import kidsImage from "../assets/kids-test.webp"
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -126,23 +125,6 @@ export const Home = () => {
             <Divider />
             <CardBody>
               <p>Practical test using colored lights, crucial for aviation and maritime certification.</p>
-            </CardBody>
-          </Card>
-
-          <Card className="test-card" classNames={{ header: "p-3.5", body: "p-3.5" }} >
-            <CardHeader className="flex flex-col gap-3">
-              <Image
-                alt="Kids Test logo"
-                height={80}
-                radius="full"
-                src={kidsImage}
-                width={80}
-              />
-              <h3>Kids ColorBlindness Test</h3>
-            </CardHeader>
-            <Divider />
-            <CardBody>
-              <p>Interactive and friendly version designed for early detection in children using simple shapes and colors.</p>
             </CardBody>
           </Card>
         </div>
