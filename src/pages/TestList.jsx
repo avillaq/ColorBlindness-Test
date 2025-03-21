@@ -19,15 +19,15 @@ export const TestList = () => {
         <Card
           isPressable
           className="test-card"
-          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          classNames={{ base: "w-56 h-48 justify-center", header: "px-3.5" }}
           onPress={() => navigate("/tests/ishihara-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Ishihara Test logo"
-              height={80}
+              height={120}
               radius="full"
               src={ishiharaImage}
-              width={80}
+              width={120}
             />
             <h3>Ishihara Test</h3>
           </CardHeader>
@@ -35,15 +35,15 @@ export const TestList = () => {
         <Card
           isPressable
           className="test-card"
-          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          classNames={{ base: "w-56 h-48 justify-center", header: "px-3.5" }}
           onPress={() => navigate("/tests/farnsworth-d-15-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Farnsworth d-15 logo"
-              height={80}
+              height={120}
               radius="full"
               src={farnsworthD15Image}
-              width={80}
+              width={120}
             />
             <h3>Farnsworth D-15</h3>
           </CardHeader>
@@ -52,15 +52,15 @@ export const TestList = () => {
         <Card
           isPressable
           className="test-card"
-          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          classNames={{ base: "w-56 h-48 justify-center", header: "px-3.5" }}
           onPress={() => navigate("/tests/cambridge-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Cambridge Test logo"
-              height={80}
+              height={120}
               radius="full"
               src={cambridgeImage}
-              width={80}
+              width={120}
             />
             <h3>Cambridge Colour Test</h3>
           </CardHeader>
@@ -69,15 +69,15 @@ export const TestList = () => {
         <Card
           isPressable
           className="test-card"
-          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          classNames={{ base: "w-56 h-48 justify-center", header: "px-3.5" }}
           onPress={() => navigate("/tests/anomaloscope-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Anomaloscope Test logo"
-              height={80}
+              height={120}
               radius="full"
               src={anomaloscopeImage}
-              width={80}
+              width={120}
             />
             <h3>Anomaloscope Test</h3>
           </CardHeader>
@@ -86,15 +86,15 @@ export const TestList = () => {
         <Card
           isPressable
           className="test-card"
-          classNames={{ base: "w-48 h-44 justify-center", header: "px-3.5" }}
+          classNames={{ base: "w-56 h-48 justify-center", header: "px-3.5" }}
           onPress={() => navigate("/tests/farnsworth-lantern-test")} >
           <CardHeader className="flex flex-col gap-3">
             <Image
               alt="Farnsworth Lantern logo"
-              height={80}
+              height={120}
               radius="full"
               src={farnsworthLanternImage}
-              width={80}
+              width={120}
             />
             <h3>Farnsworth Lantern Test</h3>
           </CardHeader>
