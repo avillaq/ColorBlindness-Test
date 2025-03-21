@@ -1,7 +1,5 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
 import { Link } from "@heroui/link";
-import { Button } from "@heroui/button";
-import 'boxicons';
 import "../styles/components/NavBar.css";
 
 export const ColorBlindnessLogo = () => {
@@ -48,13 +46,6 @@ export const NavBar = () => {
             <Link size="sm" color="foreground" href="/education">
               Education
             </Link>
-          </NavbarItem>
-        </NavbarContent>
-        <NavbarContent justify="end">
-          <NavbarItem>
-            <Button size="sm" isIconOnly color="primary" href="#" variant="flat">
-              <box-icon name='accessibility'></box-icon>
-            </Button>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
