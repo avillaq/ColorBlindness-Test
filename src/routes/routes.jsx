@@ -42,19 +42,19 @@ export const routes = [
   },
   {
     path: '/about',
-    element: TestList,
+    element: About,
   },
   {
     path: '/faq',
-    element: TestList,
+    element: FAQ,
   },
   {
     path: '/disclaimer',
-    element: TestList,
+    element: Disclaimer,
   },
   {
     path: '/contact',
-    element: TestList,
+    element: Contact,
   },
   {
     path: '*',
