@@ -37,6 +37,22 @@ export const routes = [
     element: AnomaloscopeTest,
   },
   {
+    path: '/aboutus',
+    element: TestList,
+  },
+  {
+    path: '/faq',
+    element: TestList,
+  },
+  {
+    path: '/disclaimer',
+    element: TestList,
+  },
+  {
+    path: '/contact',
+    element: TestList,
+  },
+  {
     path: '*',
     element: NotFound,
   },
