@@ -37,7 +37,7 @@ export const routes = [
     element: AnomaloscopeTest,
   },
   {
-    path: '/aboutus',
+    path: '/about',
     element: TestList,
   },
   {

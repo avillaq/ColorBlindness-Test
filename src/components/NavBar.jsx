@@ -43,7 +43,7 @@ export const NavBar = () => {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link size="sm" color="foreground" href="/aboutus">
+            <Link size="sm" color="foreground" href="/about">
               About Us
             </Link>
           </NavbarItem>
