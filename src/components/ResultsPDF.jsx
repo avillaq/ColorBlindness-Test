@@ -173,8 +173,53 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 10,
     color: "#94a3b8"
+  },
+  // Styles for Farnsworth D15 test
+  colorArrangement: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 4,
+    marginTop: 4,
+    marginBottom: 8
+  },
+  colorCap: {
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+  },
+  errorScores: {
+    marginTop: 16,
+    flexDirection: "row",
+    justifyContent: "space-around"
+  },
+  errorScore: {
+    alignItems: "center"
+  },
+  errorValue: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#0f172a"
+  },
+  errorLabel: {
+    fontSize: 10,
+    color: "#64748b",
+    marginTop: 4
   }
 });
+
+const ColorArrangementPattern = ({ arrangement }) => (
+  <View style={styles.colorArrangement}>
+    {arrangement.map((cap, index) => (
+      <View
+        key={index}
+        style={[
+          styles.colorCap,
+          { backgroundColor: cap.color }
+        ]}
+      />
+    ))}
+  </View>
+);
 
 export const ResultsPDF = ({ results }) => (
   <Document>
@@ -216,7 +261,7 @@ export const ResultsPDF = ({ results }) => (
         </View>
 
         {
-          !results.testName.includes("Anomaloscope Test") ?
+          !results.testName.includes("Anomaloscope Test") && !results.testName.includes("Farnsworth D15 Test") ?
 
             <View style={styles.detailsGrid}>
               <View style={styles.detailCard}>
@@ -229,16 +274,18 @@ export const ResultsPDF = ({ results }) => (
               </View>
             </View>
             :
-            <View style={styles.detailsGrid}>
-              <View style={styles.detailCard}>
-                <Text style={styles.detailTitle}>Matches in Normal Range</Text>
-                <Text style={styles.successText}>{results.normalRange}/{results.normalRange + results.outOfRange}</Text>
+            !results.testName.includes("Farnsworth D15 Test") ?
+              <View style={styles.detailsGrid}>
+                <View style={styles.detailCard}>
+                  <Text style={styles.detailTitle}>Matches in Normal Range</Text>
+                  <Text style={styles.successText}>{results.normalRange}/{results.normalRange + results.outOfRange}</Text>
+                </View>
+                <View style={styles.detailCard}>
+                  <Text style={styles.detailTitle}>Matches Outside Range</Text>
+                  <Text style={styles.dangerText}>{results.outOfRange}/{results.normalRange + results.outOfRange}</Text>
+                </View>
               </View>
-              <View style={styles.detailCard}>
-                <Text style={styles.detailTitle}>Matches Outside Range</Text>
-                <Text style={styles.dangerText}>{results.outOfRange}/{results.normalRange + results.outOfRange}</Text>
-              </View>
-            </View>
+              : null
         }
 
 
@@ -294,6 +341,71 @@ export const ResultsPDF = ({ results }) => (
               <Text style={styles.technicalValue}>{results.details.matchConsistency}</Text>
             </View>
           </View>
+        }
+        {results.testName.includes("Farnsworth D15 Test") &&
+          <>
+            <View style={styles.technicalDetails}>
+              <Text style={styles.sectionTitle}>Key Findings</Text>
+              <View style={styles.detailsGrid}>
+                <View style={styles.detailCard}>
+                  <Text style={styles.detailTitle}>Deficiency Type</Text>
+                  <Text style={styles.technicalValue}>{results.details.deficiencyType}</Text>
+                </View>
+                <View style={styles.detailCard}>
+                  <Text style={styles.detailTitle}>Severity</Text>
+                  <Text style={styles.technicalValue}>{results.details.severity}</Text>
+                </View>
+                <View style={styles.detailCard}>
+                  <Text style={styles.detailTitle}>Confidence</Text>
+                  <Text style={styles.technicalValue}>{results.details.confidence}</Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.technicalDetails}>
+              <Text style={styles.sectionTitle}>Color Arrangement Pattern</Text>
+              <ColorArrangementPattern arrangement={results.arrangement} />
+            </View>
+            <View style={styles.technicalDetails}>
+                <Text style={styles.sectionTitle}>Pattern Analysis</Text>
+                <View style={styles.errorScores}>
+                  <View style={styles.errorScore}>
+                    <Text style={styles.errorValue}>
+                      {results.details.errorAnalysis.protanScore}
+                    </Text>
+                    <Text style={styles.errorLabel}>Protan Score</Text>
+                  </View>
+                  <View style={styles.errorScore}>
+                    <Text style={styles.errorValue}>
+                      {results.details.errorAnalysis.deutanScore}
+                    </Text>
+                    <Text style={styles.errorLabel}>Deutan Score</Text>
+                  </View>
+                  <View style={styles.errorScore}>
+                    <Text style={styles.errorValue}>
+                      {results.details.errorAnalysis.tritanScore}
+                    </Text>
+                    <Text style={styles.errorLabel}>Tritan Score</Text>
+                  </View>
+                </View>
+
+                <View style={[styles.technicalDetails, { marginTop: 8 }]}>
+                  <View style={styles.technicalRow}>
+                    <Text style={styles.technicalLabel}>Total Error Score:</Text>
+                    <Text style={styles.technicalValue}>{results.details.totalError}</Text>
+                  </View>
+                  <View style={styles.technicalRow}>
+                    <Text style={styles.technicalLabel}>Pattern Strength:</Text>
+                    <Text style={styles.technicalValue}>{results.details.patternStrength}</Text>
+                  </View>
+                  <View style={styles.technicalRow}>
+                    <Text style={styles.technicalLabel}>Total Crossings:</Text>
+                    <Text style={styles.technicalValue}>
+                      {results.details.errorAnalysis.totalCrossings}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+          </>
         }
 
         <View style={styles.disclaimer}>
