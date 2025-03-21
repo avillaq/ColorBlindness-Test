@@ -83,7 +83,8 @@ export const FarnsworthD15Test = () => {
   };
 
   const handleDownloadPDF = async () => {
-    const blob = await pdf(<ResultsPDF results={results} />).toBlob();
+    const newResults = { ...results, arrangement };
+    const blob = await pdf(<ResultsPDF results={newResults} />).toBlob();
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
