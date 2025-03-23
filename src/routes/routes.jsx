@@ -8,7 +8,6 @@ import { FarnsworthLanternTest } from '../pages/FarnsworthLanternTest';
 import { AnomaloscopeTest } from '../pages/AnomaloscopeTest';
 import { About } from '../pages/About';
 import { FAQ } from '../pages/FAQ';
-import { Disclaimer } from '../pages/Disclaimer';
 import { Contact } from '../pages/Contact';
 
 export const routes = [
@@ -47,10 +46,6 @@ export const routes = [
   {
     path: '/faq',
     element: FAQ,
-  },
-  {
-    path: '/disclaimer',
-    element: Disclaimer,
   },
   {
     path: '/contact',
