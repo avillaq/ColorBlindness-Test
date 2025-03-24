@@ -26,7 +26,7 @@ export const FAQ = () => {
     {
       key: "5",
       title: "How long do the tests take to complete?",
-      content: "Test duration varies: The Ishihara Test typically takes 5-7 minutes, the Farnsworth D-15 Test about 10-15 minutes, and the Cambridge Color Test approximately 15-20 minutes. The Anomaloscope Test usually requires 5-10 minutes to complete."
+      content: "Test duration varies: The Ishihara Test typically takes 5-7 minutes, the Farnsworth D-15 Test about 10-15 minutes, Farnsworth Lantern Test takes 5-6 minutes  and the Cambridge Color Test approximately 15-20 minutes. The Anomaloscope Test usually requires 5-10 minutes to complete."
     },
     {
       key: "6",
@@ -36,7 +36,7 @@ export const FAQ = () => {
     {
       key: "7",
       title: "What's the difference between the various tests offered?",
-      content: "Each test serves a specific purpose: The Ishihara Test is best for quick screening, the Farnsworth D-15 Test excels at detecting severity levels, the Cambridge Test provides precise measurements of color discrimination, and the Anomaloscope Test is particularly effective for red-green color vision deficiencies."
+      content: "Each test serves a specific purpose: The Ishihara Test is best for quick screening, the Farnsworth D-15 Test excels at detecting severity levels, the Cambridge Test provides precise measurements of color discrimination, Farnsworth Lantern Test is designed to evaluate color signal light recognition, particularly important for maritime and aviation industries and the Anomaloscope Test is particularly effective for red-green color vision deficiencies."
     },
     {
       key: "8",
