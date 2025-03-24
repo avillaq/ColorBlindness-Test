@@ -43,9 +43,6 @@ export const Contact = () => {
         </div>
         <Form className="flex-1 w-full max-w-[420px] p-6 border-1.5 rounded-xl shadow-2xl " onSubmit={onSubmit}>
           <Input
-            classNames={{
-              input: "data-[focus-visible=true]:outline-none"
-            }}
             isRequired
             validate={validateRequired}
             label="Full Name"
@@ -71,7 +68,7 @@ export const Contact = () => {
             placeholder="Write your message here"
             minRows={3}
           />
-          <div className="flex gap-4">
+          <div className="flex gap-4 w-full">
             <Button className="w-full" color="primary" type="submit">
               Submit
             </Button>
