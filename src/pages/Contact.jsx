@@ -1,20 +1,30 @@
 import { useState } from "react";
-import { Card, CardBody } from "@heroui/card"
 import { Form } from "@heroui/form";
-import { Input } from "@heroui/input";
+import { Input, Textarea } from "@heroui/input";
 import { Button } from "@heroui/button";
 import "../styles/pages/Contact.css"
 
 export const Contact = () => {
-  const [submitted, setSubmitted] = useState(null);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = e => {
+    e.preventDefault()
+    const data = Object.fromEntries(new FormData(e.currentTarget))
+    
+    console.log('Enviando datos:', data)
+    
+    setErrors({})
+  }
 
-    const data = Object.fromEntries(new FormData(e.currentTarget));
+  const validateEmail = (value) => {
+    if (!value) return "Email is required";
+    if (!/\S+@\S+\.\S+/.test(value)) return "Email is invalid";
+    return true;
+  }
 
-    setSubmitted(data);
-  };
+  const validateRequired = (value) => {
+    return value.trim() ? true : "This field is required";
+  }
+
 
 
   return (
@@ -31,19 +41,41 @@ export const Contact = () => {
           <p>Your contributions play a key role in our journey toward continual improvement, helping us refine our services and innovate to serve you better.</p>
           <p>Rest assured, our team thoroughly reviews every piece of feedback to ensure we exceed your expectations and enhance your experience on our site. With your input, we can make ColorVision an even more engaging and effective platform for everyone.</p>
         </div>
-        <Form className="flex-1 w-full max-w-[420px] p-6 border-1.5 rounded-xl shadow-lg " onSubmit={onSubmit}>
+        <Form className="flex-1 w-full max-w-[420px] p-6 border-1.5 rounded-xl shadow-2xl " onSubmit={onSubmit}>
           <Input
             isRequired
-            errorMessage="Please enter a valid email"
+            validate={validateRequired}
+            label="Full Name"
+            labelPlacement="outside"
+            name="fullName"
+            placeholder="Enter your full name"
+          />
+          <Input
+            isRequired
+            validate={validateEmail}
             label="Email"
             labelPlacement="outside"
             name="email"
             placeholder="Enter your email"
             type="email"
           />
-          <Button type="submit" variant="bordered">
-            Submit
-          </Button>
+          <Textarea
+            isRequired
+            validate={validateRequired}
+            label="Message"
+            labelPlacement="outside"
+            name="message"
+            placeholder="Write your message here"
+            minRows={3}
+          />
+          <div className="flex gap-4">
+            <Button className="w-full" color="primary" type="submit">
+              Submit
+            </Button>
+            <Button type="reset" variant="bordered">
+              Reset
+            </Button>
+          </div>
         </Form>
       </div>
     </div>
