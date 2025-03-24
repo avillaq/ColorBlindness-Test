@@ -16,7 +16,7 @@ export const About = () => {
       <div className="about-content">
         <Card className="sm:w-[420px] sm:h-[380px]"> 
           <CardBody>
-            <div className="flex flex-col gap-4 p-4">
+            <div className="flex flex-col gap-4 p-1 sm:p-4">
               <h3>Our Story</h3>
               <p>
                 ColorVision was developed to make professional color vision testing accessible to everyone. We offer scientifically validated tests including the Ishihara Test, Farnsworth D15, Cambridge Color Test, Farnsworth Lantern Test and Anomaloscope Test.<br />
@@ -27,7 +27,7 @@ export const About = () => {
         </Card>
         <Card className="sm:w-[420px] sm:h-[380px]"> 
           <CardBody>
-            <div className="flex flex-col gap-4 p-4">
+            <div className="flex flex-col gap-4 p-1 sm:p-4">
               <h3>Our Mission</h3>
               <p>
                 Our mission is to provide reliable color vision testing that's both accessible and scientifically accurate. We focus on empowering users with detailed insights about their color vision capabilities, whether for professional requirements or personal health monitoring. <br />
