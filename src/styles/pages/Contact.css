@@ -50,10 +50,10 @@
   }
 }
 
-/* .contact-content [type="text"],.contact-content [type="email"],.contact-content textarea {
+.contact-content [type="text"],.contact-content [type="email"],.contact-content textarea {
   border-width: 0;
 }
 
 .contact-content [type="text"]:focus,.contact-content [type="email"]:focus,.contact-content textarea:focus {
-  outline: none !important;
-} */
+  --tw-ring-color: transparent;
+}
