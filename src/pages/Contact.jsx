@@ -9,9 +9,9 @@ export const Contact = () => {
   const onSubmit = e => {
     e.preventDefault()
     const data = Object.fromEntries(new FormData(e.currentTarget))
-    
+
     console.log('Enviando datos:', data)
-    
+
     setErrors({})
   }
 
@@ -43,6 +43,9 @@ export const Contact = () => {
         </div>
         <Form className="flex-1 w-full max-w-[420px] p-6 border-1.5 rounded-xl shadow-2xl " onSubmit={onSubmit}>
           <Input
+            classNames={{
+              input: "data-[focus-visible=true]:outline-none"
+            }}
             isRequired
             validate={validateRequired}
             label="Full Name"
