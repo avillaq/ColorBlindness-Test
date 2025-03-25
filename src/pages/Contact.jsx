@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form } from "@heroui/form";
 import { Input, Textarea } from "@heroui/input";
 import { Button } from "@heroui/button";
+import { addToast } from "@heroui/toast";
 import emailjs from "@emailjs/browser";
 import "../styles/pages/Contact.css"
 
@@ -33,25 +34,25 @@ export const Contact = () => {
       );
 
       if (result.status === 200) {
-        /*toast({
+        addToast({
           title: "Message sent successfully!",
-          description: "We"ll get back to you soon.",
-          status: "success",
-          duration: 5000,
-        });*/
-        console.log("Message sent successfully! We'll get back to you soon.");
-
+          description: "We'll get back to you soon.",
+          color: "success",
+          variant: "flat",
+          timeout: 5000,
+        })
         e.target.reset();
       }
 
     } catch (error) {
       console.error("Email error:", error);
-      /*toast({
+      addToast({
         title: "Failed to send message",
         description: "Please try again later or contact us through alternative means.",
-        status: "error",
-        duration: 5000,
-      });*/
+        color: "danger",
+        variant: "flat",
+        timeout: 5000,
+      })
     } finally {
       setIsLoading(false);
     }
