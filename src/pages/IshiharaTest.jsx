@@ -148,7 +148,8 @@ export const IshiharaTest = () => {
             Download Report
           </Button>
         </div>
-        <div className="flex flex-col items-center w-full mt-6">
+
+        <div className="flex flex-col items-center w-full mt-8">
           <h4 className="font-semibold mb-2">More Results</h4>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {
