@@ -2,19 +2,59 @@ import { useState } from "react";
 import { Form } from "@heroui/form";
 import { Input, Textarea } from "@heroui/input";
 import { Button } from "@heroui/button";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 import "../styles/pages/Contact.css"
 
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 export const Contact = () => {
-  
+  const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = e => {
+  const onSubmit = async (e) => {
     e.preventDefault()
-    const data = Object.fromEntries(new FormData(e.currentTarget))
+    setIsLoading(true);
 
-    console.log('Enviando datos:', data)
+    try {
+      const formData = new FormData(e.currentTarget);
+      const templateParams = {
+        from_name: formData.get("fullName"),
+        from_email: formData.get("email"),
+        message: formData.get("message"),
+        to_name: "ColorVision Team",
+      };
 
-    setErrors({})
+      const result = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        /*toast({
+          title: "Message sent successfully!",
+          description: "We"ll get back to you soon.",
+          status: "success",
+          duration: 5000,
+        });*/
+        console.log("Message sent successfully! We'll get back to you soon.");
+
+        e.target.reset();
+      }
+
+    } catch (error) {
+      console.error("Email error:", error);
+      /*toast({
+        title: "Failed to send message",
+        description: "Please try again later or contact us through alternative means.",
+        status: "error",
+        duration: 5000,
+      });*/
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   const validateEmail = (value) => {
@@ -26,8 +66,6 @@ export const Contact = () => {
   const validateRequired = (value) => {
     return value.trim() ? true : "This field is required";
   }
-
-
 
   return (
     <div className="contact-container">
@@ -51,6 +89,7 @@ export const Contact = () => {
             labelPlacement="outside"
             name="fullName"
             placeholder="Enter your full name"
+            isDisabled={isLoading}
           />
           <Input
             isRequired
@@ -60,6 +99,7 @@ export const Contact = () => {
             name="email"
             placeholder="Enter your email"
             type="email"
+            isDisabled={isLoading}
           />
           <Textarea
             isRequired
@@ -69,12 +109,13 @@ export const Contact = () => {
             name="message"
             placeholder="Write your message here"
             minRows={3}
+            isDisabled={isLoading}
           />
           <div className="flex gap-4 w-full">
-            <Button className="w-full" color="primary" type="submit">
-              Submit
+            <Button className="w-full" color="primary" type="submit" isLoading={isLoading} isDisabled={isLoading}>
+              {isLoading ? "Sending..." : "Submit"}
             </Button>
-            <Button type="reset" variant="bordered">
+            <Button type="reset" variant="bordered" isDisabled={isLoading}>
               Reset
             </Button>
           </div>
