@@ -125,6 +125,30 @@ export const CambridgeTest = () => {
             Download Report
           </Button>
         </div>
+        <div className="flex flex-col items-center w-full mt-8">
+          <h4 className="font-semibold mb-2">More Results</h4>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {
+              CAMBRIDGE_CONFIG.map((plate, index) => (
+                <Card key={`Ishihara result ${index}`} className="w-full max-w-[340px]">
+                  <CardBody className="flex flex-col items-center gap-2">
+                    <Image
+                      alt={`Ishihara Test Plate ${plate.id}`}
+                      src={plate.imageUrl}
+                      radius="full"
+                    />
+                    <div className="bg-[#f8fafc] p-2 rounded-md w-full">
+                      <p className="text-center">Correct Answer: <strong>{plate.normalAnswer.toUpperCase()}</strong></p>
+                    </div>
+                    <div className="bg-[#f8fafc] p-2 rounded-md w-full">
+                      <p className="text-center">Your Answer: <strong>{answers[index].response.toUpperCase()}</strong></p>
+                    </div>
+                  </CardBody>
+                </Card>
+              ))
+            }
+          </div>
+        </div>
       </div>
     );
   }
