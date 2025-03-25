@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Form } from "@heroui/form";
 import { Input, Textarea } from "@heroui/input";
 import { Button } from "@heroui/button";
+import emailjs from '@emailjs/browser';
 import "../styles/pages/Contact.css"
 
 export const Contact = () => {
+  
 
   const onSubmit = e => {
     e.preventDefault()
