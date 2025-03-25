@@ -24,7 +24,7 @@ export const Home = () => {
           </div>
           <div className="hero-cta">
             <Button color="primary" onPress={() => navigate("/tests")}>Start Your Test</Button>
-            <Button color="primary" variant="ghost" onPress={() => navigate("/education")}>
+            <Button color="primary" variant="ghost" onPress={() => navigate("/faq")}>
               Learn More
             </Button>
           </div>
