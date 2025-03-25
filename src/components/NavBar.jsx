@@ -1,4 +1,13 @@
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
+import { useState } from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+} from "@heroui/navbar";
 import { Link } from "@heroui/link";
 import "../styles/components/NavBar.css";
 
@@ -24,9 +33,11 @@ export const ColorBlindnessLogo = () => {
 };
 
 export const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="navbar-container">
-      <Navbar>
+      <Navbar onMenuOpenChange={setIsMenuOpen}>
         <NavbarBrand>
           <ColorBlindnessLogo />
           <p className="text-logo font-bold text-inherit">ColorVision</p>
@@ -53,6 +64,36 @@ export const NavBar = () => {
             </Link>
           </NavbarItem>
         </NavbarContent>
+
+        <NavbarContent className="flex sm:hidden" justify="end">
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="sm:hidden"
+          />
+        </NavbarContent>
+
+        <NavbarMenu className="navbar-menu">
+          <NavbarMenuItem>
+            <Link size="sm" color="foreground" href="/">
+              Home
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link size="sm" color="foreground" href="/tests">
+              Take Test
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link size="sm" color="foreground" href="/about">
+              About Us
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link size="sm" color="foreground" href="/faq">
+              FAQ
+            </Link>
+          </NavbarMenuItem>
+        </NavbarMenu>
       </Navbar>
     </div>
 
