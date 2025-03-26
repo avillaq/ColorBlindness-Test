@@ -6,9 +6,9 @@ import { siteConfig } from "./src/config/site";
 export default defineConfig({
   plugins: [react()],
   define: {
-    "process.env.VITE_APP_TITLE": JSON.stringify(siteConfig.title),
-    "process.env.VITE_APP_DESCRIPTION": JSON.stringify(siteConfig.description),
-    "process.env.VITE_APP_KEYWORDS": JSON.stringify(siteConfig.keywords.join(", ")),
-    "process.env.VITE_APP_AUTHOR": JSON.stringify(siteConfig.author),
+    "import.meta.env.VITE_APP_TITLE": JSON.stringify(siteConfig.title),
+    "import.meta.env.VITE_APP_DESCRIPTION": JSON.stringify(siteConfig.description),
+    "import.meta.env.VITE_APP_KEYWORDS": JSON.stringify(siteConfig.keywords.join(", ")),
+    "import.meta.env.VITE_APP_AUTHOR": JSON.stringify(siteConfig.author),
   }
 });
