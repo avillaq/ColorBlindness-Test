@@ -34,17 +34,37 @@ export const ColorBlindnessLogo = () => {
 
 export const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log("Como saber en que pagina estoy? para dar un borde en el navbar");
+  
 
   return (
     <div className="navbar-container">
-      <Navbar onMenuOpenChange={setIsMenuOpen}>
+      <Navbar
+        onMenuOpenChange={setIsMenuOpen}
+        classNames={{
+          item: [
+            "flex",
+            "relative",
+            "h-full",
+            "items-center",
+            "data-[active=true]:after:content-['']",
+            "data-[active=true]:after:absolute",
+            "data-[active=true]:after:bottom-0",
+            "data-[active=true]:after:left-0",
+            "data-[active=true]:after:right-0",
+            "data-[active=true]:after:h-[2px]",
+            "data-[active=true]:after:rounded-[2px]",
+            "data-[active=true]:after:bg-primary",
+          ],
+        }}
+      >
         <NavbarBrand>
           <ColorBlindnessLogo />
           <p className="text-logo font-bold text-inherit">ColorVision</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem>
-            <Link size="sm" color="foreground" href="/">
+          <NavbarItem isActive>
+            <Link size="sm" color="primary" href="/">
               Home
             </Link>
           </NavbarItem>
