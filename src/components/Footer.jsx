@@ -1,6 +1,8 @@
 import { Link } from "@heroui/link";
 import { Divider } from "@heroui/divider";
 import { ColorBlindnessLogo } from "./NavBar";
+import { siteConfig } from "../config/site";
+
 import "../styles/components/Footer.css";
 
 export const Footer = () => {
@@ -44,8 +46,8 @@ export const Footer = () => {
         </div>
         <Divider />
         <div className="footer-credits">
-          <p>&copy; 2025 ColorVision. All rights reserved.</p>
-          <p>Designed and developed by <Link color="foreground" href="https://github.com/avillaq">AlexanderVQ</Link></p>
+          <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+          <p>Designed and developed by <Link color="foreground" href={siteConfig.social.github}>{siteConfig.author}</Link></p>
         </div>
 
       </div>
