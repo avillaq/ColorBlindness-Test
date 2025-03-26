@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from 'react-router-dom';
 import {
   Navbar,
   NavbarBrand,
@@ -34,8 +35,20 @@ export const ColorBlindnessLogo = () => {
 
 export const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log("Como saber en que pagina estoy? para dar un borde en el navbar");
-  
+  const location = useLocation();
+
+  const isActive = (path) => {
+    if (path === "/" && location.pathname === "/") return true;
+    if (path !== "/" && location.pathname.startsWith(path)) return true;
+    return false;
+  };
+
+  const menuItems = [
+    { path: "/", label: "Home" },
+    { path: "/tests", label: "Take Test" },
+    { path: "/about", label: "About Us" },
+    { path: "/faq", label: "FAQ" }
+  ];
 
   return (
     <div className="navbar-container">
@@ -63,26 +76,17 @@ export const NavBar = () => {
           <p className="text-logo font-bold text-inherit">ColorVision</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem isActive>
-            <Link size="sm" color="primary" href="/">
-              Home
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link size="sm" color="foreground" href="/tests">
-              Take Test
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link size="sm" color="foreground" href="/about">
-              About Us
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link size="sm" color="foreground" href="/faq">
-              FAQ
-            </Link>
-          </NavbarItem>
+          {menuItems.map((item) => (
+            <NavbarItem key={item.path} isActive={isActive(item.path)}>
+              <Link
+                size="sm"
+                color={isActive(item.path) ? "primary" : "foreground"}
+                href={item.path}
+              >
+                {item.label}
+              </Link>
+            </NavbarItem>
+          ))}
         </NavbarContent>
 
         <NavbarContent className="flex sm:hidden" justify="end">
@@ -93,26 +97,17 @@ export const NavBar = () => {
         </NavbarContent>
 
         <NavbarMenu className="navbar-menu">
-          <NavbarMenuItem>
-            <Link size="sm" color="foreground" href="/">
-              Home
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link size="sm" color="foreground" href="/tests">
-              Take Test
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link size="sm" color="foreground" href="/about">
-              About Us
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link size="sm" color="foreground" href="/faq">
-              FAQ
-            </Link>
-          </NavbarMenuItem>
+          {menuItems.map((item) => (
+            <NavbarMenuItem key={`mobile-${item.path}`}>
+              <Link
+                size="sm"
+                color={isActive(item.path) ? "primary" : "foreground"}
+                href={item.path}
+              >
+                {item.label}
+              </Link>
+            </NavbarMenuItem>
+          ))}
         </NavbarMenu>
       </Navbar>
     </div>
