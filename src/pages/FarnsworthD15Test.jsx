@@ -221,8 +221,17 @@ export const FarnsworthD15Test = () => {
     <>
       <SEO
         title="Farnsworth D-15 Test"
-        description="Test your ability to distinguish color hues with the Farnsworth D15 Test. Evaluate your color perception and detect moderate to severe color vision deficiencies."
-        keywords={["farnsworth d15", "color vision test", "color arrangement test"]}
+        description="Take the professional Farnsworth D-15 color arrangement test online. This standardized test evaluates your ability to arrange colors in sequence and detects moderate to severe color vision deficiencies."
+        keywords={[
+          "farnsworth d15",
+          "color arrangement test",
+          "d15 color test",
+          "color discrimination test",
+          "color vision assessment",
+          "occupational color test",
+          "color blindness severity",
+          "professional vision screening"
+        ]}
       />
       <div className="item-test-container">
         <div className={`item-test-hero ${showTest ? "gap-3" : "gap-12"}`}>
