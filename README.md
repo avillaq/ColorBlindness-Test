@@ -2,9 +2,18 @@
 
 A comprehensive web platform for professional color blindness testing, providing accurate assessments and educational resources.
 
+## Screenshots
+
+### Home Page
 ![Home](screenshots/home.PNG)
+---
+### Test Interface
 ![Test](screenshots/test.PNG)
-![Tesult](screenshots/result.PNG)
+---
+### Test Results
+![Result](screenshots/result.PNG)
+---
+### PDF Report
 ![PDF](screenshots/pdf.PNG)
 
 ## ✨ Features
