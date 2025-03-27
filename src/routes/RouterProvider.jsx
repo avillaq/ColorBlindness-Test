@@ -4,26 +4,31 @@ import { Layout } from '../components/Layout';
 import { HeroUIProvider } from '@heroui/react'
 import { ToastProvider } from "@heroui/toast";
 
-export const RouterProvider = () => {
+const AppWithRouter = () => {
   const navigate = useNavigate();
 
   return (
-    <BrowserRouter>
-      <HeroUIProvider navigate={navigate} useHref={useHref}>
-        <ToastProvider />
-        <Routes>
-          <Route element={<Layout />}>
-            {routes.map(({ path, element: Element }) => (
-              <Route
-                key={path}
-                path={path}
-                element={<Element />}
-              />
-            ))}
-          </Route>
-        </Routes>
-      </HeroUIProvider>
+    <HeroUIProvider navigate={navigate} useHref={useHref}>
+      <ToastProvider />
+      <Routes>
+        <Route element={<Layout />}>
+          {routes.map(({ path, element: Element }) => (
+            <Route
+              key={path}
+              path={path}
+              element={<Element />}
+            />
+          ))}
+        </Route>
+      </Routes>
+    </HeroUIProvider>
+  );
+};
 
+export const RouterProvider = () => {
+  return (
+    <BrowserRouter>
+      <AppWithRouter />
     </BrowserRouter>
   );
 };
