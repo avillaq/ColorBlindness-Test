@@ -2,14 +2,12 @@ import { BrowserRouter, Routes, Route, useNavigate, useHref } from 'react-router
 import { routes } from './routes';
 import { Layout } from '../components/Layout';
 import { HeroUIProvider } from '@heroui/react'
-import { ToastProvider } from "@heroui/toast";
 
 const AppWithRouter = () => {
   const navigate = useNavigate();
 
   return (
     <HeroUIProvider navigate={navigate} useHref={useHref}>
-      <ToastProvider />
       <Routes>
         <Route element={<Layout />}>
           {routes.map(({ path, element: Element }) => (
