@@ -1,6 +1,11 @@
 # ColorVision - Professional Color Blindness Testing Platform
-![ColorVision Logo](/public/icon.svg)
+
 A comprehensive web platform for professional color blindness testing, providing accurate assessments and educational resources.
+
+![Home](screenshots/home.PNG)
+![Test](screenshots/test.PNG)
+![Tesult](screenshots/result.PNG)
+![PDF](screenshots/pdf.PNG)
 
 ## ✨ Features
 
@@ -77,7 +82,7 @@ npm run dev
 - Maintain proper viewing distance
 - Follow all test instructions
 
-# 🔒 Privacy & Disclaimer
+## 🔒 Privacy & Disclaimer
 - No personal data is stored
 - Results are generated client-side
 - Not a substitute for professional medical diagnosis
