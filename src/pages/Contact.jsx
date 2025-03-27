@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form } from "@heroui/form";
 import { Input, Textarea } from "@heroui/input";
 import { Button } from "@heroui/button";
@@ -12,6 +12,12 @@ const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    emailjs.init({
+      publicKey: PUBLIC_KEY,
+    });
+  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -30,7 +36,6 @@ export const Contact = () => {
         SERVICE_ID,
         TEMPLATE_ID,
         templateParams,
-        PUBLIC_KEY
       );
 
       if (result.status === 200) {
