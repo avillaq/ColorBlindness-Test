@@ -151,7 +151,7 @@ export const AnomaloscopeTest = () => {
         </div>
 
         <div className="results-actions">
-          <Button color="primary" onPress={() => window.location.reload()}>
+          <Button color="primary" onPress={() => resetTest()}>
             Take Test Again
           </Button>
           <Button color="secondary" variant="ghost" onPress={handleDownloadPDF}>

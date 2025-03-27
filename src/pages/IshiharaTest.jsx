@@ -61,7 +61,7 @@ export const IshiharaTest = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `ishihara-test-results-${new Date().toISOString().split("T")[0]}.pdf`;
+    link.download = `Ishihara-test-results-${new Date().toISOString().split("T")[0]}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -142,7 +142,7 @@ export const IshiharaTest = () => {
         </div>
 
         <div className="results-actions">
-          <Button color="primary" onPress={() => window.location.reload()}>
+          <Button color="primary" onPress={() => resetTest()}>
             Take Test Again
           </Button>
           <Button color="secondary" variant="ghost" onPress={handleDownloadPDF}>
