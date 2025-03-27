@@ -11,7 +11,7 @@ export const siteConfig = {
     "cambridge color test",
     "anomaloscope test"
   ],
-  url: "https://colorvision-test.com",
+  url: "https://colorvision-test.netlify.app",
   author: "AlexanderVQ",
   social: {
     github: "https://github.com/avillaq"
