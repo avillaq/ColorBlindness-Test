@@ -9,6 +9,16 @@ import { AnomaloscopeTest } from '../pages/AnomaloscopeTest';
 import { About } from '../pages/About';
 import { FAQ } from '../pages/FAQ';
 import { Contact } from '../pages/Contact';
+import { ToastProvider } from "@heroui/toast";
+
+const ContactWithToast = () => {
+  return (
+    <>
+      <ToastProvider />
+      <Contact />
+    </>
+  );
+}
 
 export const routes = [
   {
@@ -49,7 +59,7 @@ export const routes = [
   },
   {
     path: '/contact',
-    element: Contact,
+    element: ContactWithToast,
   },
   {
     path: '*',
