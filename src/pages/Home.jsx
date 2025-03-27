@@ -3,7 +3,7 @@ import { Image } from "@heroui/image";
 import { Card, CardHeader, CardBody } from "@heroui/card";
 import { Divider } from "@heroui/divider";
 import { Chip } from "@heroui/chip";
-import { useNavigate } from 'react-router-dom';
+import { Link } from "@heroui/link";
 import "../styles/pages/Home.css";
 import heroImage from "../assets/hero-image.webp"
 import anomaloscopeImage from "../assets/anomaloscope-test.webp"
@@ -13,7 +13,6 @@ import farnsworthLanternImage from "../assets/farnsworth-lantern-test.webp"
 import ishiharaImage from "../assets/ishihara-test.webp"
 
 export const Home = () => {
-  const navigate = useNavigate();
   return (
     <div className="home-container">
       <section className="hero-section">
@@ -23,8 +22,8 @@ export const Home = () => {
             <p>Accurate, accessible, and educational color vision testing for everyone. Understand your color perception with our medically-informed tests.</p>
           </div>
           <div className="hero-cta">
-            <Button color="primary" onPress={() => navigate("/tests")}>Start Your Test</Button>
-            <Button color="primary" variant="ghost" onPress={() => navigate("/faq")}>
+            <Button color="primary" as={Link} href="/tests">Start Your Test</Button>
+            <Button color="primary" variant="ghost" as={Link} href="/faq">
               Learn More
             </Button>
           </div>
@@ -175,7 +174,7 @@ export const Home = () => {
           <p>Our comprehensive tests take just a few minutes and provide valuable insights into your color perception.</p>
         </div>
         <div className="cta-button">
-          <Button color="primary" onPress={() => navigate("/tests")}>Start Your Test Now</Button>
+          <Button color="primary" as={Link} href="/tests">Start Your Test Now</Button>
         </div>
       </section>
 
